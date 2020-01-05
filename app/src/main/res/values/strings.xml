@@ -70,6 +70,11 @@
     <string name="_4">4</string>
     <string name="BLUE">BLUE</string>
     <string name="RED">RED</string>
+    <string name="spin">Spin</string>
+    <string name="color_selection">Color Selection</string>
+    <string name="power_genenator">Power Genenator</string>
+    <string name="control_panel">Control Panel</string>
+    <string name="successful_hang">Successful Hang?</string>
     <string-array name="CargoCargo">
         <item>Cargo (1)</item>
         <item>Cargo (2)</item>

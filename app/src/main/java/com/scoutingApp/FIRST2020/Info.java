@@ -9,7 +9,6 @@ public class Info implements Serializable {
     Integer team;
     String match;
     String alliance;
-    String notes;
 
     public String getName() {
         return name;
@@ -34,8 +33,5 @@ public class Info implements Serializable {
     }
     void setAlliance(String alliance) {
         this.alliance = alliance;
-    }
-    String getNotes() {
-        return notes;
     }
 }

@@ -18,8 +18,8 @@ import java.util.Objects;
 public class PostSubmit extends AppCompatActivity {
     // inherited class objects
 
-    public DeepSpace getSpace() {
-        return (DeepSpace) getIntent().getSerializableExtra("Game2");
+    public InfiniteRecharge getGame() {
+        return (InfiniteRecharge) getIntent().getSerializableExtra("Game2");
     }
 
     public PersistentData getData() {
@@ -40,10 +40,10 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     private void info() {
-        updateTextView(getSpace().getInfo().getName(), R.id.name);
-        updateTextView(Integer.toString(getSpace().getInfo().getTeam()), R.id.team);
-        updateTextView((getSpace().getInfo().getMatch()), R.id.match);
-        if (getSpace().getInfo().getAlliance().equalsIgnoreCase("red")) {
+        updateTextView(getGame().getInfo().getName(), R.id.name);
+        updateTextView(Integer.toString(getGame().getInfo().getTeam()), R.id.team);
+        updateTextView((getGame().getInfo().getMatch()), R.id.match);
+        if (getGame().getInfo().getAlliance().equalsIgnoreCase("red")) {
             ((ToggleButton) findViewById(R.id.toggleButton)).setChecked(true);
         }
 
@@ -78,40 +78,18 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void toSubmission() {
-        getSub().setMainStartPosition(getSpace().getMainStartPosition());
-        getSub().setMainDefense(getSpace().isMainDefense());
-        getSub().setMainBlockedScores(getSpace().getMainBlockedScores());
-        getSub().setMainEndgame(getSpace().getMainEndgame());
-        getSub().setExtrasRedCard(getSpace().isExtrasRedCard());
-        getSub().setExtrasYellowCard(getSpace().isExtrasYellowCard());
-        getSub().setNoShow(getSpace().isNoShow());
-        getSub().setMovement(getSpace().isMovement());
-        getSub().setExtrasFinalScore(getSpace().getExtrasFinalScore());
-        getSub().setTeam(getSpace().getMainTeam());
-        getSub().setMatch(getSpace().getInfo().getMatch());
-        getSub().setName(getSpace().getMainName());
-        getSub().setNotes(getSpace().getExtrasNotes());
-        getSub().setAlliance(getSpace().getMainAlliance());
-        getSub().setCSFH(getSpace().getCargo().getScore('f', DeepSpace.HATCH, false));
-        getSub().setCSFC(getSpace().getCargo().getScore('f', DeepSpace.CARGO, false));
-        getSub().setCSSH(getSpace().getCargo().getScore('c', DeepSpace.HATCH, false));
-        getSub().setCSSC(getSpace().getCargo().getScore('c', DeepSpace.CARGO, false));
-        getSub().setCSFHSS(getSpace().getCargo().getScore('f', DeepSpace.HATCH, true));
-        getSub().setCSFCSS(getSpace().getCargo().getScore('f', DeepSpace.CARGO, true));
-        getSub().setCSSHSS(getSpace().getCargo().getScore('c', DeepSpace.HATCH, true));
-        getSub().setCSSCSS(getSpace().getCargo().getScore('c', DeepSpace.CARGO, true));
-        getSub().setR1H(getSpace().getRocket().getScore(1, DeepSpace.HATCH, false));
-        getSub().setR1C(getSpace().getRocket().getScore(1, DeepSpace.CARGO, false));
-        getSub().setR2H(getSpace().getRocket().getScore(2, DeepSpace.HATCH, false));
-        getSub().setR2C(getSpace().getRocket().getScore(2, DeepSpace.CARGO, false));
-        getSub().setR3H(getSpace().getRocket().getScore(3, DeepSpace.HATCH, false));
-        getSub().setR3C(getSpace().getRocket().getScore(3, DeepSpace.CARGO, false));
-        getSub().setR1HSS(getSpace().getRocket().getScore(1, DeepSpace.HATCH, true));
-        getSub().setR1CSS(getSpace().getRocket().getScore(1, DeepSpace.CARGO, true));
-        getSub().setR2HSS(getSpace().getRocket().getScore(2, DeepSpace.HATCH, true));
-        getSub().setR2CSS(getSpace().getRocket().getScore(2, DeepSpace.CARGO, true));
-        getSub().setR3HSS(getSpace().getRocket().getScore(3, DeepSpace.HATCH, true));
-        getSub().setR3CSS(getSpace().getRocket().getScore(3, DeepSpace.CARGO, true));
+        getSub().setMainDefense(getGame().isMainDefense());
+        getSub().setMainClimb(getGame().isMainClimb());
+        getSub().setExtrasRedCard(getGame().isExtrasRedCard());
+        getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
+        getSub().setNoShow(getGame().isNoShow());
+        getSub().setMovement(getGame().isMovement());
+        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+        getSub().setTeam(getGame().getInfo().getTeam());
+        getSub().setMatch(getGame().getInfo().getMatch());
+        getSub().setName(getGame().getInfo().getName());
+        getSub().setNotes(getGame().getExtrasNotes());
+        getSub().setAlliance(getGame().getInfo().getAlliance());
     }
 
     private void getConnected() {
@@ -122,14 +100,14 @@ public class PostSubmit extends AppCompatActivity {
 
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("")) {
-            getSpace().setMainName(newString(R.id.name));
-            getSpace().setMainTeam(Integer.valueOf(newString(R.id.team)));
-            getSpace().setMainMatch(newString(R.id.match));
-            getSpace().setMainAlliance(((ToggleButton) findViewById(R.id.toggleButton)).getText().toString());
-            getSpace().setExtrasFinalScore(Integer.valueOf(newString(R.id.typescorehere)));
+            getGame().getInfo().setName(newString(R.id.name));
+            getGame().getInfo().setTeam(Integer.valueOf(newString(R.id.team)));
+            getGame().getInfo().setMatch(newString(R.id.match));
+            getGame().getInfo().setAlliance(((ToggleButton) findViewById(R.id.toggleButton)).getText().toString());
+            getGame().setExtrasFinalScore(Integer.valueOf(newString(R.id.typescorehere)));
             toSubmission();
             getData().perSubData.add(getSub());
-            getData().perCacheData.add(getSpace().getInfo());
+            getData().perCacheData.add(getGame().getInfo());
             getData().setRowNumber(getData().getRowNumber() + 1);
             getData().getSheet().setSubNum(getData().getSheet().getSubNum() + 1);
             getConnected();

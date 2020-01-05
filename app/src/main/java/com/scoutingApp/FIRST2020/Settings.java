@@ -20,8 +20,8 @@ import java.util.concurrent.ExecutionException;
 public class Settings extends AppCompatActivity {
     //variables and objects
 
-    public DeepSpace getSpace() {
-        return (DeepSpace) getIntent().getSerializableExtra("Game");
+    public InfiniteRecharge getSpace() {
+        return (InfiniteRecharge) getIntent().getSerializableExtra("Game");
     }
     public PersistentData getData() {
         return (PersistentData) getIntent().getSerializableExtra("data");

@@ -24,11 +24,11 @@ class SheetsAccess implements Serializable {
 
     private int subNum = -1;
 
-    public int getSubNum() {
+    int getSubNum() {
         return subNum;
     }
 
-    public void setSubNum(int subNum) {
+    void setSubNum(int subNum) {
         this.subNum = subNum;
     }
 
