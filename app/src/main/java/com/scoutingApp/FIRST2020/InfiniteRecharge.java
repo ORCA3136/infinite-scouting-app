@@ -54,6 +54,30 @@ public class InfiniteRecharge implements Serializable {
                 "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
     }
 
+    public int getLowerCell() {
+        return lowerCell;
+    }
+
+    public void setLowerCell(int lowerCell) {
+        this.lowerCell = lowerCell;
+    }
+
+    public int getInnerCell() {
+        return innerCell;
+    }
+
+    public void setInnerCell(int innerCell) {
+        this.innerCell = innerCell;
+    }
+
+    public int getOuterCell() {
+        return outerCell;
+    }
+
+    public void setOuterCell(int outerCell) {
+        this.outerCell = outerCell;
+    }
+
     String getExtrasNotes() {
         return extrasNotes;
     }
@@ -138,10 +162,10 @@ public class InfiniteRecharge implements Serializable {
     public void setSettingsHelpInfo(String settingsHelpInfo) {
             this.settingsHelpInfo = settingsHelpInfo;
         }
-    private boolean isSelected() {return selected; }
-    private void setSelected(boolean selected) { this.selected = selected; }
-    private boolean isRevolved() { return revolved; }
-    private void setRevolved(boolean revolved) { this.revolved = revolved; }
+    boolean isSelected() {return selected; }
+    void setSelected(boolean selected) { this.selected = selected; }
+    boolean isRevolved() { return revolved; }
+    void setRevolved(boolean revolved) { this.revolved = revolved; }
 
     
     public void cellScore(int level) {

@@ -90,6 +90,12 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setName(getGame().getInfo().getName());
         getSub().setNotes(getGame().getExtrasNotes());
         getSub().setAlliance(getGame().getInfo().getAlliance());
+        getSub().setRevolve(getGame().isRevolved());
+        getSub().setSelect(getGame().isSelected());
+        getSub().setPg1(getGame().getLowerCell());
+        getSub().setPg2(getGame().getOuterCell());
+        getSub().setPg3(getGame().getInnerCell());
+        getSub().setHang(getGame().isMainClimb());
     }
 
     private void getConnected() {
