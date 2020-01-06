@@ -95,7 +95,6 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setPg1(getGame().getLowerCell());
         getSub().setPg2(getGame().getOuterCell());
         getSub().setPg3(getGame().getInnerCell());
-        getSub().setHang(getGame().isMainClimb());
     }
 
     private void getConnected() {
