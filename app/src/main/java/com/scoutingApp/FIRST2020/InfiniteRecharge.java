@@ -29,7 +29,7 @@ public class InfiniteRecharge implements Serializable {
     private boolean noShow = false;
     private boolean movement = true;
     private int extrasFinalScore = 0;
-    private String extrasNotes = "";
+    private String extrasNotes = "No Notes";
 
     private String settingsDisplay = " ";
     private int settingsDisplayNum = 0;
@@ -54,7 +54,7 @@ public class InfiniteRecharge implements Serializable {
                 "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
     }
 
-    public int getLowerCell() {
+    int getLowerCell() {
         return lowerCell;
     }
 
@@ -62,7 +62,7 @@ public class InfiniteRecharge implements Serializable {
         this.lowerCell = lowerCell;
     }
 
-    public int getInnerCell() {
+    int getInnerCell() {
         return innerCell;
     }
 
@@ -70,7 +70,7 @@ public class InfiniteRecharge implements Serializable {
         this.innerCell = innerCell;
     }
 
-    public int getOuterCell() {
+    int getOuterCell() {
         return outerCell;
     }
 
@@ -168,7 +168,7 @@ public class InfiniteRecharge implements Serializable {
     void setRevolved(boolean revolved) { this.revolved = revolved; }
 
     
-    public void cellScore(int level) {
+    void cellScore(int level) {
         if (level == 1) {
             lowerCell = lowerCell + 1;
         }
@@ -183,7 +183,7 @@ public class InfiniteRecharge implements Serializable {
         if (!isMainClimb()) {setMainClimb(true);}
         if (isMainClimb()) {setMainClimb(false);}
     }
-    public void revolution() {
+    void revolution() {
         if (!isRevolved()) {
             setRevolved(true);
         }
@@ -191,7 +191,7 @@ public class InfiniteRecharge implements Serializable {
             setRevolved(false);
         }
     }
-    public void selection() {
+    void selection() {
         if (!isSelected()) {setSelected(true);}
         if (isSelected()) {setSelected(false);}
     }

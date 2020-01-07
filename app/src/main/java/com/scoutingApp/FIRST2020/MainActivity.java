@@ -62,14 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     // methods to set or change variables, set ss timer, etc
 
-    //    public void updateScoreText(int id, int score, int array) {
-//        TextView text = findViewById(id);
-//        String[] res = getResources().getStringArray(array);
-//        text.setText(res[score]);
-//    }
     public void updateScoreText(int id, int score) {
         TextView text = findViewById(id);
-        String label = "" + score;
+        String label = text.getText().toString() + " (" + score + ")";
         text.setText(label);
     }
 
@@ -259,13 +254,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void pg1(View view) {
         getGame().cellScore(1);
+        updateScoreText(R.id.pg1, getGame().getLowerCell());
     }
+
     public void pg2(View view) {
         getGame().cellScore(2);
+        updateScoreText(R.id.pg2, getGame().getOuterCell());
     }
+
     public void pg3(View view) {
         getGame().cellScore(3);
+        updateScoreText(R.id.pg3, getGame().getInnerCell());
     }
+
     public void helpButton(View view) {
         makeADialog(getGame().getMainHelpInfo(), "help");
     }
@@ -283,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             getGame().setMainStart(false);
-            findViewById(R.id.start3).setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            findViewById(R.id.start3).setBackgroundColor(getResources().getColor(R.color.coolBlue));
             ((Button) findViewById(R.id.start3)).setText(R.string.start);
             getGame().setAutonomous(false);
         }
@@ -308,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
         } else makeADialog("You need to press start!", "setscore");
     }
 
-
+    //on create, on start, save state, etc (overrides)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

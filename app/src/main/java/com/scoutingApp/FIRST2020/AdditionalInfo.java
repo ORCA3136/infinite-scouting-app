@@ -19,19 +19,16 @@ public class AdditionalInfo extends AppCompatActivity {
     // button and switch methods
 
     public void redSwitch(View view) {
-                if (!getGame().isExtrasRedCard()) {
-                getGame().setExtrasRedCard(true);}
-                else {getGame().setExtrasRedCard(false);}
+        if (!getGame().isExtrasRedCard()) { getGame().setExtrasRedCard(true);}
+        else {getGame().setExtrasRedCard(false);}
     }
     public void yellowSwitch(View view) {
-                if (!getGame().isExtrasYellowCard()) {
-                    getGame().setExtrasYellowCard(true);}
-                else {getGame().setExtrasYellowCard(false);}
+        if (!getGame().isExtrasYellowCard()) { getGame().setExtrasYellowCard(true);}
+        else {getGame().setExtrasYellowCard(false);}
     }
     public void noShowSwitch(View view) {
-                if (!getGame().isNoShow()) {
-                    getGame().setNoShow(true);}
-                else {getGame().setNoShow(false);}
+        if (!getGame().isNoShow()) { getGame().setNoShow(true);}
+        else {getGame().setNoShow(false);}
     }
     public void moveSwitch(View view) {
         if (getGame().isMovement()) { getGame().setMovement(false); }
@@ -50,5 +47,7 @@ public class AdditionalInfo extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addinfo);
+        EditText notes = findViewById(R.id.notes);
+        notes.setText(getGame().getExtrasNotes());
     }
 }
