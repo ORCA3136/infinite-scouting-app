@@ -15,11 +15,15 @@ public class InfiniteRecharge implements Serializable {
     private boolean autonomous = true;
     private boolean mainStart = false;
     private boolean mainDefense = false;
-    private boolean mainClimb = false;
+    private boolean endGameHang = false;
+    private boolean endGamePark = false;
 
     private int lowerCell = 0;
     private int innerCell = 0;
     private int outerCell = 0;
+    private int autoLowerCell = 0;
+    private int autoInnerCell = 0;
+    private int autoOuterCell = 0;
     
     private boolean revolved = false;
     private boolean selected = false;
@@ -54,6 +58,38 @@ public class InfiniteRecharge implements Serializable {
                 "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
     }
 
+    public boolean isEndGamePark() {
+        return endGamePark;
+    }
+
+    public void setEndGamePark(boolean endGamePark) {
+        this.endGamePark = endGamePark;
+    }
+
+    int getAutoLowerCell() {
+        return autoLowerCell;
+    }
+
+    private void setAutoLowerCell(int autoLowerCell) {
+        this.autoLowerCell = autoLowerCell;
+    }
+
+    int getAutoInnerCell() {
+        return autoInnerCell;
+    }
+
+    public void setAutoInnerCell(int autoInnerCell) {
+        this.autoInnerCell = autoInnerCell;
+    }
+
+    int getAutoOuterCell() {
+        return autoOuterCell;
+    }
+
+    public void setAutoOuterCell(int autoOuterCell) {
+        this.autoOuterCell = autoOuterCell;
+    }
+
     int getLowerCell() {
         return lowerCell;
     }
@@ -70,9 +106,7 @@ public class InfiniteRecharge implements Serializable {
         this.innerCell = innerCell;
     }
 
-    int getOuterCell() {
-        return outerCell;
-    }
+    int getOuterCell() { return outerCell; }
 
     public void setOuterCell(int outerCell) {
         this.outerCell = outerCell;
@@ -90,7 +124,7 @@ public class InfiniteRecharge implements Serializable {
     public void setInfo(Info info) {
         this.info = info;
     }
-    public boolean isAutonomous() {
+    boolean isAutonomous() {
         return autonomous;
     }
     void setAutonomous(boolean autonomous) {
@@ -108,11 +142,11 @@ public class InfiniteRecharge implements Serializable {
     void setMainDefense(boolean mainDefense) {
             this.mainDefense = mainDefense;
         }
-    boolean isMainClimb() {
-            return mainClimb;
+    boolean isEndGameHang() {
+            return endGameHang;
         }
-    private void setMainClimb(boolean mainClimb) {
-            this.mainClimb = mainClimb;
+    private void setEndGameHang(boolean endGameHang) {
+            this.endGameHang = endGameHang;
         }
     boolean isExtrasRedCard() {
             return extrasRedCard;
@@ -159,9 +193,6 @@ public class InfiniteRecharge implements Serializable {
     String getSettingsHelpInfo() {
             return settingsHelpInfo;
         }
-    public void setSettingsHelpInfo(String settingsHelpInfo) {
-            this.settingsHelpInfo = settingsHelpInfo;
-        }
     boolean isSelected() {return selected; }
     void setSelected(boolean selected) { this.selected = selected; }
     boolean isRevolved() { return revolved; }
@@ -170,27 +201,47 @@ public class InfiniteRecharge implements Serializable {
     
     void cellScore(int level) {
         if (level == 1) {
-            lowerCell = lowerCell + 1;
+            setLowerCell(getLowerCell() + 1);
         }
         else if (level == 2) {
-            outerCell = outerCell + 1;
+            setOuterCell(getOuterCell() + 1);
         }
         else if (level == 3) {
-            innerCell = innerCell + 1;
+            setInnerCell(getInnerCell() + 1);
         }
     }
+
+    void autoCellScore(int level) {
+        if (level == 1) {
+            setAutoLowerCell(getAutoLowerCell() + 1);
+        }
+        else if (level == 2) {
+            setAutoOuterCell(getAutoOuterCell() + 1);
+        }
+        else if (level == 3) {
+            setAutoInnerCell(getAutoInnerCell() + 1);
+        }
+    }
+
     void hang() {
-        if (!isMainClimb()) {setMainClimb(true);}
-        if (isMainClimb()) {setMainClimb(false);}
+        if (!isEndGameHang()) {
+            setEndGameHang(true);}
+        if (isEndGameHang()) {
+            setEndGameHang(false);}
     }
+
+    void park() {
+        if (!isEndGamePark()) {
+            setEndGamePark(true);}
+        if (isEndGamePark()) {
+            setEndGamePark(false);}
+    }
+
     void revolution() {
-        if (!isRevolved()) {
-            setRevolved(true);
-        }
-        if (isRevolved()) {
-            setRevolved(false);
-        }
+        if (!isRevolved()) {setRevolved(true);}
+        if (isRevolved()) {setRevolved(false);}
     }
+
     void selection() {
         if (!isSelected()) {setSelected(true);}
         if (isSelected()) {setSelected(false);}

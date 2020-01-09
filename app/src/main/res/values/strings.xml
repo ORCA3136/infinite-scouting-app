@@ -75,6 +75,11 @@
     <string name="power_genenator">Power Genenator</string>
     <string name="control_panel">Control Panel</string>
     <string name="successful_hang">Successful Hang?</string>
+    <string name="successful_park">successful park?</string>
+    <string name="outer">outer</string>
+    <string name="lower">lower</string>
+    <string name="park">park</string>
+    <string name="hang">hang</string>
     <string-array name="CargoCargo">
         <item>Cargo (1)</item>
         <item>Cargo (2)</item>

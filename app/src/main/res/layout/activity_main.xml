@@ -69,21 +69,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/hang"
-        android:layout_width="234dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:onClick="endGame"
-        android:text="@string/successful_hang"
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/lowerBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/endgametext"
-        app:layout_constraintTop_toBottomOf="@id/pglayout" />
-
     <LinearLayout
         android:id="@+id/lowerBar"
         android:layout_width="match_parent"
@@ -92,7 +77,7 @@
         app:layout_constraintBottom_toTopOf="@id/lowestBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hang">
+        app:layout_constraintTop_toBottomOf="@id/endGameLayout">
 
         <Switch
             android:id="@+id/defenseSwitch"
@@ -129,7 +114,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/hang"
+        app:layout_constraintBottom_toTopOf="@id/endGameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cplayout">
@@ -142,7 +127,7 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="pg1"
-            android:text="lower"
+            android:text="@string/lower"
             android:textAllCaps="true"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -155,7 +140,7 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="pg2"
-            android:text="outer"
+            android:text="@string/outer"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -174,43 +159,43 @@
             tools:text="inner" />
     </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/cplayout"
+    <LinearLayout
+        android:id="@+id/cplayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2829">
+
+        <Button
+            android:id="@+id/revolution"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2829">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:onClick="revolutionButton"
+            android:text="@string/spin"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
 
-            <Button
-                android:id="@+id/revolution"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:onClick="revolutionButton"
-                android:text="@string/spin"
-                android:textAllCaps="true"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle" />
-
-            <Button
-                android:id="@+id/selection"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:onClick="selectionButton"
-                android:text="@string/color_selection"
-                android:textAllCaps="true"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="ButtonStyle" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/selection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:onClick="selectionButton"
+            android:text="@string/color_selection"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
 
     <TableLayout
         android:layout_width="200dp"
@@ -320,22 +305,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <TextView
-        android:id="@+id/endgametext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/endgame"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/lowerBar"
-        app:layout_constraintEnd_toStartOf="@+id/hang"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pglayout" />
-
     <TextView
         android:id="@+id/timer"
         android:layout_width="0dp"
@@ -346,7 +315,57 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start3"
-        app:layout_constraintStart_toStartOf="@+id/start3"/>
+        app:layout_constraintStart_toStartOf="@+id/start3"
+        app:layout_constraintTop_toBottomOf="@+id/start3" />
+
+    <LinearLayout
+        android:id="@+id/endGameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/pglayout"
+        app:layout_constraintBottom_toTopOf="@id/lowerBar">
+
+        <TextView
+            android:id="@+id/endgametext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/hang"
+            android:text="@string/endgame"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/hang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:onClick="endGameHang"
+            android:text="@string/hang"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/hang2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:onClick="endGamePark"
+            android:text="@string/park"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ public class SubmittedData implements Serializable {
     //each instance of this class is a final submission object
     private boolean mainDefense;
     private boolean mainClimb;
+    private boolean park;
 
     private boolean extrasRedCard;
     private boolean extrasYellowCard;
@@ -27,6 +28,9 @@ public class SubmittedData implements Serializable {
     private int pg1;
     private int pg2;
     private int pg3;
+    private int apg1;
+    private int apg2;
+    private int apg3;
 
     List<Object> setValues() {
         return Arrays.asList(
@@ -46,10 +50,18 @@ public class SubmittedData implements Serializable {
             select,
             pg1,
             pg2,
-            pg3
+            pg3,
+            apg1,
+            apg2,
+            apg3,
+            park
         );
     }
 
+    void setPark(boolean park) { this.park = park; }
+    void setApg1(int apg1) { this.apg1 = apg1; }
+    void setApg2(int apg2) { this.apg2 = apg2; }
+    void setApg3(int apg3) { this.apg3 = apg3; }
     void setRevolve(boolean revolve) {
         this.revolve = revolve;
     }

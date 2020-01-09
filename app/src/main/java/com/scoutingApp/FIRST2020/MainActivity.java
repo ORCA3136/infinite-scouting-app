@@ -253,18 +253,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pg1(View view) {
-        getGame().cellScore(1);
-        updateScoreText(R.id.pg1, getGame().getLowerCell());
+        if (getGame().isMainStart()) {
+            if (!getGame().isAutonomous()) {
+                getGame().cellScore(1);
+            }
+            else {
+                getGame().autoCellScore(1);
+            }
+            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()));
+        }
+        else makeADialog("Please start the game!", "gameStart");
     }
 
     public void pg2(View view) {
-        getGame().cellScore(2);
-        updateScoreText(R.id.pg2, getGame().getOuterCell());
+        if (getGame().isMainStart()) {
+            if (getGame().isAutonomous()) {
+                getGame().autoCellScore(2);
+            }
+            else {
+                getGame().cellScore(2);
+            }
+            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()));
+        }
+        else makeADialog("Please start the game!", "gameStart");
     }
 
     public void pg3(View view) {
-        getGame().cellScore(3);
-        updateScoreText(R.id.pg3, getGame().getInnerCell());
+        if (getGame().isMainStart()) {
+            if (getGame().isAutonomous()) {
+                getGame().autoCellScore(3);
+            }
+            else {
+                getGame().cellScore(3);
+            }
+            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()));
+        }
+        else makeADialog("Please start the game!", "gameStart");
     }
 
     public void helpButton(View view) {
@@ -303,10 +327,14 @@ public class MainActivity extends AppCompatActivity {
         } else getGame().setMainDefense(!getGame().isMainDefense());
     }
 
-    public void endGame(View view) {
-        if (getGame().isMainStart()) {
-            getGame().hang();
-        } else makeADialog("You need to press start!", "setscore");
+    public void endGameHang(View view) {
+        if (getGame().isMainStart()) { getGame().hang(); }
+        else makeADialog("You need to press start!", "setscore");
+    }
+
+    public void endGamePark(View view) {
+        if (getGame().isMainStart()) { getGame().park(); }
+        else makeADialog("You need to press start!", "setscore");
     }
 
     //on create, on start, save state, etc (overrides)

@@ -79,7 +79,7 @@ public class PostSubmit extends AppCompatActivity {
 
     public void toSubmission() {
         getSub().setMainDefense(getGame().isMainDefense());
-        getSub().setMainClimb(getGame().isMainClimb());
+        getSub().setMainClimb(getGame().isEndGameHang());
         getSub().setExtrasRedCard(getGame().isExtrasRedCard());
         getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
         getSub().setNoShow(getGame().isNoShow());
@@ -95,6 +95,10 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setPg1(getGame().getLowerCell());
         getSub().setPg2(getGame().getOuterCell());
         getSub().setPg3(getGame().getInnerCell());
+        getSub().setApg1(getGame().getAutoLowerCell());
+        getSub().setApg2(getGame().getAutoOuterCell());
+        getSub().setApg3(getGame().getAutoInnerCell());
+        getSub().setPark(getGame().isEndGamePark());
     }
 
     private void getConnected() {
