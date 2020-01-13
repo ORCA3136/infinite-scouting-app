@@ -328,8 +328,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void endGameHang(View view) {
-        if (getGame().isMainStart()) { getGame().hang(); }
-        else makeADialog("You need to press start!", "setscore");
+        Intent egPage = new Intent(getApplicationContext(), EndGame.class);
+        startActivity(egPage);
     }
 
     public void endGamePark(View view) {

@@ -80,6 +80,7 @@
     <string name="lower">lower</string>
     <string name="park">park</string>
     <string name="hang">hang</string>
+    <string name="inner">inner</string>
     <string-array name="CargoCargo">
         <item>Cargo (1)</item>
         <item>Cargo (2)</item>

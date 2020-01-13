@@ -152,7 +152,7 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="pg3"
-            android:text="@string/_3"
+            android:text="@string/inner"
             android:textAllCaps="true"
             android:textSize="18sp"
             android:textStyle="bold"

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/endgamelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rightButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/midRightButtonLeft"
+        app:layout_constraintTop_toBottomOf="@+id/centerButtonLeft"
+
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="205dp" />
+
+    <View
+        android:id="@+id/rightBarLeft"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/black"
+        android:rotation="40"
+        app:layout_constraintBottom_toTopOf="@+id/midRightButtonLeft"
+        app:layout_constraintEnd_toEndOf="@id/bottomBarLeft">
+
+    </View>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/leftButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/centerButtonLeft"
+        app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLeft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/midLeftButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomBarLeft"
+        app:layout_constraintEnd_toStartOf="@+id/centerButtonLeft"
+        app:layout_constraintStart_toEndOf="@id/leftButtonLeft"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="126dp" />
+
+    <View
+        android:id="@+id/bottomBarLeft"
+        android:layout_width="360dp"
+        android:layout_height="9dp"
+        android:background="@android:color/black"
+        android:rotation="20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".6">
+
+    </View>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/centerButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLeft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLeft"
+        app:srcCompat="@drawable/round" />
+
+
+    <View
+        android:id="@+id/leftBarLeft"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:rotation="0"
+        app:layout_constraintStart_toStartOf="@id/bottomBarLeft"
+        app:layout_constraintTop_toTopOf="@+id/leftButtonLeft">
+
+    </View>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/midRightButtonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/rightButtonLeft"
+        app:layout_constraintStart_toEndOf="@id/centerButtonLeft"
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarLeft"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomBarRight"
+        app:layout_constraintEnd_toStartOf="@+id/rightButtonRight"
+        app:layout_constraintStart_toEndOf="@id/centerButtonRight"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/midLeftButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/centerButtonRight"
+        app:layout_constraintStart_toEndOf="@id/leftButtonRight"
+        app:layout_constraintTop_toBottomOf="@id/bottomBarRight"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="313dp" />
+
+    <View
+        android:id="@+id/rightBarRight"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:background="@android:color/holo_red_dark"
+        android:rotation="0"
+        app:layout_constraintEnd_toEndOf="@id/bottomBarRight"
+        app:layout_constraintTop_toTopOf="@id/rightButtonRight">
+
+    </View>
+
+    <View
+        android:id="@+id/bottomBarRight"
+        android:layout_width="360dp"
+        android:layout_height="9dp"
+        android:background="@android:color/black"
+        android:rotation="-20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".5">
+
+    </View>
+
+    <View
+        android:id="@+id/leftBarRight"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/black"
+        android:rotation="-40"
+        app:layout_constraintBottom_toTopOf="@id/midLeftButtonRight"
+        app:layout_constraintStart_toStartOf="@id/bottomBarRight">
+
+    </View>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rightButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@id/centerButtonRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/floatingActionButton7"
+        app:srcCompat="@drawable/round" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/leftButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/midLeftButtonRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerButtonRight"
+        app:srcCompat="@drawable/round" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/centerButtonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarRight"
+        app:srcCompat="@drawable/round" />
+
+
+    <View
+        android:id="@+id/bottomBarLevel"
+        android:layout_width="360dp"
+        android:layout_height="9dp"
+        android:background="@android:color/black"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".4">
+
+    </View>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/rightButtonLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/midRightButtonLevel"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/centerButtonLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:srcCompat="@drawable/round" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/midRightButtonLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toStartOf="@+id/rightButtonLevel"
+        app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="206dp" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/leftButtonLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="18dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLevel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="206dp" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/midLeftButtonLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toStartOf="@+id/leftButtonLevel"
+        app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
+        app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:srcCompat="@drawable/round"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <View
+        android:id="@+id/rightBarLevel"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:background="@android:color/black"
+        android:rotation="20"
+        app:layout_constraintBottom_toBottomOf="@+id/leftBarLevel"
+        app:layout_constraintEnd_toEndOf="@id/bottomBarLevel">
+
+    </View>
+
+    <View
+        android:id="@+id/leftBarLevel"
+        android:layout_width="190dp"
+        android:layout_height="9dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/black"
+        android:rotation="-20"
+        app:layout_constraintBottom_toTopOf="@+id/centerButtonLevel"
+        app:layout_constraintStart_toStartOf="@id/bottomBarLevel">
+
+    </View>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:text="Button"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="451dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:text="Button"
+            tools:layout_editor_absoluteX="313dp"
+            tools:layout_editor_absoluteY="449dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:layout_weight="1"
+            android:text="Button"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="432dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

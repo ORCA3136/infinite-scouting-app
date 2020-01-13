@@ -246,4 +246,12 @@ public class InfiniteRecharge implements Serializable {
         if (!isSelected()) {setSelected(true);}
         if (isSelected()) {setSelected(false);}
     }
+
+//    public boolean unlikelyScores() {
+//        if (//timeline is too close
+//        ) {
+//            return true;
+//        }
+//        else return false;
+//    }
 }
