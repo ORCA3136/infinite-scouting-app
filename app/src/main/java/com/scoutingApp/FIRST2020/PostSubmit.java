@@ -18,12 +18,24 @@ import java.util.Objects;
 public class PostSubmit extends AppCompatActivity {
     // inherited class objects
 
+    InfiniteRecharge game;
+
+    PersistentData data;
+
     public InfiniteRecharge getGame() {
         return (InfiniteRecharge) getIntent().getSerializableExtra("Game2");
     }
 
     public PersistentData getData() {
         return (PersistentData) getIntent().getSerializableExtra("data2");
+    }
+
+    public void setData(PersistentData data) {
+        this.data = data;
+    }
+
+    public void setGame(InfiniteRecharge game) {
+        this.game = game;
     }
 
     public SubmittedData sub = new SubmittedData();
@@ -132,5 +144,19 @@ public class PostSubmit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_submit);
         info();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        savedInstanceState.putSerializable("DATA", getData());
+        savedInstanceState.putSerializable("GAME", getGame());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        setData((PersistentData) savedInstanceState.getSerializable("DATA"));
+        setGame((InfiniteRecharge) savedInstanceState.getSerializable("SPACE"));
     }
 }
