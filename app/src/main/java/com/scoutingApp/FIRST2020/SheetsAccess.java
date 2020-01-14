@@ -1,11 +1,15 @@
 package com.scoutingApp.FIRST2020;
+
 import android.os.AsyncTask;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -14,6 +18,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 class SheetsAccess implements Serializable {
@@ -100,7 +105,15 @@ class SheetsAccess implements Serializable {
     void sender(HashMap<String, Object> map, String... strings) {
         Date now = new Date();
         long x = now.getTime();
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            FirebaseAnalytics.getInstance(FirebaseDatabase.getInstance().getApp().getApplicationContext()).setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
+            FirebaseAnalytics.getInstance(FirebaseDatabase.getInstance().getApp().getApplicationContext()).setUserProperty("tablet", getSheetID());
+        }
+        catch (DatabaseException e) {
+            FirebaseAnalytics.getInstance(FirebaseDatabase.getInstance().getApp().getApplicationContext()).setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
+            FirebaseAnalytics.getInstance(FirebaseDatabase.getInstance().getApp().getApplicationContext()).setUserProperty("tablet", getSheetID());
+        }
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("all-data").child("time"+x+"match"+strings[0]+strings[1]).setValue(map);
     }
