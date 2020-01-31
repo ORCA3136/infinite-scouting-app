@@ -104,10 +104,7 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    public void makeADialog3() {
-        DialogFragment newFragment = new Settings.Dialogs3();
-        newFragment.show(getSupportFragmentManager(), "password");
-    }
+
 
     public String stringMe(Info obj) {
         return obj.getName() + " " +
@@ -116,7 +113,20 @@ public class Settings extends AppCompatActivity {
         obj.getAlliance();
     }
 
+    public void makeADialog3 (){
+        DialogThread thread = new DialogThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
+    }
+
     // threads
+    class DialogThread implements Runnable {
+        @Override
+        public void run() {
+            DialogFragment newFragment = new Settings.Dialogs3();
+            newFragment.show(getSupportFragmentManager(), "password");
+        }
+    }
 
     class HomeThread implements Runnable {
         @Override
@@ -163,6 +173,7 @@ public class Settings extends AppCompatActivity {
         Thread threadStart = new Thread(thread);
         threadStart.start();
     }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

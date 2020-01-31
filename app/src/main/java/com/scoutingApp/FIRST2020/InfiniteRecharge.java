@@ -1,5 +1,7 @@
 package com.scoutingApp.FIRST2020;
 
+import android.content.res.Resources;
+
 import java.io.Serializable;
 
 public class InfiniteRecharge implements Serializable {
@@ -224,27 +226,27 @@ public class InfiniteRecharge implements Serializable {
     }
 
     void hang() {
-        if (!isEndGameHang()) {
-            setEndGameHang(true);}
-        if (isEndGameHang()) {
-            setEndGameHang(false);}
+        hangThread thread = new hangThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
     void park() {
-        if (!isEndGamePark()) {
-            setEndGamePark(true);}
-        if (isEndGamePark()) {
-            setEndGamePark(false);}
+        parkThread thread = new parkThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
     void revolution() {
-        if (!isRevolved()) {setRevolved(true);}
-        if (isRevolved()) {setRevolved(false);}
+        revolutionThread thread = new revolutionThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
     void selection() {
-        if (!isSelected()) {setSelected(true);}
-        if (isSelected()) {setSelected(false);}
+        selectionThread thread = new selectionThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
 //    public boolean unlikelyScores() {
@@ -254,4 +256,42 @@ public class InfiniteRecharge implements Serializable {
 //        }
 //        else return false;
 //    }
+
+//Threads
+    class hangThread implements Runnable {
+        @Override
+        public void run() {
+            if (!isEndGameHang()) {
+                setEndGameHang(true);}
+            if (isEndGameHang()) {
+                setEndGameHang(false);}
+        }
+    }
+
+    class parkThread implements Runnable {
+        @Override
+        public void run() {
+            if (!isEndGamePark()) {
+                setEndGamePark(true);}
+            if (isEndGamePark()) {
+                setEndGamePark(false);}
+        }
+    }
+
+    class revolutionThread implements Runnable {
+        @Override
+        public void run() {
+            if (!isRevolved()) {setRevolved(true);}
+            if (isRevolved()) {setRevolved(false);}
+        }
+    }
+
+    class selectionThread implements Runnable {
+        @Override
+        public void run() {
+            if (!isSelected()) {setSelected(true);}
+            if (isSelected()) {setSelected(false);}
+        }
+    }
+
 }

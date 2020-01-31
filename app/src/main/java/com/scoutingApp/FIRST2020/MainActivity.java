@@ -137,32 +137,41 @@ public class MainActivity extends AppCompatActivity {
         Thread threadStart = new Thread(thread);
         threadStart.start();
     }
-
+    public void checkDataGame() {
+        checkDataGameThread thread = new checkDataGameThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
+    }
     public void colorSet(int id, int color) {
         findViewById(id).setBackgroundColor(getResources().getColor(color));
     }
 
-    public void checkDataGame() {
-        if (getIntent().hasExtra("game5")) {
-            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
-        } else if (getIntent().hasExtra("game6")) {
-            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game6"));
-        } else {
-            setGame(new InfiniteRecharge());
-        }
-        if (getIntent().hasExtra("data5")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data5"));
-        } else if (getIntent().hasExtra("data4")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data4"));
-        } else if (getIntent().hasExtra("data6")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data6"));
-        } else {
-            setData(new PersistentData());
-        }
-    }
+
 
     // threads
 
+
+    class checkDataGameThread implements Runnable {
+        @Override
+        public void run() {
+            if (getIntent().hasExtra("game5")) {
+                setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
+            } else if (getIntent().hasExtra("game6")) {
+                setGame((InfiniteRecharge) getIntent().getSerializableExtra("game6"));
+            } else {
+                setGame(new InfiniteRecharge());
+            }
+            if (getIntent().hasExtra("data5")) {
+                setData((PersistentData) getIntent().getSerializableExtra("data5"));
+            } else if (getIntent().hasExtra("data4")) {
+                setData((PersistentData) getIntent().getSerializableExtra("data4"));
+            } else if (getIntent().hasExtra("data6")) {
+                setData((PersistentData) getIntent().getSerializableExtra("data6"));
+            } else {
+                setData(new PersistentData());
+            }
+        }
+    }
     class DialogCheckThread implements Runnable {
         @Override
         public void run() {

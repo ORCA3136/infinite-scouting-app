@@ -90,33 +90,50 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void toSubmission() {
-        getSub().setMainDefense(getGame().isMainDefense());
-        getSub().setMainClimb(getGame().isEndGameHang());
-        getSub().setExtrasRedCard(getGame().isExtrasRedCard());
-        getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
-        getSub().setNoShow(getGame().isNoShow());
-        getSub().setMovement(getGame().isMovement());
-        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
-        getSub().setTeam(getGame().getInfo().getTeam());
-        getSub().setMatch(getGame().getInfo().getMatch());
-        getSub().setName(getGame().getInfo().getName());
-        getSub().setNotes(getGame().getExtrasNotes());
-        getSub().setAlliance(getGame().getInfo().getAlliance());
-        getSub().setRevolve(getGame().isRevolved());
-        getSub().setSelect(getGame().isSelected());
-        getSub().setPg1(getGame().getLowerCell());
-        getSub().setPg2(getGame().getOuterCell());
-        getSub().setPg3(getGame().getInnerCell());
-        getSub().setApg1(getGame().getAutoLowerCell());
-        getSub().setApg2(getGame().getAutoOuterCell());
-        getSub().setApg3(getGame().getAutoInnerCell());
-        getSub().setPark(getGame().isEndGamePark());
+        toSubmissionThread thread = new toSubmissionThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
     private void getConnected() {
-        getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
+        getConnectedThread thread = new getConnectedThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
+    //Threads
 
+    class toSubmissionThread implements Runnable {
+        @Override
+        public void run() {
+            getSub().setMainDefense(getGame().isMainDefense());
+            getSub().setMainClimb(getGame().isEndGameHang());
+            getSub().setExtrasRedCard(getGame().isExtrasRedCard());
+            getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
+            getSub().setNoShow(getGame().isNoShow());
+            getSub().setMovement(getGame().isMovement());
+            getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+            getSub().setTeam(getGame().getInfo().getTeam());
+            getSub().setMatch(getGame().getInfo().getMatch());
+            getSub().setName(getGame().getInfo().getName());
+            getSub().setNotes(getGame().getExtrasNotes());
+            getSub().setAlliance(getGame().getInfo().getAlliance());
+            getSub().setRevolve(getGame().isRevolved());
+            getSub().setSelect(getGame().isSelected());
+            getSub().setPg1(getGame().getLowerCell());
+            getSub().setPg2(getGame().getOuterCell());
+            getSub().setPg3(getGame().getInnerCell());
+            getSub().setApg1(getGame().getAutoLowerCell());
+            getSub().setApg2(getGame().getAutoOuterCell());
+            getSub().setApg3(getGame().getAutoInnerCell());
+            getSub().setPark(getGame().isEndGamePark());
+        }
+    }
+    class getConnectedThread implements Runnable {
+        @Override
+        public void run() {
+            getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
+        }
+    }
     //button method
 
     public void submitButtonPageTwo(View view) {
