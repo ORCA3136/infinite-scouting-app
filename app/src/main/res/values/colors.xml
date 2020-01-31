@@ -14,6 +14,7 @@
     <color name="darkBlue">#004F8B</color>
     <color name="darkestBlue">#003D6B</color>
     <color name="darkestPurple">#6F2565</color>
-    <color name="lightestPurple">#A678B3</color>
-    <color name="darkPurple">#9F50A5</color>
+    <color name="lightestPurple">#d0a4c7</color>
+    <color name="babyBlue">#e7e7e8</color>
+    <color name="darkPurple">#ba64a8</color>
 </resources>
