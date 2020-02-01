@@ -216,8 +216,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/midRightButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/centerButtonLevel"
@@ -229,7 +228,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:layout_constraintVertical_bias="0.723"
+        app:layout_constraintVertical_bias="0.555"
         app:srcCompat="@drawable/round" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -241,23 +240,19 @@
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/leftButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="18dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLevel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -269,8 +264,7 @@
         app:layout_constraintEnd_toStartOf="@+id/leftButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
     <View
         android:id="@+id/rightBarLevel"
