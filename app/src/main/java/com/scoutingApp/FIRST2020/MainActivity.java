@@ -161,10 +161,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(id).setBackgroundColor(getResources().getColor(color));
     }
 
-
-
     // threads
-
 
     class DialogCheckThread implements Runnable {
         @Override

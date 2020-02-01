@@ -12,19 +12,16 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class EndGame extends AppCompatActivity {
 
+
     @Override
-    public boolean onGenericMotionEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
         int xCoordinates = ((int) event.getX());
-
         int yCoordinates = ((int) event.getY());
-
-        if (event.isFromSource(InputDevice.SOURCE_CLASS_POINTER)) {
-
-            if ((yCoordinates >= 50 && xCoordinates >= 50) || (yCoordinates <= 50 && xCoordinates <= 50)) {
+            if ((yCoordinates >= 365 && xCoordinates >= 206) || (yCoordinates <= 366 && xCoordinates <= 206)) {
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     ConstraintSet constraintSet = new ConstraintSet();
-                    constraintSet.clone(this, R.id.endgamelayout);
+                    constraintSet.clone(this, R.layout.endgame);
                     float biasedValue = 40;
                     float biasedValue2 = ((float) 0.4);
                     constraintSet.setVerticalBias(R.id.bottomBarLevel, biasedValue);
@@ -34,16 +31,15 @@ public class EndGame extends AppCompatActivity {
             } else {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     ConstraintSet constraintSet = new ConstraintSet();
-                    constraintSet.clone(this, R.id.endgamelayout);
+                    constraintSet.clone(this, R.layout.endgame);
                     float biasedValue = 40;
                     float biasedValue2 = ((float) 0.4);
                     constraintSet.setVerticalBias(R.id.bottomBarLevel, biasedValue);
                     constraintSet.setVerticalBias(R.id.bottomBarLeft, biasedValue2);
                     constraintSet.applyTo((ConstraintLayout) findViewById(R.id.endgamelayout));
                 }
-
             }
-        }
+        System.out.println(xCoordinates + "--x" + System.lineSeparator() + yCoordinates + "--y");
         return super.onGenericMotionEvent(event);
     }
 
