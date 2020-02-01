@@ -17,7 +17,7 @@ public class EndGame extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         int xCoordinates = ((int) event.getX());
         int yCoordinates = ((int) event.getY());
-            if ((yCoordinates >= 365 && xCoordinates >= 206) || (yCoordinates <= 366 && xCoordinates <= 206)) {
+            if ((yCoordinates >= 1000 && xCoordinates <= 540) || (yCoordinates <= 1000 && xCoordinates >= 540)) {
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     ConstraintSet constraintSet = new ConstraintSet();
