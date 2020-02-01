@@ -13,6 +13,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 
 public class PostSubmit extends AppCompatActivity {
@@ -96,9 +99,7 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     private void getConnected() {
-        getConnectedThread thread = new getConnectedThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
     }
     //Threads
 
@@ -128,12 +129,7 @@ public class PostSubmit extends AppCompatActivity {
             getSub().setPark(getGame().isEndGamePark());
         }
     }
-    class getConnectedThread implements Runnable {
-        @Override
-        public void run() {
-            getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
-        }
-    }
+
     //button method
 
     public void submitButtonPageTwo(View view) {
@@ -148,6 +144,7 @@ public class PostSubmit extends AppCompatActivity {
             getData().perCacheData.add(getGame().getInfo());
             getData().setRowNumber(getData().getRowNumber() + 1);
             getData().getSheet().setSubNum(getData().getSheet().getSubNum() + 1);
+            getData().getSheet().contextual = this;
             getConnected();
             goHome();
         } else {
@@ -161,6 +158,7 @@ public class PostSubmit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_submit);
         info();
+        FirebaseAnalytics.getInstance(this).logEvent("PSCreate", savedInstanceState);
     }
 
     @Override

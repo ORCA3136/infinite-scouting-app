@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -138,9 +140,22 @@ public class MainActivity extends AppCompatActivity {
         threadStart.start();
     }
     public void checkDataGame() {
-        checkDataGameThread thread = new checkDataGameThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        if (getIntent().hasExtra("game5")) {
+            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
+        } else if (getIntent().hasExtra("game6")) {
+            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game6"));
+        } else {
+            setGame(new InfiniteRecharge());
+        }
+        if (getIntent().hasExtra("data5")) {
+            setData((PersistentData) getIntent().getSerializableExtra("data5"));
+        } else if (getIntent().hasExtra("data4")) {
+            setData((PersistentData) getIntent().getSerializableExtra("data4"));
+        } else if (getIntent().hasExtra("data6")) {
+            setData((PersistentData) getIntent().getSerializableExtra("data6"));
+        } else {
+            setData(new PersistentData());
+        }
     }
     public void colorSet(int id, int color) {
         findViewById(id).setBackgroundColor(getResources().getColor(color));
@@ -151,27 +166,6 @@ public class MainActivity extends AppCompatActivity {
     // threads
 
 
-    class checkDataGameThread implements Runnable {
-        @Override
-        public void run() {
-            if (getIntent().hasExtra("game5")) {
-                setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
-            } else if (getIntent().hasExtra("game6")) {
-                setGame((InfiniteRecharge) getIntent().getSerializableExtra("game6"));
-            } else {
-                setGame(new InfiniteRecharge());
-            }
-            if (getIntent().hasExtra("data5")) {
-                setData((PersistentData) getIntent().getSerializableExtra("data5"));
-            } else if (getIntent().hasExtra("data4")) {
-                setData((PersistentData) getIntent().getSerializableExtra("data4"));
-            } else if (getIntent().hasExtra("data6")) {
-                setData((PersistentData) getIntent().getSerializableExtra("data6"));
-            } else {
-                setData(new PersistentData());
-            }
-        }
-    }
     class DialogCheckThread implements Runnable {
         @Override
         public void run() {
@@ -352,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
     }
 
     @Override

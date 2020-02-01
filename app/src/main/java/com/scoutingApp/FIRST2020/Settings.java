@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -178,5 +180,6 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        FirebaseAnalytics.getInstance(this).logEvent("SETTINGSCreate", savedInstanceState);
     }
 }

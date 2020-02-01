@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class EndGame extends AppCompatActivity {
 
     @Override
@@ -49,6 +51,7 @@ public class EndGame extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endgame);
+        FirebaseAnalytics.getInstance(this).logEvent("ENDCreate", savedInstanceState);
     }
 
 }
