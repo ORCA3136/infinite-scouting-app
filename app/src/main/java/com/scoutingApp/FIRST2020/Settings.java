@@ -51,11 +51,19 @@ public class Settings extends AppCompatActivity {
                 builder.setView(inflater.inflate(R.layout.password_dialog2, null));
                 builder.setPositiveButton("yup!", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup)).indexOfChild(
-                                Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById((
-                                        (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup)).getCheckedRadioButtonId()
-                                )
-                            ));
+                        try {
+                            Settings.tabletNumber =
+                                    (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                            .findViewById(R.id.RadioGroup))
+                                                .indexOfChild(
+                                                    Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                            .findViewById((
+                                                                (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                                        .findViewById(R.id.RadioGroup))
+                                                                                .getCheckedRadioButtonId()
+                                                            )
+                                                )
+                                    ) + 1;
                         }
                         catch (Exception e) {
                             try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup2)).indexOfChild(
