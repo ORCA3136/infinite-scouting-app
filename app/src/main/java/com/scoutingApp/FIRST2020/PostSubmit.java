@@ -41,6 +41,8 @@ public class PostSubmit extends AppCompatActivity {
         this.game = game;
     }
 
+
+
     public SubmittedData sub = new SubmittedData();
 
     public SubmittedData getSub() {
@@ -65,6 +67,22 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     // various methods called on submit
+
+
+
+    boolean trench;
+
+    boolean climblevel;
+
+    boolean ground_pickup;
+
+    boolean yellowcard;
+
+    boolean redcard;
+
+    boolean nomovement;
+
+    boolean noshow;
 
     public static class Dialogs4 extends DialogFragment {
         @NonNull
@@ -103,6 +121,63 @@ public class PostSubmit extends AppCompatActivity {
     }
     //Threads
 
+
+    public boolean isTrench() {
+        return trench;
+    }
+
+    public void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+
+    public boolean isYellowcard() {
+        return yellowcard;
+    }
+
+    public void setYellowcard(boolean yellowcard) {
+        this.yellowcard = yellowcard;
+    }
+
+    public boolean isClimblevel() {
+        return climblevel;
+    }
+
+    public void setClimblevel(boolean climblevel) {
+        this.climblevel = climblevel;
+    }
+
+    public boolean isGround_pickup() {
+        return ground_pickup;
+    }
+
+    public void setGround_pickup(boolean ground_pickup) {
+        this.ground_pickup = ground_pickup;
+    }
+
+    public boolean isRedcard() {
+        return redcard;
+    }
+
+    public void setRedcard(boolean redcard) {
+        this.redcard = redcard;
+    }
+
+    public boolean isNomovement() {
+        return nomovement;
+    }
+
+    public void setNomovement(boolean nomovement) {
+        this.nomovement = nomovement;
+    }
+
+    public boolean isNoshow() {
+        return noshow;
+    }
+
+    public void setNoshow(boolean noshow) {
+        this.noshow = noshow;
+    }
+
     class toSubmissionThread implements Runnable {
         @Override
         public void run() {
@@ -131,6 +206,29 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     //button method
+
+//    public void areTheyChecked() {
+//
+//        setTrench(findViewById().isChecked());
+//
+//
+//        setGround_pickup( findViewById().isChecked());
+//
+//
+//        setClimblevel(findViewById().ischecked());
+//
+//
+//        setNoshow(findViewById().ischecked());
+//
+//        setYellowcard( findViewById().ischecked());
+//
+//
+//        setRedcard(findViewById().ischecked());
+//
+//
+//        setNomovement(findViewById().ischecked());
+//
+//    }
 
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("")) {
