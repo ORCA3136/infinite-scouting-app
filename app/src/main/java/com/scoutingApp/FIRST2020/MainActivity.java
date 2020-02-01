@@ -346,7 +346,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
     }
 
     @Override
@@ -372,6 +371,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         savedInstanceState.putSerializable("DATA", getData());
         savedInstanceState.putSerializable("GAME", getGame());
+        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -380,5 +380,6 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         setData((PersistentData) savedInstanceState.getSerializable("DATA"));
         setGame((InfiniteRecharge) savedInstanceState.getSerializable("SPACE"));
+        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
     }
 }
