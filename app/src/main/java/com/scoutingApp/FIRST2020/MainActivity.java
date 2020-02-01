@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     // methods to set or change variables, set ss timer, etc
 
-    public void updateScoreText(int id, int score) {
+    public void updateScoreText(int id, int score, String texty) {
         TextView text = findViewById(id);
-        String label = text.getText().toString() + " (" + score + ")";
+        String label = texty + " (" + score + ")";
         text.setText(label);
     }
 
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().autoCellScore(1);
             }
-            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()));
+            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().cellScore(2);
             }
-            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()));
+            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().cellScore(3);
             }
-            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()));
+            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
