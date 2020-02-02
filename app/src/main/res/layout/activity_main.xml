@@ -41,20 +41,7 @@
             android:textColor="#FFFFFF" />
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/addInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:backgroundTint="#D78DF1"
-            android:onClick="addInfoButton"
-            android:text="@string/additional_information" />
-
-        <Space
-            android:layout_width="wrap_content"
+            android:layout_width="14dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
@@ -65,6 +52,11 @@
             android:backgroundTint="#D3424AE6"
             android:onClick="submitButton"
             android:text="@string/submit" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
 
     </LinearLayout>

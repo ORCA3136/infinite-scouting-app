@@ -205,16 +205,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class AddInfoButtonThread implements Runnable {
-        @Override
-        public void run() {
-            Intent addInfo = new Intent(getApplicationContext(), AdditionalInfo.class);
-            addInfo.putExtra("Game4", getGame());
-            addInfo.putExtra("data4", getData());
-            startActivity(addInfo);
-        }
-    }
-
     class RevolutionButtonThread implements Runnable {
         @Override
         public void run() {
@@ -233,12 +223,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void settingsButton(View view) {
         SettingsButtonThread thread = new SettingsButtonThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
-    }
-
-    public void addInfoButton(View view) {
-        AddInfoButtonThread thread = new AddInfoButtonThread();
         Thread threadStart = new Thread(thread);
         threadStart.start();
     }

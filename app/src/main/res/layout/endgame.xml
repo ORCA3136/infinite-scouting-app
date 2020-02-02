@@ -20,7 +20,7 @@
 
     <View
         android:id="@+id/rightBarLeft"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="18dp"
         android:background="@android:color/black"
@@ -194,7 +194,7 @@
 
     <View
         android:id="@+id/bottomBarLevel"
-        android:layout_width="360dp"
+        android:layout_width="380dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="0"
@@ -268,7 +268,7 @@
 
     <View
         android:id="@+id/rightBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="20"
@@ -279,7 +279,7 @@
 
     <View
         android:id="@+id/leftBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="10dp"
         android:background="@android:color/black"
