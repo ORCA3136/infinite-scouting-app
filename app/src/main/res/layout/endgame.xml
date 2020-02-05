@@ -55,7 +55,7 @@
 
     <View
         android:id="@+id/rightBarLeft"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="18dp"
         android:background="@android:color/black"
@@ -229,7 +229,7 @@
 
     <View
         android:id="@+id/bottomBarLevel"
-        android:layout_width="360dp"
+        android:layout_width="380dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="0"
@@ -251,8 +251,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/midRightButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/centerButtonLevel"
@@ -261,8 +260,10 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
+        app:layout_constraintVertical_bias="0.555"
         app:srcCompat="@drawable/round" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -274,23 +275,19 @@
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/leftButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="18dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLevel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -302,12 +299,11 @@
         app:layout_constraintEnd_toStartOf="@+id/leftButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@drawable/round" />
 
     <View
         android:id="@+id/rightBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="20"
@@ -318,7 +314,7 @@
 
     <View
         android:id="@+id/leftBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="10dp"
         android:background="@android:color/black"
@@ -372,5 +368,19 @@
             tools:layout_editor_absoluteY="432dp" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="205dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="366dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

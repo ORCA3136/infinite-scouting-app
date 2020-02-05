@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -62,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     // methods to set or change variables, set ss timer, etc
 
-    public void updateScoreText(int id, int score) {
+    public void updateScoreText(int id, int score, String texty) {
         TextView text = findViewById(id);
-        String label = text.getText().toString() + " (" + score + ")";
+        String label = texty + " (" + score + ")";
         text.setText(label);
     }
 
@@ -137,11 +139,6 @@ public class MainActivity extends AppCompatActivity {
         Thread threadStart = new Thread(thread);
         threadStart.start();
     }
-
-    public void colorSet(int id, int color) {
-        findViewById(id).setBackgroundColor(getResources().getColor(color));
-    }
-
     public void checkDataGame() {
         if (getIntent().hasExtra("game5")) {
             setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
@@ -160,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
             setData(new PersistentData());
         }
     }
+    public void colorSet(int id, int color) {
+        findViewById(id).setBackgroundColor(getResources().getColor(color));
+    }
 
     // threads
 
@@ -168,9 +168,12 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             if (getData().perSubData != null && getData().getSheet().getSheetPage() != null) {
                 int x = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(2).toString()); //current match number
-                int y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(2).toString()); //last match number
-                if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0).equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0))) && (x - 1 == y)) {
-                    makeADialog("Please go find the next scouter, " + getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0), "handoff");
+                int y;
+                try {y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(2).toString());}
+                catch (Exception e) {y = 0;}
+                //last match number
+                if (y != 0) {if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0).equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0))) && (x - 1 == y)) {
+                    makeADialog("Please go find the next scouter, " + getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0), "handoff"); }
                 }
             }
         }
@@ -202,16 +205,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class AddInfoButtonThread implements Runnable {
-        @Override
-        public void run() {
-            Intent addInfo = new Intent(getApplicationContext(), AdditionalInfo.class);
-            addInfo.putExtra("Game4", getGame());
-            addInfo.putExtra("data4", getData());
-            startActivity(addInfo);
-        }
-    }
-
     class RevolutionButtonThread implements Runnable {
         @Override
         public void run() {
@@ -230,12 +223,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void settingsButton(View view) {
         SettingsButtonThread thread = new SettingsButtonThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
-    }
-
-    public void addInfoButton(View view) {
-        AddInfoButtonThread thread = new AddInfoButtonThread();
         Thread threadStart = new Thread(thread);
         threadStart.start();
     }
@@ -260,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().autoCellScore(1);
             }
-            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()));
+            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -273,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().cellScore(2);
             }
-            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()));
+            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -286,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 getGame().cellScore(3);
             }
-            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()));
+            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -368,6 +355,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         savedInstanceState.putSerializable("DATA", getData());
         savedInstanceState.putSerializable("GAME", getGame());
+        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -376,5 +364,6 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         setData((PersistentData) savedInstanceState.getSerializable("DATA"));
         setGame((InfiniteRecharge) savedInstanceState.getSerializable("SPACE"));
+        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
     }
 }

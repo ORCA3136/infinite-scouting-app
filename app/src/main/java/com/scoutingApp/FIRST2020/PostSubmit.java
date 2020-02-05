@@ -13,6 +13,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 
 public class PostSubmit extends AppCompatActivity {
@@ -38,6 +41,8 @@ public class PostSubmit extends AppCompatActivity {
         this.game = game;
     }
 
+
+
     public SubmittedData sub = new SubmittedData();
 
     public SubmittedData getSub() {
@@ -62,6 +67,22 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     // various methods called on submit
+
+
+
+    boolean trench;
+
+    boolean climblevel;
+
+    boolean ground_pickup;
+
+    boolean yellowcard;
+
+    boolean redcard;
+
+    boolean nomovement;
+
+    boolean noshow;
 
     public static class Dialogs4 extends DialogFragment {
         @NonNull
@@ -90,34 +111,124 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void toSubmission() {
-        getSub().setMainDefense(getGame().isMainDefense());
-        getSub().setMainClimb(getGame().isEndGameHang());
-        getSub().setExtrasRedCard(getGame().isExtrasRedCard());
-        getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
-        getSub().setNoShow(getGame().isNoShow());
-        getSub().setMovement(getGame().isMovement());
-        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
-        getSub().setTeam(getGame().getInfo().getTeam());
-        getSub().setMatch(getGame().getInfo().getMatch());
-        getSub().setName(getGame().getInfo().getName());
-        getSub().setNotes(getGame().getExtrasNotes());
-        getSub().setAlliance(getGame().getInfo().getAlliance());
-        getSub().setRevolve(getGame().isRevolved());
-        getSub().setSelect(getGame().isSelected());
-        getSub().setPg1(getGame().getLowerCell());
-        getSub().setPg2(getGame().getOuterCell());
-        getSub().setPg3(getGame().getInnerCell());
-        getSub().setApg1(getGame().getAutoLowerCell());
-        getSub().setApg2(getGame().getAutoOuterCell());
-        getSub().setApg3(getGame().getAutoInnerCell());
-        getSub().setPark(getGame().isEndGamePark());
+        toSubmissionThread thread = new toSubmissionThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
     }
 
     private void getConnected() {
         getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
     }
+    //Threads
+
+
+    public boolean isTrench() {
+        return trench;
+    }
+
+    public void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+
+    public boolean isYellowcard() {
+        return yellowcard;
+    }
+
+    public void setYellowcard(boolean yellowcard) {
+        this.yellowcard = yellowcard;
+    }
+
+    public boolean isClimblevel() {
+        return climblevel;
+    }
+
+    public void setClimblevel(boolean climblevel) {
+        this.climblevel = climblevel;
+    }
+
+    public boolean isGround_pickup() {
+        return ground_pickup;
+    }
+
+    public void setGround_pickup(boolean ground_pickup) {
+        this.ground_pickup = ground_pickup;
+    }
+
+    public boolean isRedcard() {
+        return redcard;
+    }
+
+    public void setRedcard(boolean redcard) {
+        this.redcard = redcard;
+    }
+
+    public boolean isNomovement() {
+        return nomovement;
+    }
+
+    public void setNomovement(boolean nomovement) {
+        this.nomovement = nomovement;
+    }
+
+    public boolean isNoshow() {
+        return noshow;
+    }
+
+    public void setNoshow(boolean noshow) {
+        this.noshow = noshow;
+    }
+
+    class toSubmissionThread implements Runnable {
+        @Override
+        public void run() {
+            getSub().setMainDefense(getGame().isMainDefense());
+            getSub().setMainClimb(getGame().isEndGameHang());
+            getSub().setExtrasRedCard(getGame().isExtrasRedCard());
+            getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
+            getSub().setNoShow(getGame().isNoShow());
+            getSub().setMovement(getGame().isMovement());
+            getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+            getSub().setTeam(getGame().getInfo().getTeam());
+            getSub().setMatch(getGame().getInfo().getMatch());
+            getSub().setName(getGame().getInfo().getName());
+            getSub().setNotes(getGame().getExtrasNotes());
+            getSub().setAlliance(getGame().getInfo().getAlliance());
+            getSub().setRevolve(getGame().isRevolved());
+            getSub().setSelect(getGame().isSelected());
+            getSub().setPg1(getGame().getLowerCell());
+            getSub().setPg2(getGame().getOuterCell());
+            getSub().setPg3(getGame().getInnerCell());
+            getSub().setApg1(getGame().getAutoLowerCell());
+            getSub().setApg2(getGame().getAutoOuterCell());
+            getSub().setApg3(getGame().getAutoInnerCell());
+            getSub().setPark(getGame().isEndGamePark());
+        }
+    }
 
     //button method
+
+//    public void areTheyChecked() {
+//
+//        setTrench(findViewById().isChecked());
+//
+//
+//        setGround_pickup( findViewById().isChecked());
+//
+//
+//        setClimblevel(findViewById().ischecked());
+//
+//
+//        setNoshow(findViewById().ischecked());
+//
+//        setYellowcard( findViewById().ischecked());
+//
+//
+//        setRedcard(findViewById().ischecked());
+//
+//
+//        setNomovement(findViewById().ischecked());
+//
+//    }
 
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("")) {
@@ -131,6 +242,7 @@ public class PostSubmit extends AppCompatActivity {
             getData().perCacheData.add(getGame().getInfo());
             getData().setRowNumber(getData().getRowNumber() + 1);
             getData().getSheet().setSubNum(getData().getSheet().getSubNum() + 1);
+            getData().getSheet().contextual = this;
             getConnected();
             goHome();
         } else {
@@ -144,6 +256,7 @@ public class PostSubmit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_submit);
         info();
+        FirebaseAnalytics.getInstance(this).logEvent("PSCreate", savedInstanceState);
     }
 
     @Override

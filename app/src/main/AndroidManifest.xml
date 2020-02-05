@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.scoutingApp.FIRST2020.Settings" />
-        <activity android:name="com.scoutingApp.FIRST2020.AdditionalInfo" />
         <activity android:name=".EndGame" />
 
     </application>

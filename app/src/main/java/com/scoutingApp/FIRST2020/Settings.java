@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
@@ -49,11 +51,19 @@ public class Settings extends AppCompatActivity {
                 builder.setView(inflater.inflate(R.layout.password_dialog2, null));
                 builder.setPositiveButton("yup!", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup)).indexOfChild(
-                                Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById((
-                                        (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup)).getCheckedRadioButtonId()
-                                )
-                            ));
+                        try {
+                            Settings.tabletNumber =
+                                    (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                            .findViewById(R.id.RadioGroup))
+                                                .indexOfChild(
+                                                    Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                            .findViewById((
+                                                                (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                                        .findViewById(R.id.RadioGroup))
+                                                                                .getCheckedRadioButtonId()
+                                                            )
+                                                )
+                                    ) + 1;
                         }
                         catch (Exception e) {
                             try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup2)).indexOfChild(
@@ -104,10 +114,7 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    public void makeADialog3() {
-        DialogFragment newFragment = new Settings.Dialogs3();
-        newFragment.show(getSupportFragmentManager(), "password");
-    }
+
 
     public String stringMe(Info obj) {
         return obj.getName() + " " +
@@ -116,7 +123,20 @@ public class Settings extends AppCompatActivity {
         obj.getAlliance();
     }
 
+    public void makeADialog3 (){
+        DialogThread thread = new DialogThread();
+        Thread threadStart = new Thread(thread);
+        threadStart.start();
+    }
+
     // threads
+    class DialogThread implements Runnable {
+        @Override
+        public void run() {
+            DialogFragment newFragment = new Settings.Dialogs3();
+            newFragment.show(getSupportFragmentManager(), "password");
+        }
+    }
 
     class HomeThread implements Runnable {
         @Override
@@ -164,8 +184,10 @@ public class Settings extends AppCompatActivity {
         threadStart.start();
     }
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        FirebaseAnalytics.getInstance(this).logEvent("SETTINGSCreate", savedInstanceState);
     }
 }

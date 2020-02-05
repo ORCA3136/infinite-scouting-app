@@ -18,9 +18,9 @@ public class SubmittedData implements Serializable {
     private int extrasFinalScore;
 
     private int team;
-    private String match;
-    private String name;
-    private String alliance;
+    private String match = "";
+    private String name = "";
+    private String alliance = "";
     private String notes = "";
 
     private boolean revolve;
