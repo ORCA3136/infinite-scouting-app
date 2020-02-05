@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     // threads
 
+
     class DialogCheckThread implements Runnable {
         @Override
         public void run() {
@@ -332,6 +333,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void endGameHang(View view) {
         Intent egPage = new Intent(getApplicationContext(), EndGame.class);
+        egPage.putExtra("Game", getGame());
+        egPage.putExtra("data", getData());
         startActivity(egPage);
     }
 

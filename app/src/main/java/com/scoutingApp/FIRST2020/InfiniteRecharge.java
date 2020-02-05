@@ -20,6 +20,9 @@ public class InfiniteRecharge implements Serializable {
     private boolean endGameHang = false;
     private boolean endGamePark = false;
 
+    private String hangHeight = "No Hang";
+    private String hangLoc = "No Hang";
+
     private int lowerCell = 0;
     private int innerCell = 0;
     private int outerCell = 0;
@@ -112,6 +115,22 @@ public class InfiniteRecharge implements Serializable {
 
     public void setOuterCell(int outerCell) {
         this.outerCell = outerCell;
+    }
+
+    public void setHangHeight(String hangHeight) {
+        this.hangHeight = hangHeight;
+    }
+
+    public String getHangHeight() {
+        return hangHeight;
+    }
+
+    public String getHangLoc() {
+        return hangLoc;
+    }
+
+    public void setHangLoc(String hangLoc) {
+        this.hangLoc = hangLoc;
     }
 
     String getExtrasNotes() {

@@ -41,7 +41,10 @@ public class PostSubmit extends AppCompatActivity {
         this.game = game;
     }
 
-
+    public void color(View view) {
+        findViewById(R.id.toggleButton).setOnClickListener();
+        findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+    }
 
     public SubmittedData sub = new SubmittedData();
 
@@ -256,6 +259,8 @@ public class PostSubmit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_submit);
         info();
+        if (getGame().getInfo().getAlliance().equalsIgnoreCase("red")) {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolRed));}
+        else {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));}
         FirebaseAnalytics.getInstance(this).logEvent("PSCreate", savedInstanceState);
     }
 

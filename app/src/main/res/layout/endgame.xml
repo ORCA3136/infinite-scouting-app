@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/midRightButtonLeft"
         app:layout_constraintTop_toBottomOf="@+id/centerButtonLeft"
-
+        android:onClick="rightLeft"
         app:srcCompat="@drawable/round"
         tools:layout_editor_absoluteY="205dp" />
 
@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="leftLeft"
         app:layout_constraintBottom_toTopOf="@+id/centerButtonLeft"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLeft"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midLeftLeft"
         app:layout_constraintBottom_toTopOf="@id/bottomBarLeft"
         app:layout_constraintEnd_toStartOf="@+id/centerButtonLeft"
         app:layout_constraintStart_toEndOf="@id/leftButtonLeft"
@@ -71,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midLeft"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLeft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midRightLeft"
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLeft"
         app:layout_constraintStart_toEndOf="@id/centerButtonLeft"
         app:layout_constraintTop_toBottomOf="@+id/bottomBarLeft"
@@ -102,7 +106,7 @@
         tools:layout_editor_absoluteY="182dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton7"
+        android:id="@+id/midRightButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -110,6 +114,7 @@
         app:layout_constraintEnd_toStartOf="@+id/rightButtonRight"
         app:layout_constraintStart_toEndOf="@id/centerButtonRight"
         app:srcCompat="@drawable/round"
+        android:onClick="midRightRight"
         tools:layout_editor_absoluteY="257dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -117,6 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midLeftRight"
         app:layout_constraintEnd_toStartOf="@+id/centerButtonRight"
         app:layout_constraintStart_toEndOf="@id/leftButtonRight"
         app:layout_constraintTop_toBottomOf="@id/bottomBarRight"
@@ -165,9 +171,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="rightRight"
         app:layout_constraintBottom_toTopOf="@id/centerButtonRight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/floatingActionButton7"
+        app:layout_constraintStart_toEndOf="@id/midRightButtonRight"
         app:srcCompat="@drawable/round" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -175,6 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="leftRight"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonRight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/centerButtonRight"
@@ -185,6 +193,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midRight"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarRight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -211,6 +220,7 @@
         android:id="@+id/rightButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="rightLevel"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toEndOf="parent"
@@ -227,6 +237,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="midLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
         app:layout_constraintVertical_bias="0.555"
         app:srcCompat="@drawable/round" />
@@ -235,6 +246,7 @@
         android:id="@+id/midRightButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="midRightLevel"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLevel"
@@ -248,6 +260,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="leftLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLevel"
         app:layout_constraintStart_toStartOf="parent"
@@ -260,6 +273,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="midLeftLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/leftButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
