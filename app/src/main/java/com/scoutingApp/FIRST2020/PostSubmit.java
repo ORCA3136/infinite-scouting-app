@@ -42,7 +42,7 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void color(View view) {
-        findViewById(R.id.toggleButton).setOnClickListener();
+        findViewById(R.id.toggleButton);
         findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
     }
 
