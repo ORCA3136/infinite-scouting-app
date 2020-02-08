@@ -4,7 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/endgamelayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#d0a4c7">
+
+    <Button
+        android:id="@+id/start4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="323dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:backgroundTint="#ba64a8"
+        android:onClick="startButton"
+        android:text="@string/start"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/timer2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timer2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="323dp"
+        android:layout_marginBottom="397dp"
+        android:background="@color/fui_transparent"
+        android:backgroundTint="#e7e7e8"
+        android:text="@string/_0"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/start4" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/rightButtonLeft"
@@ -20,7 +55,7 @@
 
     <View
         android:id="@+id/rightBarLeft"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="18dp"
         android:background="@android:color/black"
@@ -203,7 +238,7 @@
 
     <View
         android:id="@+id/bottomBarLevel"
-        android:layout_width="360dp"
+        android:layout_width="380dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="0"
@@ -282,7 +317,7 @@
 
     <View
         android:id="@+id/rightBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="20"
@@ -293,7 +328,7 @@
 
     <View
         android:id="@+id/leftBarLevel"
-        android:layout_width="190dp"
+        android:layout_width="198dp"
         android:layout_height="9dp"
         android:layout_marginBottom="10dp"
         android:background="@android:color/black"
@@ -319,6 +354,8 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
+            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+            android:backgroundTint="#ba64a8"
             android:text="Button"
             tools:layout_editor_absoluteX="206dp"
             tools:layout_editor_absoluteY="451dp" />
@@ -328,6 +365,8 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
+            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+            android:backgroundTint="#ba64a8"
             android:text="Button"
             tools:layout_editor_absoluteX="313dp"
             tools:layout_editor_absoluteY="449dp" />
@@ -337,6 +376,7 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
+            android:backgroundTint="#ba64a8"
             android:text="Button"
             tools:layout_editor_absoluteX="28dp"
             tools:layout_editor_absoluteY="432dp" />
