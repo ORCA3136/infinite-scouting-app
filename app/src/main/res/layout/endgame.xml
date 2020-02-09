@@ -428,4 +428,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="371dp" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        tools:layout_editor_absoluteX="443dp"
+        tools:layout_editor_absoluteY="486dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
