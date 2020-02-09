@@ -41,57 +41,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start4" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/rightButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
+        android:onClick="rightLeft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/midRightButtonLeft"
         app:layout_constraintTop_toBottomOf="@+id/centerButtonLeft"
-        android:onClick="rightLeft"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="205dp" />
+        app:srcCompat="@drawable/round" />
 
     <View
         android:id="@+id/rightBarLeft"
-        android:layout_width="198dp"
+        android:layout_width="270dp"
         android:layout_height="9dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="36dp"
         android:background="@android:color/black"
         android:rotation="40"
         app:layout_constraintBottom_toTopOf="@+id/midRightButtonLeft"
-        app:layout_constraintEnd_toEndOf="@id/bottomBarLeft">
+        app:layout_constraintEnd_toEndOf="parent">
 
     </View>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/leftButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="leftLeft"
         app:layout_constraintBottom_toTopOf="@+id/centerButtonLeft"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonLeft"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="93dp" />
+        app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/midLeftButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midLeftLeft"
         app:layout_constraintBottom_toTopOf="@id/bottomBarLeft"
         app:layout_constraintEnd_toStartOf="@+id/centerButtonLeft"
         app:layout_constraintStart_toEndOf="@id/leftButtonLeft"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="126dp" />
+        app:srcCompat="@drawable/round" />
 
     <View
         android:id="@+id/bottomBarLeft"
-        android:layout_width="360dp"
+        android:layout_width="500dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="20"
@@ -103,10 +107,12 @@
 
     </View>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/centerButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midLeft"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLeft"
@@ -118,9 +124,9 @@
 
     <View
         android:id="@+id/leftBarLeft"
-        android:layout_width="190dp"
+        android:layout_width="280dp"
         android:layout_height="9dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:background="@android:color/holo_red_dark"
         android:rotation="0"
         app:layout_constraintStart_toStartOf="@id/bottomBarLeft"
@@ -128,46 +134,50 @@
 
     </View>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/midRightButtonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midRightLeft"
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLeft"
         app:layout_constraintStart_toEndOf="@id/centerButtonLeft"
         app:layout_constraintTop_toBottomOf="@+id/bottomBarLeft"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="182dp" />
+        app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/midRightButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
+        android:onClick="midRightRight"
         app:layout_constraintBottom_toTopOf="@id/bottomBarRight"
         app:layout_constraintEnd_toStartOf="@+id/rightButtonRight"
         app:layout_constraintStart_toEndOf="@id/centerButtonRight"
-        app:srcCompat="@drawable/round"
-        android:onClick="midRightRight"
-        tools:layout_editor_absoluteY="257dp" />
+        app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/midLeftButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midLeftRight"
         app:layout_constraintEnd_toStartOf="@+id/centerButtonRight"
         app:layout_constraintStart_toEndOf="@id/leftButtonRight"
         app:layout_constraintTop_toBottomOf="@id/bottomBarRight"
-        app:srcCompat="@drawable/round"
-        tools:layout_editor_absoluteY="313dp" />
+        app:srcCompat="@drawable/round" />
 
     <View
         android:id="@+id/rightBarRight"
-        android:layout_width="190dp"
+        android:layout_width="250dp"
         android:layout_height="9dp"
+        android:layout_marginTop="36dp"
         android:background="@android:color/holo_red_dark"
         android:rotation="0"
         app:layout_constraintEnd_toEndOf="@id/bottomBarRight"
@@ -177,7 +187,7 @@
 
     <View
         android:id="@+id/bottomBarRight"
-        android:layout_width="360dp"
+        android:layout_width="500dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="-20"
@@ -191,7 +201,7 @@
 
     <View
         android:id="@+id/leftBarRight"
-        android:layout_width="190dp"
+        android:layout_width="300dp"
         android:layout_height="9dp"
         android:layout_marginBottom="18dp"
         android:background="@android:color/black"
@@ -201,10 +211,12 @@
 
     </View>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/rightButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="rightRight"
         app:layout_constraintBottom_toTopOf="@id/centerButtonRight"
@@ -212,10 +224,12 @@
         app:layout_constraintStart_toEndOf="@id/midRightButtonRight"
         app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/leftButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="leftRight"
         app:layout_constraintEnd_toStartOf="@+id/midLeftButtonRight"
@@ -223,10 +237,12 @@
         app:layout_constraintTop_toBottomOf="@id/centerButtonRight"
         app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/centerButtonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midRight"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarRight"
@@ -238,7 +254,7 @@
 
     <View
         android:id="@+id/bottomBarLevel"
-        android:layout_width="380dp"
+        android:layout_width="500dp"
         android:layout_height="9dp"
         android:background="@android:color/black"
         android:rotation="0"
@@ -247,53 +263,60 @@
         app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".4">
+        app:layout_constraintVertical_bias=".40">
 
     </View>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/rightButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="rightLevel"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
+        android:onClick="rightLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/midRightButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
         app:srcCompat="@drawable/round" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/centerButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
         android:clickable="true"
+        android:onClick="midLevel"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="midLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:layout_constraintVertical_bias="0.555"
-        app:srcCompat="@drawable/round" />
+        app:layout_constraintVertical_bias="0.555" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+    <Button
         android:id="@+id/midRightButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="midRightLevel"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
+        android:onClick="midRightLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
         app:layout_constraintEnd_toStartOf="@+id/rightButtonLevel"
         app:layout_constraintStart_toEndOf="@id/centerButtonLevel"
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
-        app:srcCompat="@drawable/round" />
+        app:layout_constraintVertical_bias="0.504" />
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/leftButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="leftLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
@@ -303,10 +326,12 @@
         app:srcCompat="@drawable/round" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/midLeftButtonLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/colorAccent"
         android:clickable="true"
         android:onClick="midLeftLevel"
         app:layout_constraintBottom_toBottomOf="@id/bottomBarLevel"
@@ -315,29 +340,30 @@
         app:layout_constraintTop_toTopOf="@+id/bottomBarLevel"
         app:srcCompat="@drawable/round" />
 
+
     <View
         android:id="@+id/rightBarLevel"
-        android:layout_width="198dp"
+        android:layout_width="310dp"
         android:layout_height="9dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/black"
         android:rotation="20"
-        app:layout_constraintBottom_toBottomOf="@+id/leftBarLevel"
-        app:layout_constraintEnd_toEndOf="@id/bottomBarLevel">
+        app:layout_constraintBottom_toTopOf="@id/bottomBarLevel"
+        app:layout_constraintEnd_toEndOf="parent">
 
     </View>
 
     <View
         android:id="@+id/leftBarLevel"
-        android:layout_width="198dp"
+        android:layout_width="310dp"
         android:layout_height="9dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/black"
         android:rotation="-20"
-        app:layout_constraintBottom_toTopOf="@+id/centerButtonLevel"
-        app:layout_constraintStart_toStartOf="@id/bottomBarLevel">
+        app:layout_constraintBottom_toTopOf="@id/bottomBarLevel"
+        app:layout_constraintStart_toStartOf="parent">
 
     </View>
-
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -356,7 +382,9 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
             android:backgroundTint="#ba64a8"
-            android:text="Button"
+            android:text="Fell Down"
+            android:textSize="24sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="206dp"
             tools:layout_editor_absoluteY="451dp" />
 
@@ -367,17 +395,22 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
             android:backgroundTint="#ba64a8"
-            android:text="Button"
+            android:text="@string/park"
+            android:textSize="24sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="313dp"
             tools:layout_editor_absoluteY="449dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/goBack"
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
             android:backgroundTint="#ba64a8"
-            android:text="Button"
+            android:onClick="goBack"
+            android:text="UNDO"
+            android:textSize="24sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="28dp"
             tools:layout_editor_absoluteY="432dp" />
 
@@ -395,6 +428,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="366dp" />
+        app:layout_constraintGuide_begin="371dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

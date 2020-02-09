@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.ToggleButton;
@@ -25,6 +26,8 @@ public class PostSubmit extends AppCompatActivity {
 
     PersistentData data;
 
+    boolean isItBlue;
+
     public InfiniteRecharge getGame() {
         return (InfiniteRecharge) getIntent().getSerializableExtra("Game2");
     }
@@ -42,8 +45,8 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void color(View view) {
-        findViewById(R.id.toggleButton);
-        findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+        if(isItBlue) {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolRed));}
+        else findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
     }
 
     public SubmittedData sub = new SubmittedData();
@@ -186,10 +189,8 @@ public class PostSubmit extends AppCompatActivity {
         public void run() {
             getSub().setMainDefense(getGame().isMainDefense());
             getSub().setMainClimb(getGame().isEndGameHang());
-            getSub().setExtrasRedCard(getGame().isExtrasRedCard());
-            getSub().setExtrasYellowCard(getGame().isExtrasYellowCard());
-            getSub().setNoShow(getGame().isNoShow());
-            getSub().setMovement(getGame().isMovement());
+            getSub().setNoshow(getGame().isNoShow());
+            getSub().setNomovement(getGame().isMovement());
             getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
             getSub().setTeam(getGame().getInfo().getTeam());
             getSub().setMatch(getGame().getInfo().getMatch());
@@ -205,33 +206,42 @@ public class PostSubmit extends AppCompatActivity {
             getSub().setApg2(getGame().getAutoOuterCell());
             getSub().setApg3(getGame().getAutoInnerCell());
             getSub().setPark(getGame().isEndGamePark());
+            getSub().setClimblevel((isClimblevel()));
+            getSub().setGround_pickup((isGround_pickup()));
+            getSub().setYellowcard((isYellowcard()));
+            getSub().setNoshow((isNoshow()));
+            getSub().setTrench((isTrench()));
+            getSub().setRedcard((isRedcard()));
+            getSub().setNomovement((isNomovement()));
+            getSub().setSelectionfail(getGame().selectionfail);
+            getSub().setRevolutionfail(getGame().revolutionfail);
         }
     }
 
-    //button method
+//    button method
 
-//    public void areTheyChecked() {
-//
-//        setTrench(findViewById().isChecked());
-//
-//
-//        setGround_pickup( findViewById().isChecked());
-//
-//
-//        setClimblevel(findViewById().ischecked());
-//
-//
-//        setNoshow(findViewById().ischecked());
-//
-//        setYellowcard( findViewById().ischecked());
-//
-//
-//        setRedcard(findViewById().ischecked());
-//
-//
-//        setNomovement(findViewById().ischecked());
-//
-//    }
+    public void areTheyChecked() {
+
+        setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
+
+
+        setGround_pickup( ((Switch)findViewById(R.id.ground_pickup)).isChecked());
+
+
+        setClimblevel( ((Switch)findViewById(R.id.is_climb_level)).isChecked());
+
+
+        setNoshow( ((Switch)findViewById(R.id.no_show)).isChecked());
+
+        setYellowcard( ((Switch)findViewById(R.id.yellow_card)).isChecked());
+
+
+        setRedcard( ((Switch)findViewById(R.id.red_card)).isChecked());
+
+
+        setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
+
+    }
 
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("")) {
@@ -240,6 +250,7 @@ public class PostSubmit extends AppCompatActivity {
             getGame().getInfo().setMatch(newString(R.id.match));
             getGame().getInfo().setAlliance(((ToggleButton) findViewById(R.id.toggleButton)).getText().toString());
             getGame().setExtrasFinalScore(Integer.valueOf(newString(R.id.typescorehere)));
+            areTheyChecked();
             toSubmission();
             getData().perSubData.add(getSub());
             getData().perCacheData.add(getGame().getInfo());
@@ -259,8 +270,14 @@ public class PostSubmit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_submit);
         info();
-        if (getGame().getInfo().getAlliance().equalsIgnoreCase("red")) {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolRed));}
-        else {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));}
+        if (getGame().getInfo().getAlliance().equalsIgnoreCase("red")) {
+            findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolRed));
+            isItBlue = false;
+        }
+        else {
+            findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+            isItBlue = true;
+        }
         FirebaseAnalytics.getInstance(this).logEvent("PSCreate", savedInstanceState);
     }
 

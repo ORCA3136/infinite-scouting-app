@@ -14,6 +14,7 @@ public class InfiniteRecharge implements Serializable {
         info.setName(name);
     }
 
+
     private boolean autonomous = true;
     private boolean mainStart = false;
     private boolean mainDefense = false;
@@ -54,14 +55,19 @@ public class InfiniteRecharge implements Serializable {
                 "            Cassidy Schiller" + System.lineSeparator() +
                 "            Mac Fraser" + System.lineSeparator() +
                 "            Henry Morris" + System.lineSeparator() +
+                "            Jackie Lawton" + System.lineSeparator() +
                 "      Layout and Design:" + System.lineSeparator() +
                 "            Cassidy Schiller" + System.lineSeparator() +
                 "            Sam Slopey" + System.lineSeparator() +
                 "            Em Brown" + System.lineSeparator() +
                 "            Khai Little" + System.lineSeparator() +
-                "            Jackie Lawton" + System.lineSeparator() +
                 "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
     }
+
+
+    int selectionfail ;
+    int revolutionfail ;
+
 
     public boolean isEndGamePark() {
         return endGamePark;

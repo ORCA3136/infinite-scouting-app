@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int getTimerPause() {
+        getGame().setSelected(selectionStatic);
+        getGame().setRevolved(revolutionStatic);
+
         return timerPause;
     }
 
@@ -68,6 +71,57 @@ public class MainActivity extends AppCompatActivity {
         TextView text = findViewById(id);
         String label = texty + " (" + score + ")";
         text.setText(label);
+    }
+
+    static boolean selectionStatic = false;
+    static boolean revolutionStatic = false;
+    static int selectionFailStatic = 0;
+    static int revolutionFailStatic = 0;
+
+    public static class RevolutionDialog extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            name.setMessage("SUCCESS OR FAILURE?")
+                    .setNegativeButton("FAILURE", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            revolutionFailStatic = revolutionFailStatic + 1;
+                            Objects.requireNonNull(RevolutionDialog.this.getDialog()).dismiss();
+                        }
+                    })
+                    .setPositiveButton("SUCCESS", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            revolutionStatic = true;
+                            Objects.requireNonNull(RevolutionDialog.this.getDialog()).dismiss();
+                        }
+                    })
+            ;
+            return name.create();
+        }
+    }
+
+    public static class SelectionDialog extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            name.setMessage("SUCCESS OR FAILURE?")
+                    .setNegativeButton("FAILURE", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            selectionFailStatic = selectionFailStatic + 1;
+                            Objects.requireNonNull(SelectionDialog.this.getDialog()).dismiss();
+                        }
+                    })
+                    .setPositiveButton("SUCCESS", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            selectionStatic = true;
+                            Objects.requireNonNull(SelectionDialog.this.getDialog()).dismiss();
+                        }
+                    })
+            ;
+            return name.create();
+        }
     }
 
     public static class Dialogs extends DialogFragment {
@@ -206,19 +260,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class RevolutionButtonThread implements Runnable {
-        @Override
-        public void run() {
-            getGame().revolution();
-        }
-    }
-
-    class SelectionButtonThread implements Runnable {
-        @Override
-        public void run () {
-            getGame().selection();
-        }
-    }
 
     // button methods
 
@@ -229,15 +270,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void revolutionButton(View view) {
-        RevolutionButtonThread thread = new RevolutionButtonThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        DialogFragment newFragment = new RevolutionDialog();
+        newFragment.show(getSupportFragmentManager(), "Rev");
     }
 
     public void selectionButton (View view){
-       SelectionButtonThread thread = new SelectionButtonThread();
-       Thread threadStart = new Thread(thread) ;
-       threadStart.start();
+        DialogFragment newFragment = new SelectionDialog();
+        newFragment.show(getSupportFragmentManager(), "Sel");
     }
 
     public void pg1(View view) {
@@ -254,15 +293,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pg2(View view) {
-        if (getGame().isMainStart()) {
-            if (getGame().isAutonomous()) {
-                getGame().autoCellScore(2);
-            }
-            else {
-                getGame().cellScore(2);
-            }
-            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
-        }
+                if (getGame().isMainStart()) {
+                    if (getGame().isAutonomous()) {
+                        getGame().autoCellScore(2);
+                    }
+                    else {
+                        getGame().cellScore(2);
+                    }
+                    updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
+                }
         else makeADialog("Please start the game!", "gameStart");
     }
 
@@ -289,10 +328,10 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.start3).setBackgroundColor(getResources().getColor(R.color.coolRed));
             ((Button) findViewById(R.id.start3)).setText(R.string.stop);
             if (getTimerPause() == 0) {
-                stormDelay(15);
-            } else if (getTimerPause() <= 14) {
+                stormDelay(20);
+            } else if (getTimerPause() <= 19) {
                 getGame().setAutonomous(true);
-                stormDelay(15 - getTimerPause());
+                stormDelay(20 - getTimerPause());
             }
         } else {
             getGame().setMainStart(false);
@@ -308,23 +347,11 @@ public class MainActivity extends AppCompatActivity {
         threadStart.start();
     }
 
-    public void defense(View view) {
-        if (!getGame().isMainStart()) {
-            makeADialog("you need to press start!", "rocketfalse");
-            ((Switch) view).setChecked(getGame().isMainDefense());
-        } else getGame().setMainDefense(!getGame().isMainDefense());
-    }
-
     public void endGameHang(View view) {
         Intent egPage = new Intent(getApplicationContext(), EndGame.class);
         egPage.putExtra("Game", getGame());
         egPage.putExtra("data", getData());
         startActivity(egPage);
-    }
-
-    public void endGamePark(View view) {
-        if (getGame().isMainStart()) { getGame().park(); }
-        else makeADialog("You need to press start!", "setscore");
     }
 
     //on create, on start, save state, etc (overrides)

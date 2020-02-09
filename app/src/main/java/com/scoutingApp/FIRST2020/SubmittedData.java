@@ -11,10 +11,6 @@ public class SubmittedData implements Serializable {
     private boolean mainClimb;
     private boolean park;
 
-    private boolean extrasRedCard;
-    private boolean extrasYellowCard;
-    private boolean noShow;
-    private boolean movement;
     private int extrasFinalScore;
 
     private int team;
@@ -22,7 +18,9 @@ public class SubmittedData implements Serializable {
     private String name = "";
     private String alliance = "";
     private String notes = "";
+    private int selectionfail;
 
+    private int revolutionfail;
     private boolean revolve;
     private boolean select;
     private int pg1;
@@ -32,14 +30,28 @@ public class SubmittedData implements Serializable {
     private int apg2;
     private int apg3;
 
+    private boolean trench;
+
+    private boolean climblevel;
+
+    private boolean ground_pickup;
+
+    private boolean yellowcard;
+
+    private boolean redcard;
+
+    private boolean nomovement;
+
+    private boolean noshow;
+
     List<Object> setValues() {
         return Arrays.asList(
             ((Object)mainDefense),
             mainClimb,
-            extrasRedCard,
-            extrasYellowCard,
-            noShow,
-            movement,
+            redcard,
+            yellowcard,
+            noshow,
+            nomovement,
             extrasFinalScore,
             team,
             match,
@@ -54,10 +66,43 @@ public class SubmittedData implements Serializable {
             apg1,
             apg2,
             apg3,
-            park
+            park,
+                climblevel,
+                ground_pickup,
+                trench,
+                revolutionfail,
+                selectionfail
         );
     }
 
+
+    public void setSelectionfail(int selectionfail) {
+        this.selectionfail = selectionfail;
+    }
+    public void setRevolutionfail(int revolutionfail) {
+        this.revolutionfail = revolutionfail;
+    }
+    void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+    void setYellowcard(boolean yellowcard) {
+        this.yellowcard = yellowcard;
+    }
+    void setClimblevel(boolean climblevel) {
+        this.climblevel = climblevel;
+    }
+    void setGround_pickup(boolean ground_pickup) {
+        this.ground_pickup = ground_pickup;
+    }
+    void setRedcard(boolean redcard) {
+        this.redcard = redcard;
+    }
+    void setNomovement(boolean nomovement) {
+        this.nomovement = nomovement;
+    }
+    void setNoshow(boolean noshow) {
+        this.noshow = noshow;
+    }
     void setPark(boolean park) { this.park = park; }
     void setApg1(int apg1) { this.apg1 = apg1; }
     void setApg2(int apg2) { this.apg2 = apg2; }
@@ -80,10 +125,6 @@ public class SubmittedData implements Serializable {
     void setNotes(String notes) {this.notes = notes;}
     void setMainDefense(boolean mainDefense) {this.mainDefense = mainDefense;}
     void setMainClimb(boolean mainClimb) {this.mainClimb = mainClimb;}
-    void setExtrasRedCard(boolean extrasRedCard) {this.extrasRedCard = extrasRedCard;}
-    void setExtrasYellowCard(boolean extrasYellowCard) {this.extrasYellowCard = extrasYellowCard;}
-    void setNoShow(boolean noShow) {this.noShow = noShow;}
-    void setMovement(boolean movement) {this.movement = movement;}
     void setExtrasFinalScore(int extrasFinalScore) {this.extrasFinalScore = extrasFinalScore;}
     void setTeam(int team) {this.team = team;}
     void setMatch(String match) {this.match = match;}
