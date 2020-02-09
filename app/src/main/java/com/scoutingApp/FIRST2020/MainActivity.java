@@ -3,7 +3,10 @@ package com.scoutingApp.FIRST2020;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -23,6 +26,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     //class-specific variables
 
+    static MainActivity mn;
     private PersistentData data = null;
     private InfiniteRecharge game = null;
     private static String dialogMessage = "";
@@ -94,12 +98,16 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             revolutionStatic = true;
                             Objects.requireNonNull(RevolutionDialog.this.getDialog()).dismiss();
+                            mn.runOnUiThread(SC);
                         }
                     })
             ;
             return name.create();
         }
     }
+
+    static Runnable SC;
+    static Runnable RC;
 
     public static class SelectionDialog extends DialogFragment {
         @NonNull
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             selectionStatic = true;
                             Objects.requireNonNull(SelectionDialog.this.getDialog()).dismiss();
+                            mn.runOnUiThread(SC);
                         }
                     })
             ;
@@ -218,6 +227,21 @@ public class MainActivity extends AppCompatActivity {
     // threads
 
 
+    class RevColor implements Runnable {
+        @Override
+        public void run() {
+            findViewById(R.id.revolution).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+        }
+    }
+
+    class SelColor implements Runnable {
+        @Override
+        public void run() {
+            findViewById(R.id.selection).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+        }
+    }
+
+
     class DialogCheckThread implements Runnable {
         @Override
         public void run() {
@@ -288,6 +312,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().autoCellScore(1);
             }
             updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
+            colorSet(R.id.pg1, R.color.colorAccent) ;
+            colorSet(R.id.pg2, R.color.lightestPurple) ;
+            colorSet(R.id.pg3, R.color.lightestPurple) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -301,6 +328,9 @@ public class MainActivity extends AppCompatActivity {
                         getGame().cellScore(2);
                     }
                     updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
+                    colorSet(R.id.pg2, R.color.colorAccent) ;
+                    colorSet(R.id.pg1, R.color.lightestPurple) ;
+                    colorSet(R.id.pg3, R.color.lightestPurple) ;
                 }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -314,6 +344,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().cellScore(3);
             }
             updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
+            colorSet(R.id.pg3, R.color.colorAccent) ;
+            colorSet(R.id.pg2, R.color.lightestPurple) ;
+            colorSet(R.id.pg1, R.color.lightestPurple) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -379,6 +412,9 @@ public class MainActivity extends AppCompatActivity {
         }
         updateDisplayInfo();
         dialogCheck();
+        mn = MainActivity.this;
+        SC = new SelColor();
+        RC = new RevColor();
     }
 
     @Override

@@ -19,7 +19,7 @@ public class SubmittedData implements Serializable {
     private String alliance = "";
     private String notes = "";
     private int selectionfail;
-
+    private int climbFail ;
     private int revolutionfail;
     private boolean revolve;
     private boolean select;
@@ -71,11 +71,13 @@ public class SubmittedData implements Serializable {
                 ground_pickup,
                 trench,
                 revolutionfail,
-                selectionfail
+                selectionfail,
+                climbFail
         );
     }
 
-
+    public void setclimbFail(int climbFail) {
+        this.climbFail = climbFail;}
     public void setSelectionfail(int selectionfail) {
         this.selectionfail = selectionfail;
     }

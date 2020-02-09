@@ -64,10 +64,9 @@ public class InfiniteRecharge implements Serializable {
                 "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
     }
 
-
+    int climbFail ;
     int selectionfail ;
     int revolutionfail ;
-
 
     public boolean isEndGamePark() {
         return endGamePark;
@@ -318,5 +317,15 @@ public class InfiniteRecharge implements Serializable {
             if (isSelected()) {setSelected(false);}
         }
     }
+
+    public int getClimbFail() {
+        return climbFail;
+    }
+
+    public void setClimbFail(int climbFail) {
+        this.climbFail = climbFail;
+    }
+
+
 
 }

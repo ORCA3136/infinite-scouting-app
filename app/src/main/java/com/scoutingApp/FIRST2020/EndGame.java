@@ -148,7 +148,7 @@ public class EndGame extends AppCompatActivity {
         findViewById(R.id.midRightButtonLevel).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.leftButtonLevel).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.rightButtonLevel).setBackground(getDrawable(R.drawable.round));
-        findViewById(button).setBackground(getDrawable(R.drawable.roundboi));
+        findViewById(button).getBackground().setTint(getResources().getColor(R.color.darkestPurple));
     }
 
     public void colorLeft(int button) {
@@ -157,7 +157,7 @@ public class EndGame extends AppCompatActivity {
         findViewById(R.id.midRightButtonLeft).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.leftButtonLeft).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.rightButtonLeft).setBackground(getDrawable(R.drawable.round));
-        findViewById(button).setBackground(getDrawable(R.drawable.roundboi));
+        findViewById(button).getBackground().setTint(getResources().getColor(R.color.darkestPurple));
     }
 
     public void colorRight(int button) {
@@ -166,7 +166,7 @@ public class EndGame extends AppCompatActivity {
         findViewById(R.id.midRightButtonRight).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.leftButtonRight).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.rightButtonRight).setBackground(getDrawable(R.drawable.round));
-        findViewById(button).setBackground(getDrawable(R.drawable.roundboi));
+        findViewById(button).getBackground().setTint(getResources().getColor(R.color.darkestPurple));
     }
     
     public void midLevel(View view) {
@@ -268,6 +268,11 @@ public class EndGame extends AppCompatActivity {
         setContentView(R.layout.endgame);
         FirebaseAnalytics.getInstance(this).logEvent("ENDCreate", savedInstanceState);
     }
+
+    public void climbFail(View view) {
+        getGame().setClimbFail(getGame().getClimbFail() + 1);
+    }
+
 
 }
 

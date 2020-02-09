@@ -215,6 +215,7 @@ public class PostSubmit extends AppCompatActivity {
             getSub().setNomovement((isNomovement()));
             getSub().setSelectionfail(getGame().selectionfail);
             getSub().setRevolutionfail(getGame().revolutionfail);
+            getSub().setclimbFail(getGame().revolutionfail);
         }
     }
 
