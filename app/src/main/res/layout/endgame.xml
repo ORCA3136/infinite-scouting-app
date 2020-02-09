@@ -5,7 +5,7 @@
     android:id="@+id/endgamelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d0a4c7">
+    android:background="#6F2565">
 
     <Button
         android:id="@+id/start4"
