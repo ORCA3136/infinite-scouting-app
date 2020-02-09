@@ -4,140 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6F2565"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/start3"
-        android:layout_width="139dp"
-        android:layout_height="102dp"
-        android:background="#5C18FF22"
+        android:layout_width="177dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:backgroundTint="#d2b048"
         android:onClick="startButton"
         android:text="@string/start"
         android:textAllCaps="true"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <LinearLayout
-        android:id="@+id/lowestBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lowerBar"
-        app:layout_constraintVertical_bias="0.85">
-
-        <Button
-            android:id="@+id/settings"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:backgroundTint="#000000"
-            android:onClick="settingsButton"
-            android:text="@string/settings"
-            android:textColor="#FFFFFF" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#002067A0"
-            android:contentDescription="@string/info"
-            android:onClick="helpButton"
-            android:scaleType="fitCenter"
-            android:tint="#000000"
-            app:srcCompat="@android:drawable/ic_dialog_info" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:backgroundTint="#D3424AE6"
-            android:onClick="submitButton"
-            android:text="@string/submit" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lowerBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/lowestBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/endGameLayout">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/pglayout"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/endGameLayout"
+        android:layout_width="181dp"
+        android:layout_height="390dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cplayout">
+        app:layout_constraintStart_toEndOf="@+id/revolution"
+        app:layout_constraintTop_toBottomOf="@+id/powerGenerator">
 
         <Button
             android:id="@+id/pg1"
             style="@style/Widget.AppCompat.ButtonBar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:onClick="pg1"
             android:text="@string/lower"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/pg2"
             style="@android:style/ButtonBar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:onClick="pg2"
             android:text="@string/outer"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/pg3"
             style="@style/Widget.AppCompat.ButtonBar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:onClick="pg3"
             android:text="@string/inner"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             tools:text="inner" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -146,47 +84,20 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2829">
 
-        <Button
-            android:id="@+id/revolution"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:onClick="revolutionButton"
-            android:text="@string/spin"
-            android:textAllCaps="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/selection"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:onClick="selectionButton"
-            android:text="@string/color_selection"
-            android:textAllCaps="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <TableLayout
-        android:layout_width="339dp"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        android:id="@+id/tableLayout"
+        android:layout_width="319dp"
+        android:layout_height="141dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -200,8 +111,11 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:backgroundTint="#d2b048"
                 android:text="@string/namehint"
                 android:textColor="#000000"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -212,7 +126,10 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:backgroundTint="#d2b048"
                 android:textColor="#000000"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/alliance" />
@@ -221,9 +138,8 @@
 
         <TableRow
             android:id="@+id/space"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_width="220dp"
+            android:layout_height="wrap_content" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -237,8 +153,11 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:backgroundTint="#d2b048"
                 android:text="@string/teamhint"
                 android:textColor="#000000"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -249,8 +168,11 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:backgroundTint="#d2b048"
                 android:text="@string/namehint"
                 android:textColor="#000000"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </TableRow>
@@ -259,67 +181,177 @@
 
     <TextView
         android:id="@+id/controlPanel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_width="231dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="319dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:backgroundTint="#d3802f"
         android:text="@string/control_panel"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cplayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/powerGenerator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/power_genenator"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pglayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/revolution"
+        app:layout_constraintEnd_toStartOf="@+id/powerGenerator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="155dp"
-        android:layout_height="61dp"
+        android:layout_width="87dp"
+        android:layout_height="67dp"
         android:text="@string/_0"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/start3"
         app:layout_constraintStart_toStartOf="@+id/start3"
         app:layout_constraintTop_toBottomOf="@+id/start3" />
 
-    <LinearLayout
-        android:id="@+id/endGameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/pglayout"
-        app:layout_constraintBottom_toTopOf="@id/lowerBar">
+    <TextView
+        android:id="@+id/powerGenerator"
+        android:layout_width="242dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:backgroundTint="#d3802f"
+        android:text="@string/power_genenator"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/controlPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer" />
 
-        <Button
-            android:id="@+id/hang"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:onClick="endGameHang"
-            android:text="@string/endgame"
-            android:textAllCaps="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:ignore="ButtonStyle" />
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="238dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="44dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:backgroundTint="#d2b048"
+        android:onClick="submitButton"
+        android:text="@string/submit"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hang"
+        app:layout_constraintTop_toBottomOf="@+id/pglayout" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/hang"
+        android:layout_width="234dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="22dp"
+        android:layout_weight="1"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:backgroundTint="#d2b048"
+        android:onClick="endGameHang"
+        android:text="@string/endgame"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/submit"
+        app:layout_constraintEnd_toStartOf="@+id/submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/revolution"
+        tools:ignore="ButtonStyle" />
+
+    <Button
+        android:id="@+id/revolution"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:backgroundTint="#d2b048"
+        android:onClick="revolutionButton"
+        android:text="@string/spin"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/pglayout"
+        app:layout_constraintEnd_toStartOf="@+id/pglayout"
+        app:layout_constraintStart_toEndOf="@+id/selection"
+        tools:ignore="ButtonStyle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/help"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#d3802f"
+        android:contentDescription="@string/info"
+        android:onClick="helpButton"
+        android:scaleType="fitCenter"
+        android:tint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/settings"
+        app:layout_constraintTop_toTopOf="@+id/settings"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#d3802f"
+        android:onClick="settingsButton"
+        android:text="@string/settings"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/help"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submit" />
+
+    <FrameLayout
+        android:layout_width="325dp"
+        android:layout_height="311dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="51dp"
+        app:layout_constraintEnd_toStartOf="@+id/pglayout"
+        app:layout_constraintStart_toEndOf="@+id/cplayout"
+        app:layout_constraintTop_toTopOf="@+id/pglayout">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/selection"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="22dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:backgroundTint="#d2b048"
+        android:onClick="selectionButton"
+        android:text="@string/color_selection"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/revolution"
+        app:layout_constraintEnd_toStartOf="@+id/revolution"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ButtonStyle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

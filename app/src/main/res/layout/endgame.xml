@@ -5,30 +5,28 @@
     android:id="@+id/endgamelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d0a4c7">
+    android:background="#6F2565">
 
     <Button
         android:id="@+id/start4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="323dp"
+        android:layout_width="127dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="22dp"
         android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-        android:backgroundTint="#ba64a8"
+        android:backgroundTint="#d2b048"
         android:onClick="startButton"
         android:text="@string/start"
         android:textAllCaps="true"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/timer2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timer2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="323dp"
-        android:layout_marginBottom="397dp"
+        android:layout_height="55dp"
         android:background="@color/fui_transparent"
         android:backgroundTint="#e7e7e8"
         android:text="@string/_0"
@@ -36,9 +34,8 @@
         android:textColor="@android:color/black"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/start4"
+        app:layout_constraintStart_toStartOf="@+id/start4"
         app:layout_constraintTop_toBottomOf="@+id/start4" />
 
     <Button
@@ -376,13 +373,12 @@
         app:layout_constraintVertical_bias="0.75">
 
         <Button
-            android:id="@+id/climbFail"
+            android:id="@+id/button2"
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
-            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-            android:backgroundTint="#ba64a8"
-            android:onClick="climbFail"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:text="Fell Down"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -394,8 +390,8 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
-            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-            android:backgroundTint="#ba64a8"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:text="@string/park"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -407,9 +403,10 @@
             android:layout_width="0dp"
             android:layout_height="72dp"
             android:layout_weight="1"
-            android:backgroundTint="#ba64a8"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:backgroundTint="#d2b048"
             android:onClick="goBack"
-            android:text="back"
+            android:text="UNDO"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="28dp"
@@ -430,19 +427,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="371dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="116dp"
-        android:layout_height="117dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="31dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/rightButtonLevel"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
