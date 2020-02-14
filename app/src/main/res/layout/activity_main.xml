@@ -210,6 +210,7 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/start3"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/start3"
         app:layout_constraintTop_toBottomOf="@+id/start3" />
 
@@ -266,6 +267,7 @@
         app:layout_constraintEnd_toStartOf="@+id/submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/revolution"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="ButtonStyle" />
 
     <Button
@@ -353,5 +355,20 @@
         app:layout_constraintEnd_toStartOf="@+id/revolution"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ButtonStyle" />
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="145dp"
+        android:layout_height="61dp"
+        android:fontFamily="sans-serif"
+        android:text="AUTON"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/powerGenerator"
+        app:layout_constraintEnd_toStartOf="@+id/timer"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/start3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

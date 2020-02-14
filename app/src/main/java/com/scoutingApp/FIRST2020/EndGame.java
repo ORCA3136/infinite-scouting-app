@@ -168,7 +168,14 @@ public class EndGame extends AppCompatActivity {
         findViewById(R.id.rightButtonRight).setBackground(getDrawable(R.drawable.round));
         findViewById(button).getBackground().setTint(getResources().getColor(R.color.darkestPurple));
     }
-    
+
+    public void climbFail(View view) {
+        getGame().setClimbFail(getGame().getClimbFail() + 1);
+    }
+    public void parkButton(View view) {
+        getGame().park();
+    }
+
     public void midLevel(View view) {
         heightMiddle();
         hangLocMiddle();
@@ -268,11 +275,6 @@ public class EndGame extends AppCompatActivity {
         setContentView(R.layout.endgame);
         FirebaseAnalytics.getInstance(this).logEvent("ENDCreate", savedInstanceState);
     }
-
-    public void climbFail(View view) {
-        getGame().setClimbFail(getGame().getClimbFail() + 1);
-    }
-
 
 }
 

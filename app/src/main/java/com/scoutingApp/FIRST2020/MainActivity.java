@@ -179,7 +179,33 @@ public class MainActivity extends AppCompatActivity {
                 if (getTimerPause() == 155) {
                     getGame().setMainStart(false);
                 }
+                if (getTimerPause() == 20) {
+                    TeleOpTimer tel = new TeleOpTimer();
+                    Thread telThread = new Thread(tel);
+                    runOnUiThread(telThread);
+                }
+                if (getTimerPause() == 120) {
+                    EndGameTimer end = new EndGameTimer();
+                    Thread endThread = new Thread(end);
+                    runOnUiThread(endThread);
+                }
             }
+        }
+    }
+
+    class TeleOpTimer implements Runnable {
+        @Override
+        public void run() {
+            TextView timerText = findViewById(R.id.label);
+            timerText.setText(R.string.tel);
+        }
+    }
+
+    class EndGameTimer implements Runnable {
+        @Override
+        public void run() {
+            TextView timerText = findViewById(R.id.label);
+            timerText.setText(R.string.endgame);
         }
     }
 
@@ -230,14 +256,14 @@ public class MainActivity extends AppCompatActivity {
     class RevColor implements Runnable {
         @Override
         public void run() {
-            findViewById(R.id.revolution).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+            findViewById(R.id.revolution).setBackgroundColor(getResources().getColor(R.color.darkGreen));
         }
     }
 
     class SelColor implements Runnable {
         @Override
         public void run() {
-            findViewById(R.id.selection).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+            findViewById(R.id.selection).setBackgroundColor(getResources().getColor(R.color.darkGreen));
         }
     }
 
@@ -312,9 +338,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().autoCellScore(1);
             }
             updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
-            colorSet(R.id.pg1, R.color.colorAccent) ;
-            colorSet(R.id.pg2, R.color.lightestPurple) ;
-            colorSet(R.id.pg3, R.color.lightestPurple) ;
+            colorSet(R.id.pg1, R.color.lightOrange) ;
+            colorSet(R.id.pg2, R.color.darkOrange) ;
+            colorSet(R.id.pg3, R.color.darkOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -328,9 +354,9 @@ public class MainActivity extends AppCompatActivity {
                         getGame().cellScore(2);
                     }
                     updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
-                    colorSet(R.id.pg2, R.color.colorAccent) ;
-                    colorSet(R.id.pg1, R.color.lightestPurple) ;
-                    colorSet(R.id.pg3, R.color.lightestPurple) ;
+                    colorSet(R.id.pg2, R.color.lightOrange) ;
+                    colorSet(R.id.pg1, R.color.darkOrange) ;
+                    colorSet(R.id.pg3, R.color.darkOrange) ;
                 }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -344,9 +370,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().cellScore(3);
             }
             updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
-            colorSet(R.id.pg3, R.color.colorAccent) ;
-            colorSet(R.id.pg2, R.color.lightestPurple) ;
-            colorSet(R.id.pg1, R.color.lightestPurple) ;
+            colorSet(R.id.pg3, R.color.lightOrange) ;
+            colorSet(R.id.pg2, R.color.darkOrange) ;
+            colorSet(R.id.pg1, R.color.darkOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }

@@ -223,24 +223,24 @@ public class PostSubmit extends AppCompatActivity {
 
     public void areTheyChecked() {
 
-        setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
-
-
-        setGround_pickup( ((Switch)findViewById(R.id.ground_pickup)).isChecked());
-
-
-        setClimblevel( ((Switch)findViewById(R.id.is_climb_level)).isChecked());
-
-
-        setNoshow( ((Switch)findViewById(R.id.no_show)).isChecked());
-
-        setYellowcard( ((Switch)findViewById(R.id.yellow_card)).isChecked());
-
-
-        setRedcard( ((Switch)findViewById(R.id.red_card)).isChecked());
-
-
-        setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
+//        setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
+//
+//
+//        setGround_pickup( ((Switch)findViewById(R.id.ground_pickup)).isChecked());
+//
+//
+//        setClimblevel( ((Switch)findViewById(R.id.is_climb_level)).isChecked());
+//
+//
+//        setNoshow( ((Switch)findViewById(R.id.no_show)).isChecked());
+//
+//        setYellowcard( ((Switch)findViewById(R.id.yellow_card)).isChecked());
+//
+//
+//        setRedcard( ((Switch)findViewById(R.id.red_card)).isChecked());
+//
+//
+//        setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
 
     }
 
