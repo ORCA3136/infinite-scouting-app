@@ -381,9 +381,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startButton(View view) {
+        if(getGame().isMainStart()) {colorSet(R.id.start3, R.color.darkOrange); }
+        else {colorSet(R.id.start3, R.color.lightOrange) ;}
         if (!getGame().isMainStart()) {
-            getGame().setMainStart(true);
-            findViewById(R.id.start3).setBackgroundColor(getResources().getColor(R.color.coolRed));
+            getGame().setMainStart(true);;
             ((Button) findViewById(R.id.start3)).setText(R.string.stop);
             if (getTimerPause() == 0) {
                 stormDelay(20);
@@ -393,7 +394,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             getGame().setMainStart(false);
-            findViewById(R.id.start3).setBackgroundColor(getResources().getColor(R.color.coolBlue));
             ((Button) findViewById(R.id.start3)).setText(R.string.start);
             getGame().setAutonomous(false);
         }

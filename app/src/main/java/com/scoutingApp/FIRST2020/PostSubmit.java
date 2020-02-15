@@ -46,8 +46,16 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void color(View view) {
-        if(isItBlue) {findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolRed));}
-        else findViewById(R.id.toggleButton).setBackgroundColor(getResources().getColor(R.color.coolBlue));
+        if (isItBlue) {
+            findViewById(R.id.toggleButton).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+            findViewById(R.id.toggleButton).getBackground().setTint(getResources().getColor(R.color.coolRed));
+            isItBlue = false;
+        }
+        else {
+            findViewById(R.id.toggleButton).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+            findViewById(R.id.toggleButton).getBackground().setTint(getResources().getColor(R.color.coolBlue));
+            isItBlue = true;
+        }
     }
 
     public SubmittedData sub = new SubmittedData();
@@ -116,9 +124,64 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     public void toSubmission() {
-        toSubmissionThread thread = new toSubmissionThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        getSub().setMainDefense(getGame().isMainDefense());
+        getSub().setMainClimb(getGame().isEndGameHang());
+        getSub().setNoshow(getGame().isNoShow());
+        getSub().setNomovement(getGame().isMovement());
+        try {
+            assert (getGame().getInfo().getTeam()) != 0 ;
+            getSub().setTeam(getGame().getInfo().getTeam());
+        }
+        catch(Exception e){
+            getSub().setTeam(3136);
+        }
+        try {
+            assert !getGame().getInfo().getMatch().equals("0");
+            getSub().setMatch(getGame().getInfo().getMatch());
+        }
+        catch(Exception e){
+            getSub().setMatch("000");
+        }
+        try {
+            assert !getGame().getInfo().getName().equals("0");
+            getSub().setName(getGame().getInfo().getName());
+        }
+        catch(Exception e){
+            getSub().setMatch("Jackie Doe");
+        }
+        try {
+            assert !getGame().getExtrasNotes().equals("");
+            getSub().setNotes(getGame().getExtrasNotes());
+        }
+        catch(Exception e){
+            getSub().setNotes("000");
+        }
+        getSub().setRevolve(getGame().isRevolved());
+        getSub().setSelect(getGame().isSelected());
+        try {
+            assert (getGame().getInfo().getAlliance()) != null;
+            getSub().setAlliance(getGame().getInfo().getAlliance());
+        }
+        catch(Exception e){
+            getSub().setAlliance("GREEN");
+        }
+        getSub().setPg1(getGame().getLowerCell());
+        getSub().setPg2(getGame().getOuterCell());
+        getSub().setPg3(getGame().getInnerCell());
+        getSub().setApg1(getGame().getAutoLowerCell());
+        getSub().setApg2(getGame().getAutoOuterCell());
+        getSub().setApg3(getGame().getAutoInnerCell());
+        getSub().setPark(getGame().isEndGamePark());
+        getSub().setClimblevel((isClimblevel()));
+        getSub().setGround_pickup((isGround_pickup()));
+        getSub().setYellowcard((isYellowcard()));
+        getSub().setNoshow((isNoshow()));
+        getSub().setTrench((isTrench()));
+        getSub().setRedcard((isRedcard()));
+        getSub().setNomovement((isNomovement()));
+        getSub().setSelectionfail(getGame().selectionfail);
+        getSub().setRevolutionfail(getGame().revolutionfail);
+        getSub().setclimbFail(getGame().revolutionfail);
     }
 
     private void getConnected() {
@@ -181,78 +244,6 @@ public class PostSubmit extends AppCompatActivity {
 
     public void setNoshow(boolean noshow) {
         this.noshow = noshow;
-    }
-
-    class toSubmissionThread implements Runnable {
-        @Override
-        public void run() {
-            getSub().setMainDefense(getGame().isMainDefense());
-            getSub().setMainClimb(getGame().isEndGameHang());
-            getSub().setNoshow(getGame().isNoShow());
-            getSub().setNomovement(getGame().isMovement());
-            try {
-                Objects.requireNonNull(getGame().getExtrasFinalScore()) ;
-                getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
-            }
-            catch(Exception e){
-                getSub().setExtrasFinalScore(000);
-            }
-            try {
-                Objects.requireNonNull(getGame().getInfo().getTeam()) ;
-                getSub().setTeam(getGame().getInfo().getTeam());
-            }
-            catch(Exception e){
-                getSub().setTeam(3136);
-            }
-            try {
-                Objects.requireNonNull(getGame().getInfo().getMatch()) ;
-            ;getSub().setMatch(getGame().getInfo().getMatch());
-            }
-            catch(Exception e){
-                getSub().setMatch("000");
-            }
-
-            try {
-                Objects.requireNonNull(getGame().getInfo().getName()) ;
-            getSub().setName(getGame().getInfo().getName());
-            }
-            catch(Exception e){
-                getSub().setMatch("Jackie Doe");
-            }
-            try {
-                Objects.requireNonNull(getGame().getExtrasNotes()) ;
-            getSub().setNotes(getGame().getExtrasNotes());
-            }
-            catch(Exception e){
-                getSub().setNotes("000");
-            }
-            getSub().setRevolve(getGame().isRevolved());
-            getSub().setSelect(getGame().isSelected());
-            try {
-                Objects.requireNonNull(getGame().getInfo().getAlliance()) ;
-                getSub().setAlliance(getGame().getInfo().getAlliance());
-            }
-            catch(Exception e){
-              getSub().setAlliance("GREEN");
-            }
-            getSub().setPg1(getGame().getLowerCell());
-            getSub().setPg2(getGame().getOuterCell());
-            getSub().setPg3(getGame().getInnerCell());
-            getSub().setApg1(getGame().getAutoLowerCell());
-            getSub().setApg2(getGame().getAutoOuterCell());
-            getSub().setApg3(getGame().getAutoInnerCell());
-            getSub().setPark(getGame().isEndGamePark());
-            getSub().setClimblevel((isClimblevel()));
-            getSub().setGround_pickup((isGround_pickup()));
-            getSub().setYellowcard((isYellowcard()));
-            getSub().setNoshow((isNoshow()));
-            getSub().setTrench((isTrench()));
-            getSub().setRedcard((isRedcard()));
-            getSub().setNomovement((isNomovement()));
-            getSub().setSelectionfail(getGame().selectionfail);
-            getSub().setRevolutionfail(getGame().revolutionfail);
-            getSub().setclimbFail(getGame().revolutionfail);
-        }
     }
 
 //    button method
