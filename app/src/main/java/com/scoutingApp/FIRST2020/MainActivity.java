@@ -338,9 +338,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().autoCellScore(1);
             }
             updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
-            colorSet(R.id.pg1, R.color.lightOrange) ;
-            colorSet(R.id.pg2, R.color.darkOrange) ;
-            colorSet(R.id.pg3, R.color.darkOrange) ;
+            colorSet(R.id.pg1, R.color.darkOrange) ;
+            colorSet(R.id.pg2, R.color.lightOrange) ;
+            colorSet(R.id.pg3, R.color.lightOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -354,9 +354,9 @@ public class MainActivity extends AppCompatActivity {
                         getGame().cellScore(2);
                     }
                     updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
-                    colorSet(R.id.pg2, R.color.lightOrange) ;
-                    colorSet(R.id.pg1, R.color.darkOrange) ;
-                    colorSet(R.id.pg3, R.color.darkOrange) ;
+                    colorSet(R.id.pg2, R.color.darkOrange) ;
+                    colorSet(R.id.pg1, R.color.lightOrange) ;
+                    colorSet(R.id.pg3, R.color.lightOrange) ;
                 }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -370,9 +370,9 @@ public class MainActivity extends AppCompatActivity {
                 getGame().cellScore(3);
             }
             updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
-            colorSet(R.id.pg3, R.color.lightOrange) ;
-            colorSet(R.id.pg2, R.color.darkOrange) ;
-            colorSet(R.id.pg1, R.color.darkOrange) ;
+            colorSet(R.id.pg3, R.color.darkOrange) ;
+            colorSet(R.id.pg2, R.color.lightOrange) ;
+            colorSet(R.id.pg1, R.color.lightOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }

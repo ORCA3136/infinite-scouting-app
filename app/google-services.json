@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "782050499682-ecg4e7jrr2oo5d52knd71nikcpb49i9n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scoutingApp.FIRST2020",
+            "certificate_hash": "143838084c9e14ffe3eda4fea4d5e222d64f4c84"
+          }
+        },
+        {
+          "client_id": "782050499682-9i69em83bcfposm0ous926u40im9cvk4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scoutingApp.FIRST2020",
+            "certificate_hash": "d29ef544b93e0e3b7f43ec5ea514c7d21eacfd1e"
+          }
+        },
+        {
           "client_id": "782050499682-rknf98f1p3o8ja2a2301mj4djhviu1if.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -62,9 +78,6 @@
       "api_key": [
         {
           "current_key": "AIzaSyAtGNQq5YeHipX0iBmVVC02_4At_83zixo"
-        },
-        {
-          "current_key": "AIzaSyCPbCdf6Qmt4VMXbGhPFhFJ6qmDIKQt2RY"
         }
       ],
       "services": {

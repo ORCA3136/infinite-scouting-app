@@ -12,16 +12,15 @@
         android:id="@+id/no_movement"
         android:layout_width="130dp"
         android:layout_height="77dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginStart="20dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
         android:text="no movement"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yellow_card" />
+        app:layout_constraintTop_toBottomOf="@+id/yellow_card"
+        app:layout_constraintVertical_bias="0.118" />
 
     <Switch
         android:id="@+id/red_card"
@@ -42,14 +41,14 @@
         android:id="@+id/yellow_card"
         android:layout_width="130dp"
         android:layout_height="77dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="186dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
         android:text="yellow card"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/red_card"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/is_climb_level" />
 
@@ -257,7 +256,7 @@
         android:layout_marginEnd="11dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
-        android:text="Switch"
+        android:text="Under Trench"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/ground_pickup"
         app:layout_constraintStart_toStartOf="parent"
