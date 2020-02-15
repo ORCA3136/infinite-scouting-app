@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.view.View;
@@ -73,8 +74,6 @@ public class PostSubmit extends AppCompatActivity {
     }
 
     // various methods called on submit
-
-
 
     boolean trench;
 
@@ -250,6 +249,7 @@ public class PostSubmit extends AppCompatActivity {
             getGame().getInfo().setTeam(Integer.valueOf(newString(R.id.team)));
             getGame().getInfo().setMatch(newString(R.id.match));
             getGame().getInfo().setAlliance(((ToggleButton) findViewById(R.id.toggleButton)).getText().toString());
+            getGame().setExtrasNotes(((EditText) findViewById(R.id.notes)).getText().toString());
             getGame().setExtrasFinalScore(Integer.valueOf(newString(R.id.typescorehere)));
             areTheyChecked();
             toSubmission();
