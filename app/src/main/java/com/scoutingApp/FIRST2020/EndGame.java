@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -17,10 +18,10 @@ public class EndGame extends AppCompatActivity {
     private int currentOrientation = 1;
 
     public InfiniteRecharge getGame() {
-        return (InfiniteRecharge) getIntent().getSerializableExtra("Game");
+        return (InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoEG");
     }
     public PersistentData getData() {
-        return (PersistentData) getIntent().getSerializableExtra("data");
+        return (PersistentData) getIntent().getSerializableExtra("datafromMAtoEG");
     }
 
     @Override
@@ -137,7 +138,7 @@ public class EndGame extends AppCompatActivity {
     public void goBack(View view) {
         Intent goBack = new Intent(getApplicationContext(), MainActivity.class);
         goBack.putExtra("gamefromEG", getGame());
-        goBack.putExtra("datafromEG", getGame());
+        goBack.putExtra("datafromEG", getData());
         startActivity(goBack);
     }
 
@@ -275,7 +276,6 @@ public class EndGame extends AppCompatActivity {
         setContentView(R.layout.endgame);
         FirebaseAnalytics.getInstance(this).logEvent("ENDCreate", savedInstanceState);
     }
-
 }
 
     

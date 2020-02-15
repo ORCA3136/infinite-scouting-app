@@ -23,10 +23,10 @@ public class Settings extends AppCompatActivity {
     //variables and objects
 
     public InfiniteRecharge getSpace() {
-        return (InfiniteRecharge) getIntent().getSerializableExtra("Game");
+        return (InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoS");
     }
     public PersistentData getData() {
-        return (PersistentData) getIntent().getSerializableExtra("data");
+        return (PersistentData) getIntent().getSerializableExtra("datafromMAtoS");
     }
     public static String allianceColor;
     public static int tabletNumber = 0;
@@ -142,8 +142,8 @@ public class Settings extends AppCompatActivity {
         @Override
         public void run() {
             Intent back2 = new Intent(getApplicationContext(), MainActivity.class);
-            back2.putExtra("game6", getSpace());
-            back2.putExtra("data6", getData());
+            back2.putExtra("gamefromS", getSpace());
+            back2.putExtra("datafromS", getData());
             if ((tabletNumber != 0) && (getData().getSheet().getSheetPage() == null)){
                 getData().setPerAlliance(allianceColor);
                 getData().getSheet().setSheetID("tab" + tabletNumber);

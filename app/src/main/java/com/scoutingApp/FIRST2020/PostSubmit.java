@@ -30,11 +30,11 @@ public class PostSubmit extends AppCompatActivity {
     boolean isItBlue;
 
     public InfiniteRecharge getGame() {
-        return (InfiniteRecharge) getIntent().getSerializableExtra("Game2");
+        return (InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoPS");
     }
 
     public PersistentData getData() {
-        return (PersistentData) getIntent().getSerializableExtra("data2");
+        return (PersistentData) getIntent().getSerializableExtra("datafromMAtoPS");
     }
 
     public void setData(PersistentData data) {
@@ -111,7 +111,7 @@ public class PostSubmit extends AppCompatActivity {
 
     public void goHome() {
         Intent main = new Intent(this, MainActivity.class);
-        main.putExtra("data4", getData());
+        main.putExtra("datafromPS", getData());
         startActivity(main);
     }
 
@@ -190,14 +190,51 @@ public class PostSubmit extends AppCompatActivity {
             getSub().setMainClimb(getGame().isEndGameHang());
             getSub().setNoshow(getGame().isNoShow());
             getSub().setNomovement(getGame().isMovement());
-            getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
-            getSub().setTeam(getGame().getInfo().getTeam());
-            getSub().setMatch(getGame().getInfo().getMatch());
+            try {
+                Objects.requireNonNull(getGame().getExtrasFinalScore()) ;
+                getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+            }
+            catch(Exception e){
+                getSub().setExtrasFinalScore(000);
+            }
+            try {
+                Objects.requireNonNull(getGame().getInfo().getTeam()) ;
+                getSub().setTeam(getGame().getInfo().getTeam());
+            }
+            catch(Exception e){
+                getSub().setTeam(3136);
+            }
+            try {
+                Objects.requireNonNull(getGame().getInfo().getMatch()) ;
+            ;getSub().setMatch(getGame().getInfo().getMatch());
+            }
+            catch(Exception e){
+                getSub().setMatch("000");
+            }
+
+            try {
+                Objects.requireNonNull(getGame().getInfo().getName()) ;
             getSub().setName(getGame().getInfo().getName());
+            }
+            catch(Exception e){
+                getSub().setMatch("Jackie Doe");
+            }
+            try {
+                Objects.requireNonNull(getGame().getExtrasNotes()) ;
             getSub().setNotes(getGame().getExtrasNotes());
-            getSub().setAlliance(getGame().getInfo().getAlliance());
+            }
+            catch(Exception e){
+                getSub().setNotes("000");
+            }
             getSub().setRevolve(getGame().isRevolved());
             getSub().setSelect(getGame().isSelected());
+            try {
+                Objects.requireNonNull(getGame().getInfo().getAlliance()) ;
+                getSub().setAlliance(getGame().getInfo().getAlliance());
+            }
+            catch(Exception e){
+              getSub().setAlliance("GREEN");
+            }
             getSub().setPg1(getGame().getLowerCell());
             getSub().setPg2(getGame().getOuterCell());
             getSub().setPg3(getGame().getInnerCell());
@@ -221,26 +258,19 @@ public class PostSubmit extends AppCompatActivity {
 //    button method
 
     public void areTheyChecked() {
+        setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
 
-//        setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
-//
-//
-//        setGround_pickup( ((Switch)findViewById(R.id.ground_pickup)).isChecked());
-//
-//
-//        setClimblevel( ((Switch)findViewById(R.id.is_climb_level)).isChecked());
-//
-//
-//        setNoshow( ((Switch)findViewById(R.id.no_show)).isChecked());
-//
-//        setYellowcard( ((Switch)findViewById(R.id.yellow_card)).isChecked());
-//
-//
-//        setRedcard( ((Switch)findViewById(R.id.red_card)).isChecked());
-//
-//
-//        setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
+        setGround_pickup( ((Switch)findViewById(R.id.ground_pickup)).isChecked());
 
+        setClimblevel( ((Switch)findViewById(R.id.is_climb_level)).isChecked());
+
+        setNoshow( ((Switch)findViewById(R.id.no_show)).isChecked());
+
+        setYellowcard( ((Switch)findViewById(R.id.yellow_card)).isChecked());
+
+        setRedcard( ((Switch)findViewById(R.id.red_card)).isChecked());
+
+        setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
     }
 
     public void submitButtonPageTwo(View view) {
@@ -293,6 +323,6 @@ public class PostSubmit extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         setData((PersistentData) savedInstanceState.getSerializable("DATA"));
-        setGame((InfiniteRecharge) savedInstanceState.getSerializable("SPACE"));
+        setGame((InfiniteRecharge) savedInstanceState.getSerializable("GAME"));
     }
 }

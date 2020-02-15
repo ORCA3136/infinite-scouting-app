@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     public Intent getSettings() {
         Intent settings = new Intent(this, Settings.class);
-        settings.putExtra("Game", getGame());
-        settings.putExtra("data", getData());
+        settings.putExtra("gamefromMAtoS", getGame());
+        settings.putExtra("datafromMAtoS", getData());
         return settings;
     }
 
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             revolutionStatic = true;
                             Objects.requireNonNull(RevolutionDialog.this.getDialog()).dismiss();
-                            mn.runOnUiThread(SC);
+                            mn.runOnUiThread(RC);
                         }
                     })
             ;
@@ -229,25 +229,28 @@ public class MainActivity extends AppCompatActivity {
         threadStart.start();
     }
     public void checkDataGame() {
-        if (getIntent().hasExtra("game5")) {
-            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game5"));
-        } else if (getIntent().hasExtra("game6")) {
-            setGame((InfiniteRecharge) getIntent().getSerializableExtra("game6"));
+        if (getIntent().hasExtra("gamefromS")) {
+            setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromS"));
+        } else if (getIntent().hasExtra("gamefromEG")) {
+            setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromEG"));
         } else {
             setGame(new InfiniteRecharge());
         }
-        if (getIntent().hasExtra("data5")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data5"));
-        } else if (getIntent().hasExtra("data4")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data4"));
-        } else if (getIntent().hasExtra("data6")) {
-            setData((PersistentData) getIntent().getSerializableExtra("data6"));
+        if (getIntent().hasExtra("datafromS")) {
+            setData((PersistentData) getIntent().getSerializableExtra("datafromS"));
+        } else if (getIntent().hasExtra("datafromPS")) {
+            setData((PersistentData) getIntent().getSerializableExtra("datafromPS"));
+        } else if (getIntent().hasExtra("datafromEG")) {
+            setData((PersistentData) getIntent().getSerializableExtra("datafromEG"));
         } else {
             setData(new PersistentData());
         }
     }
     public void colorSet(int id, int color) {
-        findViewById(id).setBackgroundColor(getResources().getColor(color));
+        findViewById(R.id.pg2).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.pg3).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.pg1).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(id).getBackground().setTint(getResources().getColor(color));
     }
 
     // threads
@@ -256,14 +259,16 @@ public class MainActivity extends AppCompatActivity {
     class RevColor implements Runnable {
         @Override
         public void run() {
-            findViewById(R.id.revolution).setBackgroundColor(getResources().getColor(R.color.darkGreen));
+            findViewById(R.id.revolution).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+            findViewById(R.id.revolution).getBackground().setTint(getResources().getColor(R.color.darkOrange));
         }
     }
 
     class SelColor implements Runnable {
         @Override
         public void run() {
-            findViewById(R.id.selection).setBackgroundColor(getResources().getColor(R.color.darkGreen));
+                findViewById(R.id.selection).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+                findViewById(R.id.selection).getBackground().setTint(getResources().getColor(R.color.darkOrange));
         }
     }
 
@@ -304,8 +309,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             Intent psPage = new Intent(getApplicationContext(), PostSubmit.class);
-            psPage.putExtra("Game2", getGame());
-            psPage.putExtra("data2", getData());
+            psPage.putExtra("gamefromMAtoPS", getGame());
+            psPage.putExtra("datafromMAtoPS", getData());
             startActivity(psPage);
         }
     }
@@ -339,8 +344,6 @@ public class MainActivity extends AppCompatActivity {
             }
             updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
             colorSet(R.id.pg1, R.color.darkOrange) ;
-            colorSet(R.id.pg2, R.color.lightOrange) ;
-            colorSet(R.id.pg3, R.color.lightOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -355,8 +358,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
                     colorSet(R.id.pg2, R.color.darkOrange) ;
-                    colorSet(R.id.pg1, R.color.lightOrange) ;
-                    colorSet(R.id.pg3, R.color.lightOrange) ;
                 }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -371,8 +372,6 @@ public class MainActivity extends AppCompatActivity {
             }
             updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
             colorSet(R.id.pg3, R.color.darkOrange) ;
-            colorSet(R.id.pg2, R.color.lightOrange) ;
-            colorSet(R.id.pg1, R.color.lightOrange) ;
         }
         else makeADialog("Please start the game!", "gameStart");
     }
@@ -408,8 +407,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void endGameHang(View view) {
         Intent egPage = new Intent(getApplicationContext(), EndGame.class);
-        egPage.putExtra("Game", getGame());
-        egPage.putExtra("data", getData());
+        egPage.putExtra("gamefromMAtoEG", getGame());
+        egPage.putExtra("datafromMAtoEG", getData());
         startActivity(egPage);
     }
 
@@ -447,7 +446,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         savedInstanceState.putSerializable("DATA", getData());
         savedInstanceState.putSerializable("GAME", getGame());
-        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -455,7 +453,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         setData((PersistentData) savedInstanceState.getSerializable("DATA"));
-        setGame((InfiniteRecharge) savedInstanceState.getSerializable("SPACE"));
-        FirebaseAnalytics.getInstance(this).logEvent("MAINCreate", savedInstanceState);
+        setGame((InfiniteRecharge) savedInstanceState.getSerializable("GAME"));
     }
 }
