@@ -397,6 +397,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     static Runnable ST;
 
     public void submitButton(View view) {
@@ -406,10 +407,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void endGameHang(View view) {
-        Intent egPage = new Intent(getApplicationContext(), EndGame.class);
-        egPage.putExtra("gamefromMAtoEG", getGame());
-        egPage.putExtra("datafromMAtoEG", getData());
-        startActivity(egPage);
+        if (getData().getTimerPause() > 120) {
+            Intent egPage = new Intent(getApplicationContext(), EndGame.class);
+            egPage.putExtra("gamefromMAtoEG", getGame());
+            egPage.putExtra("datafromMAtoEG", getData());
+            startActivity(egPage);
+        }
+        else {
+            makeADialog("Endgame has yet to begin", "END");
+        }
     }
 
     //on create, on start, save state, etc (overrides)
