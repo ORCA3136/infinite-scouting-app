@@ -54,17 +54,20 @@ public class InfiniteRecharge implements Serializable {
                 "      PROGRAMMING:" + System.lineSeparator() +
                 "            Cassidy Schiller" + System.lineSeparator() +
                 "            Mac Fraser" + System.lineSeparator() +
+                "            Bradley Harker" + System.lineSeparator() +
                 "            Henry Morris" + System.lineSeparator() +
                 "            Jackie Lawton" + System.lineSeparator() +
+                "            Cody Hale" + System.lineSeparator() +
                 "      Layout and Design:" + System.lineSeparator() +
                 "            Cassidy Schiller" + System.lineSeparator() +
+                "            Jackie Lawton" + System.lineSeparator() +
+                "            Emma Harper" + System.lineSeparator() +
                 "            Sam Slopey" + System.lineSeparator() +
-                "            Em Brown" + System.lineSeparator() +
                 "            Khai Little" + System.lineSeparator() +
-                "Want to see your name here? Contact your team's collective representative to find out how to get involved with app development!";
+                "Want to see your name here? Contact Cassidy Schiller at whoistherealjendavis@gmail.com or in person to find out how to get involved with app development!";
     }
 
-    int climbFail ;
+    private int climbFail ;
     int selectionfail ;
     int revolutionfail ;
 
