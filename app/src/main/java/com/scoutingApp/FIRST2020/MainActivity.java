@@ -143,6 +143,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static class TimeOver extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            name.setMessage("Match time is done, you are being sent to the Post Submit page to submit your data")
+                    .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
+                            Thread threadStart = new Thread(ST);
+                            threadStart.start();
+                        }
+                    });
+            return name.create();
+        }
+    }
+
+    static Runnable ST;
+
     class RemindTask extends TimerTask {
         public void run() {
             getGame().setAutonomous(false);
@@ -307,9 +326,11 @@ public class MainActivity extends AppCompatActivity {
     // button methods
 
     public void settingsButton(View view) {
-        SettingsButtonThread thread = new SettingsButtonThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        if (getGame() != null){
+            SettingsButtonThread thread = new SettingsButtonThread();
+            Thread threadStart = new Thread(thread);
+            threadStart.start();
+        }
     }
 
     public void revolutionButton(View view) {
@@ -390,26 +411,6 @@ public class MainActivity extends AppCompatActivity {
             getGame().setAutonomous(false);
         }
     }
-
-    public static class TimeOver extends DialogFragment {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-            name.setMessage("Match time is done, you are being sent to the Post Submit page to submit your data")
-                    .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
-                            Thread threadStart = new Thread(ST);
-                            threadStart.start();
-                        }
-                    });
-            return name.create();
-        }
-    }
-
-
-    static Runnable ST;
 
     public void submitButton(View view) {
         SubmitButtonThread thread = new SubmitButtonThread();
