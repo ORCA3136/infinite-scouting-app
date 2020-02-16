@@ -183,9 +183,17 @@ public class EndGame extends AppCompatActivity {
 
     public void climbFail(View view) {
         getGame().setClimbFail(getGame().getClimbFail() + 1);
+        findViewById(R.id.endGamePark).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.shefell).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.shefell).getBackground().setTint(getResources().getColor(R.color.darkOrange));
+        findViewById(R.id.endGamePark).getBackground().setTint(getResources().getColor(R.color.lightOrange));
     }
     public void parkButton(View view) {
         getGame().park();
+        findViewById(R.id.endGamePark).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.shefell).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
+        findViewById(R.id.shefell).getBackground().setTint(getResources().getColor(R.color.lightOrange));
+        findViewById(R.id.endGamePark).getBackground().setTint(getResources().getColor(R.color.darkOrange));
     }
 
     public void midLevel(View view) {
