@@ -230,13 +230,13 @@ public class InfiniteRecharge implements Serializable {
     
     void cellScore(int level) {
         if (level == 1) {
-            setLowerCell(getLowerCell() + 1);
+            if (getLowerCell() <= 60) {setLowerCell(getLowerCell() + 1);}
         }
         else if (level == 2) {
-            setOuterCell(getOuterCell() + 1);
+           if (getOuterCell() <= 60) {setOuterCell(getOuterCell() + 1);}
         }
         else if (level == 3) {
-            setInnerCell(getInnerCell() + 1);
+           if (getInnerCell() <= 60) {setInnerCell(getInnerCell() + 1);}
         }
     }
 

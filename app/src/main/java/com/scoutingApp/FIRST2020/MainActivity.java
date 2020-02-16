@@ -381,12 +381,35 @@ public class MainActivity extends AppCompatActivity {
                 getGame().setAutonomous(true);
                 stormDelay(20 - getTimerPause());
             }
+            if (getTimerPause() == 155) {
+                DialogFragment newFragment = new TimeOver();
+                newFragment.show(getSupportFragmentManager(), "TIME");
+            }
         } else {
             getGame().setMainStart(false);
             ((Button) findViewById(R.id.start3)).setText(R.string.start);
             getGame().setAutonomous(false);
         }
     }
+
+    public static class TimeOver extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            name.setMessage("Match time is done, you are being sent to the Post Submit page to submit your data")
+                    .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
+                            Thread threadStart = new Thread(ST);
+                            threadStart.start();
+                        }
+                    });
+            return name.create();
+        }
+    }
+
+    static Runnable ST;
 
     public void submitButton(View view) {
         SubmitButtonThread thread = new SubmitButtonThread();
@@ -429,6 +452,8 @@ public class MainActivity extends AppCompatActivity {
         mn = MainActivity.this;
         SC = new SelColor();
         RC = new RevColor();
+        //new stat run = new submitbuttonthread
+        ST = new SubmitButtonThread();
     }
 
     @Override

@@ -33,17 +33,18 @@
         app:layout_constraintTop_toBottomOf="@+id/powerGenerator">
 
         <Button
-            android:id="@+id/pg1"
+            android:id="@+id/pg3"
             style="@style/Widget.AppCompat.ButtonBar"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:backgroundTint="@color/lightOrange"
-            android:onClick="pg1"
-            android:text="@string/lower"
+            android:backgroundTint="#d2b048"
+            android:onClick="pg3"
+            android:text="@string/inner"
             android:textAllCaps="true"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="inner" />
 
         <Button
             android:id="@+id/pg2"
@@ -57,19 +58,19 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
+
         <Button
-            android:id="@+id/pg3"
+            android:id="@+id/pg1"
             style="@style/Widget.AppCompat.ButtonBar"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:backgroundTint="#d2b048"
-            android:onClick="pg3"
-            android:text="@string/inner"
+            android:backgroundTint="@color/lightOrange"
+            android:onClick="pg1"
+            android:text="@string/lower"
             android:textAllCaps="true"
             android:textSize="30sp"
-            android:textStyle="bold"
-            tools:text="inner" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
