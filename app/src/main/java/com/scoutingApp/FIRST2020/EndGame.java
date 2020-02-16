@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -15,11 +16,23 @@ public class EndGame extends AppCompatActivity {
 
     private int currentOrientation = 1;
 
-    public InfiniteRecharge getGame() {
-        return (InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoEG");
+    public InfiniteRecharge game;
+    public PersistentData data;
+
+    public void setGame(InfiniteRecharge game) {
+        this.game = game;
     }
+
+    public void setData(PersistentData data) {
+        this.data = data;
+    }
+
+    public InfiniteRecharge getGame() {
+        return game;
+    }
+
     public PersistentData getData() {
-        return (PersistentData) getIntent().getSerializableExtra("datafromMAtoEG");
+        return data;
     }
 
     @Override
@@ -273,6 +286,22 @@ public class EndGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endgame);
         FirebaseAnalytics.getInstance(this).logEvent("ENDCreate", savedInstanceState);
+        setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoEG"));
+        setData((PersistentData) getIntent().getSerializableExtra("datafromMAtoEG"));
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        savedInstanceState.putSerializable("DATA", getData());
+        savedInstanceState.putSerializable("GAME", getGame());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        setData((PersistentData) savedInstanceState.getSerializable("DATA"));
+        setGame((InfiniteRecharge) savedInstanceState.getSerializable("GAME"));
     }
 }
 

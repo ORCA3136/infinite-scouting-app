@@ -22,12 +22,25 @@ import java.util.concurrent.ExecutionException;
 public class Settings extends AppCompatActivity {
     //variables and objects
 
-    public InfiniteRecharge getSpace() {
-        return (InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoS");
+    public InfiniteRecharge game;
+    public PersistentData data;
+
+    public void setGame(InfiniteRecharge game) {
+        this.game = game;
     }
+
+    public void setData(PersistentData data) {
+        this.data = data;
+    }
+
+    public InfiniteRecharge getGame() {
+        return game;
+    }
+
     public PersistentData getData() {
-        return (PersistentData) getIntent().getSerializableExtra("datafromMAtoS");
+        return data;
     }
+
     public static String allianceColor;
     public static int tabletNumber = 0;
     String lineBreak = System.lineSeparator();
@@ -39,8 +52,8 @@ public class Settings extends AppCompatActivity {
         nametext.setText(content);
     }
     private void displaySet(String string) {
-        getSpace().setSettingsDisplay(string);
-        updateTextView(getSpace().getSettingsDisplay(), R.id.settingsDisplay);
+        getGame().setSettingsDisplay(string);
+        updateTextView(getGame().getSettingsDisplay(), R.id.settingsDisplay);
     }
     public static class Dialogs2 extends DialogFragment {
         @NonNull
@@ -142,7 +155,7 @@ public class Settings extends AppCompatActivity {
         @Override
         public void run() {
             Intent back2 = new Intent(getApplicationContext(), MainActivity.class);
-            back2.putExtra("gamefromS", getSpace());
+            back2.putExtra("gamefromS", getGame());
             back2.putExtra("datafromS", getData());
             if ((tabletNumber != 0) && (getData().getSheet().getSheetPage() == null)){
                 getData().setPerAlliance(allianceColor);
@@ -172,11 +185,11 @@ public class Settings extends AppCompatActivity {
         displaySet(cache);
     }
     public void helpButtonTwo(View view) {
-        displaySet(getSpace().getSettingsHelpInfo());
+        displaySet(getGame().getSettingsHelpInfo());
     }
     public void clearButton(View view) {
-        getSpace().setSettingsDisplay("");
-        updateTextView(getSpace().getSettingsDisplay(), R.id.settingsDisplay);
+        getGame().setSettingsDisplay("");
+        updateTextView(getGame().getSettingsDisplay(), R.id.settingsDisplay);
     }
     public void backHome2(View view){
         HomeThread thread = new HomeThread();
@@ -184,10 +197,26 @@ public class Settings extends AppCompatActivity {
         threadStart.start();
     }
 
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         FirebaseAnalytics.getInstance(this).logEvent("SETTINGSCreate", savedInstanceState);
+        setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromMAtoS"));
+        setData((PersistentData) getIntent().getSerializableExtra("datafromMAtoS"));
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        savedInstanceState.putSerializable("DATA", getData());
+        savedInstanceState.putSerializable("GAME", getGame());
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        setData((PersistentData) savedInstanceState.getSerializable("DATA"));
+        setGame((InfiniteRecharge) savedInstanceState.getSerializable("GAME"));
     }
 }
