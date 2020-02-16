@@ -94,6 +94,8 @@ public class Settings extends AppCompatActivity {
                             allianceColor = "Blue";
                         }
                         Objects.requireNonNull(Dialogs2.this.getDialog()).cancel();
+                        DialogFragment newFragment = new Settings.MatchNumber();
+                        newFragment.show(Objects.requireNonNull(getFragmentManager()), "Matchnumber");
                     }
                 });
             return builder.create();
@@ -127,7 +129,30 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    static int matchNum ;
 
+    public static class MatchNumber extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            LayoutInflater inflater = requireActivity().getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.password_dialog3, null))
+                    .setPositiveButton("yup!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            matchNum =  Integer.parseInt(((TextView) Objects.requireNonNull(getDialog()).findViewById(R.id.matchNumber)).getText().toString());
+
+                            Objects.requireNonNull(MatchNumber.this.getDialog()).cancel();
+                        }
+                    })
+                    .setNegativeButton("nope!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Objects.requireNonNull(MatchNumber.this.getDialog()).cancel();
+                        }
+                    });
+            return builder.create();
+        }
+    }
 
     public String stringMe(Info obj) {
         return obj.getName() + " " +
@@ -157,6 +182,7 @@ public class Settings extends AppCompatActivity {
             Intent back2 = new Intent(getApplicationContext(), MainActivity.class);
             back2.putExtra("gamefromS", getGame());
             back2.putExtra("datafromS", getData());
+            getData().setRowNumber(matchNum);
             if ((tabletNumber != 0) && (getData().getSheet().getSheetPage() == null)){
                 getData().setPerAlliance(allianceColor);
                 getData().getSheet().setSheetID("tab" + tabletNumber);

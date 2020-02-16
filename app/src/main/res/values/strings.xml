@@ -92,6 +92,7 @@
     <string name="red_card2">Red Card?</string>
     <string name="eg">ENDGAME</string>
     <string name="autonomous">AUTONOMOUS</string>
+    <string name="set_match_number">Set match number</string>
     <string-array name="CargoCargo">
         <item>Cargo (1)</item>
         <item>Cargo (2)</item>
