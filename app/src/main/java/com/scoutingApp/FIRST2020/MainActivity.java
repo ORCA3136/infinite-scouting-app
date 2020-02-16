@@ -156,18 +156,18 @@ public class MainActivity extends AppCompatActivity {
                 TimerCheckThread thread = new TimerCheckThread();
                 Thread threadStart = new Thread(thread);
                 runOnUiThread(threadStart);
-                if (getData().getTimerPause() == 155) {
-                    getGame().setMainStart(false);
-                }
-                if (getData().getTimerPause() == 20) {
+                if (getData().getTimerPause() >= 20) {
                     TeleOpTimer tel = new TeleOpTimer();
                     Thread telThread = new Thread(tel);
                     runOnUiThread(telThread);
                 }
-                if (getData().getTimerPause() == 120) {
+                if (getData().getTimerPause() >= 120) {
                     EndGameTimer end = new EndGameTimer();
                     Thread endThread = new Thread(end);
                     runOnUiThread(endThread);
+                }
+                if (getData().getTimerPause() >= 155) {
+                    getGame().setMainStart(false);
                 }
             }
         }
@@ -230,6 +230,17 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.pg3).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
         findViewById(R.id.pg1).setBackground(getDrawable(R.drawable.common_google_signin_btn_icon_light_normal_background));
         findViewById(id).getBackground().setTint(getResources().getColor(color));
+    }
+    public void persistence() {
+        if (getData().getTimerPause() > 0) {
+            Timer pauser = new Timer();
+            pauser.scheduleAtFixedRate(new RemindTask2(), 1000, 1000);
+        }
+        if (getGame().getAutoInnerCell() >= 0 || getGame().getAutoOuterCell() >= 0 || getGame().getAutoLowerCell() >= 0 ||getGame().getInnerCell() >= 0 || getGame().getOuterCell() >= 0 || getGame().getLowerCell() >= 0) {
+            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
+            updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
+            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
+        }
     }
 
     // threads
@@ -443,10 +454,10 @@ public class MainActivity extends AppCompatActivity {
         }
         updateDisplayInfo();
         dialogCheck();
+        persistence();
         mn = MainActivity.this;
         SC = new SelColor();
         RC = new RevColor();
-        //new stat run = new submitbuttonthread
         ST = new SubmitButtonThread();
     }
 

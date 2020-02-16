@@ -26,11 +26,11 @@ class PersistentData implements Serializable {
     }
     //getters and setters
 
-    public int getTimerPause() {
+    int getTimerPause() {
         return timerPause;
     }
 
-    public void setTimerPause(int timerPause) {
+    void setTimerPause(int timerPause) {
         this.timerPause = timerPause;
     }
 
