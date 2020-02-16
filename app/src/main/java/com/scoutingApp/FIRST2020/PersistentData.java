@@ -11,6 +11,7 @@ class PersistentData implements Serializable {
 
     //variables that remain consistent
 
+    private int timerPause;
     private String perAlliance;
     private int rowNumber = 0;
     private SheetsAccess sheet = new SheetsAccess();
@@ -24,6 +25,14 @@ class PersistentData implements Serializable {
         PersistentData.tabNum = tabNum;
     }
     //getters and setters
+
+    public int getTimerPause() {
+        return timerPause;
+    }
+
+    public void setTimerPause(int timerPause) {
+        this.timerPause = timerPause;
+    }
 
     SheetsAccess getSheet() {
         return sheet;

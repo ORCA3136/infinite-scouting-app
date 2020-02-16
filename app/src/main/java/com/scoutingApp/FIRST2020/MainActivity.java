@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private PersistentData data = null;
     private InfiniteRecharge game = null;
     private static String dialogMessage = "";
-    private int timerPause = 0;
     static Intent settings;
     static boolean selectionStatic = false;
     static boolean revolutionStatic = false;
@@ -41,17 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void setData(PersistentData data) {
         this.data = data;
-    }
-
-    public int getTimerPause() {
-        getGame().setSelected(selectionStatic);
-        getGame().setRevolved(revolutionStatic);
-
-        return timerPause;
-    }
-
-    public void setTimerPause(int timerPause) {
-        this.timerPause = timerPause;
     }
 
     public InfiniteRecharge getGame() { return game; }
@@ -149,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public void stormDelay(int seconds) {
         Timer timer = new Timer();
         timer.schedule(new RemindTask(), seconds * 1000);
-        if (getTimerPause() == 0) {
+        if (getData().getTimerPause() == 0) {
             Timer pauser = new Timer();
             pauser.scheduleAtFixedRate(new RemindTask2(), 1000, 1000);
         }
@@ -164,19 +152,19 @@ public class MainActivity extends AppCompatActivity {
     class RemindTask2 extends TimerTask {
         public void run() {
             if (getGame().isMainStart()) {
-                setTimerPause(timerPause + 1);
+                getData().setTimerPause(getData().getTimerPause() + 1);
                 TimerCheckThread thread = new TimerCheckThread();
                 Thread threadStart = new Thread(thread);
                 runOnUiThread(threadStart);
-                if (getTimerPause() == 155) {
+                if (getData().getTimerPause() == 155) {
                     getGame().setMainStart(false);
                 }
-                if (getTimerPause() == 20) {
+                if (getData().getTimerPause() == 20) {
                     TeleOpTimer tel = new TeleOpTimer();
                     Thread telThread = new Thread(tel);
                     runOnUiThread(telThread);
                 }
-                if (getTimerPause() == 120) {
+                if (getData().getTimerPause() == 120) {
                     EndGameTimer end = new EndGameTimer();
                     Thread endThread = new Thread(end);
                     runOnUiThread(endThread);
@@ -282,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             TextView timerText = findViewById(R.id.timer);
-            timerText.setText(String.valueOf(getTimerPause()));
+            timerText.setText(String.valueOf(getData().getTimerPause()));
         }
     }
 
@@ -375,13 +363,13 @@ public class MainActivity extends AppCompatActivity {
         if (!getGame().isMainStart()) {
             getGame().setMainStart(true);
             ((Button) findViewById(R.id.start3)).setText(R.string.stop);
-            if (getTimerPause() == 0) {
+            if (getData().getTimerPause() == 0) {
                 stormDelay(20);
-            } else if (getTimerPause() <= 19) {
+            } else if (getData().getTimerPause() <= 19) {
                 getGame().setAutonomous(true);
-                stormDelay(20 - getTimerPause());
+                stormDelay(20 - getData().getTimerPause());
             }
-            if (getTimerPause() == 155) {
+            if (getData().getTimerPause() == 155) {
                 DialogFragment newFragment = new TimeOver();
                 newFragment.show(getSupportFragmentManager(), "TIME");
             }
