@@ -334,96 +334,113 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void revolutionButton(View view) {
-        DialogFragment newFragment = new RevolutionDialog();
-        newFragment.show(getSupportFragmentManager(), "Rev");
+        if (getGame() != null) {
+            DialogFragment newFragment = new RevolutionDialog();
+            newFragment.show(getSupportFragmentManager(), "Rev");
+        }
     }
 
     public void selectionButton (View view){
-        DialogFragment newFragment = new SelectionDialog();
-        newFragment.show(getSupportFragmentManager(), "Sel");
+        if (getGame() != null) {
+            DialogFragment newFragment = new SelectionDialog();
+            newFragment.show(getSupportFragmentManager(), "Sel");
+        }
     }
 
     public void pg1(View view) {
-        if (getGame().isMainStart()) {
-            if (!getGame().isAutonomous()) {
-                getGame().cellScore(1);
-            }
-            else {
-                getGame().autoCellScore(1);
-            }
-            updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
-            colorSet(R.id.pg1, R.color.darkOrange) ;
+        if (getGame() != null) {
+            if (getGame().isMainStart()) {
+                if (!getGame().isAutonomous()) {
+                    getGame().cellScore(1);
+                } else {
+                    getGame().autoCellScore(1);
+                }
+                updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
+                colorSet(R.id.pg1, R.color.darkOrange);
+            } else makeADialog("Please start the game!", "gameStart");
         }
-        else makeADialog("Please start the game!", "gameStart");
     }
 
     public void pg2(View view) {
-                if (getGame().isMainStart()) {
-                    if (getGame().isAutonomous()) {
-                        getGame().autoCellScore(2);
-                    }
-                    else {
-                        getGame().cellScore(2);
-                    }
-                    updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
-                    colorSet(R.id.pg2, R.color.darkOrange) ;
+        if (getGame() != null) {
+            if (getGame().isMainStart()) {
+                if (getGame().isAutonomous()) {
+                    getGame().autoCellScore(2);
+                } else {
+                    getGame().cellScore(2);
                 }
-        else makeADialog("Please start the game!", "gameStart");
+                updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
+                colorSet(R.id.pg2, R.color.darkOrange);
+            }
+            else makeADialog("Please start the game!", "gameStart");
+        }
     }
 
     public void pg3(View view) {
-        if (getGame().isMainStart()) {
-            if (getGame().isAutonomous()) {
-                getGame().autoCellScore(3);
-            }
-            else {
-                getGame().cellScore(3);
-            }
-            updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
-            colorSet(R.id.pg3, R.color.darkOrange) ;
+        if (getGame() != null) {
+            if (getGame().isMainStart()) {
+                if (getGame().isAutonomous()) {
+                    getGame().autoCellScore(3);
+                } else {
+                    getGame().cellScore(3);
+                }
+                updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
+                colorSet(R.id.pg3, R.color.darkOrange);
+            } else
+                makeADialog("Please start the game!", "gameStart");
         }
-        else makeADialog("Please start the game!", "gameStart");
     }
 
     public void helpButton(View view) {
-        makeADialog(getGame().getMainHelpInfo(), "help");
+        if (getGame() != null) {
+            makeADialog(getGame().getMainHelpInfo(), "help");
+        }
     }
 
     public void startButton(View view) {
-        if(getGame().isMainStart()) {colorSet(R.id.start3, R.color.darkOrange); }
-        else {colorSet(R.id.start3, R.color.lightOrange) ;}
-        if (!getGame().isMainStart()) {
-            getGame().setMainStart(true);
-            ((Button) findViewById(R.id.start3)).setText(R.string.stop);
-            if (getData().getTimerPause() == 0) {
-                stormDelay(20);
-            } else if (getData().getTimerPause() <= 19) {
-                getGame().setAutonomous(true);
-                stormDelay(20 - getData().getTimerPause());
+        if (getGame() != null) {
+            if (getGame().isMainStart()) {
+                colorSet(R.id.start3, R.color.darkOrange);
+            } else {
+                colorSet(R.id.start3, R.color.lightOrange);
             }
-            if (getData().getTimerPause() == 155) {
-                DialogFragment newFragment = new TimeOver();
-                newFragment.show(getSupportFragmentManager(), "TIME");
+            if (!getGame().isMainStart()) {
+                getGame().setMainStart(true);
+                ((Button) findViewById(R.id.start3)).setText(R.string.stop);
+                if (getData().getTimerPause() == 0) {
+                    stormDelay(20);
+                } else if (getData().getTimerPause() <= 19) {
+                    getGame().setAutonomous(true);
+                    stormDelay(20 - getData().getTimerPause());
+                }
+                if (getData().getTimerPause() == 155) {
+                    DialogFragment newFragment = new TimeOver();
+                    newFragment.show(getSupportFragmentManager(), "TIME");
+                }
+            } else {
+                getGame().setMainStart(false);
+                ((Button) findViewById(R.id.start3)).setText(R.string.start);
+                getGame().setAutonomous(false);
             }
-        } else {
-            getGame().setMainStart(false);
-            ((Button) findViewById(R.id.start3)).setText(R.string.start);
-            getGame().setAutonomous(false);
         }
     }
 
     public void submitButton(View view) {
-        SubmitButtonThread thread = new SubmitButtonThread();
-        Thread threadStart = new Thread(thread);
-        threadStart.start();
+        if (getGame() != null) {
+            SubmitButtonThread thread = new SubmitButtonThread();
+            Thread threadStart = new Thread(thread);
+            threadStart.start();
+        }
     }
 
     public void endGameHang(View view) {
+        if (getGame() != null){
         if (getData().getTimerPause() > 120) {
             Intent egPage = new Intent(getApplicationContext(), EndGame.class);
             egPage.putExtra("gamefromMAtoEG", getGame());
             egPage.putExtra("datafromMAtoEG", getData());
             startActivity(egPage);
+        }
         }
         else {
             makeADialog("Endgame has yet to begin", "END");
