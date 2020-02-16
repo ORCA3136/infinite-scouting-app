@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class EndGame extends AppCompatActivity {
@@ -30,7 +28,7 @@ public class EndGame extends AppCompatActivity {
         int yCoordinates = ((int) event.getY());
 
         if (currentOrientation == 1) {
-                if ((yCoordinates >= 1000 && xCoordinates <= 540) || (yCoordinates <= 1000 && xCoordinates >= 540)) {
+                if ((yCoordinates >= 512 && xCoordinates <= 300) || (yCoordinates <= 512 && xCoordinates >= 300)) {
 
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         ConstraintSet constraintSet = new ConstraintSet();
@@ -64,7 +62,7 @@ public class EndGame extends AppCompatActivity {
 
         if (currentOrientation == 2) {
 
-            if ((yCoordinates <= 1000 && xCoordinates <= 540) || (yCoordinates >= 1000 && xCoordinates >= 540)) {
+            if ((yCoordinates <= 512 && xCoordinates <= 300) || (yCoordinates >= 512 && xCoordinates >= 300)) {
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     ConstraintSet constraintSet = new ConstraintSet();
@@ -82,7 +80,7 @@ public class EndGame extends AppCompatActivity {
         }
 
         if (currentOrientation == 3) {
-            if ((yCoordinates >= 1000 && xCoordinates <= 540) || (yCoordinates <= 1000 && xCoordinates >= 540)) {
+            if ((yCoordinates >= 512 && xCoordinates <= 300) || (yCoordinates <= 512 && xCoordinates >= 300)) {
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     ConstraintSet constraintSet = new ConstraintSet();

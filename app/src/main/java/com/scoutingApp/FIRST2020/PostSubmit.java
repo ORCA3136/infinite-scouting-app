@@ -128,43 +128,39 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setMainClimb(getGame().isEndGameHang());
         getSub().setNoshow(getGame().isNoShow());
         getSub().setNomovement(getGame().isMovement());
-        try {
-            assert (getGame().getInfo().getTeam()) != 0 ;
+        if ((getGame().getInfo().getTeam()) != 0) {
             getSub().setTeam(getGame().getInfo().getTeam());
         }
-        catch(Exception e){
-            getSub().setTeam(3136);
+        else {
+            getSub().setTeam(9999);
         }
-        try {
-            assert !getGame().getInfo().getMatch().equals("0");
+        if (!getGame().getInfo().getMatch().equals("0") && !getGame().getInfo().getMatch().equals("")) {
             getSub().setMatch(getGame().getInfo().getMatch());
         }
-        catch(Exception e){
-            getSub().setMatch("000");
+        else {
+            getSub().setMatch("-1");
         }
-        try {
-            assert !getGame().getInfo().getName().equals("0");
+        if (!getGame().getInfo().getName().equals("0")) {
             getSub().setName(getGame().getInfo().getName());
         }
-        catch(Exception e){
-            getSub().setMatch("Jackie Doe");
+        else {
+            getSub().setName("Jackie Doe");
         }
-        try {
-            assert !getGame().getExtrasNotes().equals("");
+        if (!getGame().getExtrasNotes().equals("") && getGame().getExtrasNotes() != null) {
             getSub().setNotes(getGame().getExtrasNotes());
         }
-        catch(Exception e){
-            getSub().setNotes("000");
+        else {
+            getSub().setNotes("No Notes");
         }
         getSub().setRevolve(getGame().isRevolved());
         getSub().setSelect(getGame().isSelected());
-        try {
-            assert (getGame().getInfo().getAlliance()) != null;
+        if (getGame().getInfo().getAlliance() != null) {
             getSub().setAlliance(getGame().getInfo().getAlliance());
         }
-        catch(Exception e){
+        else {
             getSub().setAlliance("GREEN");
         }
+        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
         getSub().setPg1(getGame().getLowerCell());
         getSub().setPg2(getGame().getOuterCell());
         getSub().setPg3(getGame().getInnerCell());
@@ -181,7 +177,7 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setNomovement((isNomovement()));
         getSub().setSelectionfail(getGame().selectionfail);
         getSub().setRevolutionfail(getGame().revolutionfail);
-        getSub().setclimbFail(getGame().revolutionfail);
+        getSub().setclimbFail(getGame().getClimbFail());
     }
 
     private void getConnected() {

@@ -3,21 +3,15 @@ package com.scoutingApp.FIRST2020;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Objects;
 import java.util.Timer;
@@ -32,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
     private static String dialogMessage = "";
     private int timerPause = 0;
     static Intent settings;
+    static boolean selectionStatic = false;
+    static boolean revolutionStatic = false;
+    static int selectionFailStatic = 0;
+    static int revolutionFailStatic = 0;
+    static Runnable SC;
+    static Runnable RC;
 
     // getters and setters
 
@@ -77,11 +77,6 @@ public class MainActivity extends AppCompatActivity {
         text.setText(label);
     }
 
-    static boolean selectionStatic = false;
-    static boolean revolutionStatic = false;
-    static int selectionFailStatic = 0;
-    static int revolutionFailStatic = 0;
-
     public static class RevolutionDialog extends DialogFragment {
         @NonNull
         @Override
@@ -105,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             return name.create();
         }
     }
-
-    static Runnable SC;
-    static Runnable RC;
 
     public static class SelectionDialog extends DialogFragment {
         @NonNull
@@ -205,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             TextView timerText = findViewById(R.id.label);
-            timerText.setText(R.string.endgame);
+            timerText.setText(R.string.eg);
         }
     }
 
@@ -222,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
         updateTextView(getGame().getInfo().getTeam().toString(), R.id.infoTeam);
         updateTextView(getGame().getInfo().getMatch(), R.id.infoMatch);
     }
-
     public void dialogCheck() {
         DialogCheckThread thread = new DialogCheckThread();
         Thread threadStart = new Thread(thread);
@@ -255,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
 
     // threads
 
-
     class RevColor implements Runnable {
         @Override
         public void run() {
@@ -271,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.selection).getBackground().setTint(getResources().getColor(R.color.darkOrange));
         }
     }
-
 
     class DialogCheckThread implements Runnable {
         @Override
@@ -384,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
         if(getGame().isMainStart()) {colorSet(R.id.start3, R.color.darkOrange); }
         else {colorSet(R.id.start3, R.color.lightOrange) ;}
         if (!getGame().isMainStart()) {
-            getGame().setMainStart(true);;
+            getGame().setMainStart(true);
             ((Button) findViewById(R.id.start3)).setText(R.string.stop);
             if (getTimerPause() == 0) {
                 stormDelay(20);

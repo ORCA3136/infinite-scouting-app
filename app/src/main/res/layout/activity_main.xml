@@ -27,12 +27,7 @@
         android:id="@+id/pglayout"
         android:layout_width="181dp"
         android:layout_height="390dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/revolution"
         app:layout_constraintTop_toBottomOf="@+id/powerGenerator">
@@ -181,29 +176,26 @@
 
     <TextView
         android:id="@+id/controlPanel"
-        android:layout_width="231dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="319dp"
-        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle"
         android:backgroundTint="#d3802f"
         android:text="@string/control_panel"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/revolution"
-        app:layout_constraintEnd_toStartOf="@+id/powerGenerator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.93" />
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="87dp"
-        android:layout_height="67dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/_0"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -216,20 +208,21 @@
 
     <TextView
         android:id="@+id/powerGenerator"
-        android:layout_width="242dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="22dp"
-        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/circle"
         android:backgroundTint="@color/darkOrange"
         android:text="@string/power_genenator"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/controlPanel"
+        app:layout_constraintBottom_toTopOf="@id/pglayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
     <Button
@@ -274,7 +267,6 @@
         android:id="@+id/revolution"
         android:layout_width="0dp"
         android:layout_height="74dp"
-        android:layout_marginEnd="22dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
         android:onClick="revolutionButton"
@@ -283,7 +275,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/pglayout"
-        app:layout_constraintEnd_toStartOf="@+id/pglayout"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
         app:layout_constraintStart_toEndOf="@+id/selection"
         tools:ignore="ButtonStyle" />
 
@@ -294,17 +286,16 @@
 
     <ImageButton
         android:id="@+id/help"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="44dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="44dp"
         android:backgroundTint="#d3802f"
         android:contentDescription="@string/info"
         android:onClick="helpButton"
         android:scaleType="fitCenter"
         android:tint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/settings"
         app:layout_constraintTop_toTopOf="@+id/settings"
@@ -312,12 +303,10 @@
 
     <Button
         android:id="@+id/settings"
-        android:layout_width="0dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="#d3802f"
         android:onClick="settingsButton"
         android:text="@string/settings"
@@ -328,22 +317,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit" />
 
-    <FrameLayout
-        android:layout_width="325dp"
-        android:layout_height="311dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="51dp"
-        app:layout_constraintEnd_toStartOf="@+id/pglayout"
-        app:layout_constraintStart_toEndOf="@+id/cplayout"
-        app:layout_constraintTop_toTopOf="@+id/pglayout">
-
-    </FrameLayout>
-
     <Button
         android:id="@+id/selection"
         android:layout_width="0dp"
         android:layout_height="74dp"
-        android:layout_marginStart="22dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
         android:onClick="selectionButton"
@@ -353,22 +330,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/revolution"
         app:layout_constraintEnd_toStartOf="@+id/revolution"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tableLayout"
         tools:ignore="ButtonStyle" />
 
     <TextView
         android:id="@+id/label"
-        android:layout_width="145dp"
-        android:layout_height="61dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="AUTON"
+        android:text="@string/autonomous"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="36sp"
+        android:textSize="42sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/powerGenerator"
-        app:layout_constraintEnd_toStartOf="@+id/timer"
-        app:layout_constraintStart_toEndOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/start3" />
+        app:layout_constraintEnd_toEndOf="@id/tableLayout"
+        app:layout_constraintStart_toStartOf="@id/tableLayout"
+        app:layout_constraintTop_toTopOf="@id/pglayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

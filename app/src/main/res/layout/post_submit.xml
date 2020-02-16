@@ -206,6 +206,7 @@
         android:backgroundTint="#000000"
         android:hint="@string/type_score_here"
         android:inputType="number"
+        android:maxLength="5"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/allyscore"
@@ -215,29 +216,27 @@
 
     <EditText
         android:id="@+id/notes"
-        android:layout_width="251dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d2b048"
-        android:ems="10"
         android:gravity="start|top"
-        android:hint="Enter additional notes here"
+        android:hint="@string/enter_additional_notes_here"
         android:inputType="textMultiLine"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
         app:layout_constraintBottom_toTopOf="@+id/p2submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tableLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/typescorehere"
+        app:layout_constraintStart_toStartOf="@+id/typescorehere"
+        app:layout_constraintTop_toBottomOf="@+id/typescorehere" />
 
     <TableLayout
-        app:layout_constraintTop_toBottomOf="@+id/allyscore"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/allyscore"
-        app:layout_constraintEnd_toEndOf="@id/allyscore"
+        android:id="@+id/tableLayout2"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_width="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/allyscore"
+        app:layout_constraintStart_toStartOf="@+id/allyscore"
+        app:layout_constraintTop_toBottomOf="@+id/allyscore">
 
         <Switch
             android:id="@+id/ground_pickup"
@@ -246,7 +245,7 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="Ground pickup"
+            android:text="@string/ground_pickup"
             android:textSize="24sp" />
 
         <Switch
@@ -256,7 +255,7 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="Under Trench"
+            android:text="@string/under_trench"
             android:textSize="24sp"
             tools:text="Under Trench" />
 
@@ -265,9 +264,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:checked="true"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="no movement"
+            android:text="@string/movement"
             android:textSize="22sp" />
 
 
@@ -278,7 +278,7 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="no show"
+            android:text="@string/no_show2"
             android:textSize="24sp" />
 
         <Switch
@@ -288,7 +288,7 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="yellow card"
+            android:text="@string/yellow_card2"
             android:textSize="24sp" />
 
 
@@ -299,8 +299,8 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="is climb Level"
-            android:textSize="24sp" />
+            android:text="@string/was_the_climb_level"
+            android:textSize="18sp" />
 
         <Switch
             android:id="@+id/red_card"
@@ -309,7 +309,7 @@
             android:layout_weight="1"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:backgroundTint="#d2b048"
-            android:text="red card"
+            android:text="@string/red_card2"
             android:textSize="24sp" />
     </TableLayout>
 
