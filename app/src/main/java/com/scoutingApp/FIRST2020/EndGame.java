@@ -153,7 +153,6 @@ public class EndGame extends AppCompatActivity {
         startActivity(goBack);
     }
 
-
     public void colorLevel(int button) {
         findViewById(R.id.centerButtonLevel).setBackground(getDrawable(R.drawable.round));
         findViewById(R.id.midLeftButtonLevel).setBackground(getDrawable(R.drawable.round));

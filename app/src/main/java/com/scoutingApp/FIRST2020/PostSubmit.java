@@ -276,8 +276,8 @@ public class PostSubmit extends AppCompatActivity {
             getData().getSheet().setSubNum(getData().getSheet().getSubNum() + 1);
             getData().getSheet().contextual = this;
             getConnected();
-            goHome();
             getData().setTimerPause(0);
+            goHome();
         } else {
             DialogFragment newFragment = new Dialogs4();
             newFragment.show(getSupportFragmentManager(), "STOP");

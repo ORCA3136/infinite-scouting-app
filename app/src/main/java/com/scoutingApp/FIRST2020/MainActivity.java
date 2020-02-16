@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-            name.setMessage("Match time is done, you are being sent to the Post Submit page to submit your data")
+            name.setMessage("Match time is over! You are being sent to the post-submit page to submit your data.")
                     .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
@@ -187,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (getData().getTimerPause() >= 155) {
                     getGame().setMainStart(false);
+                }
+                if (getData().getTimerPause() >= 155) {
+                    DialogFragment newFragment = new TimeOver();
+                    newFragment.show(getSupportFragmentManager(), "TIME");
                 }
             }
         }
@@ -413,10 +417,6 @@ public class MainActivity extends AppCompatActivity {
                     getGame().setAutonomous(true);
                     stormDelay(20 - getData().getTimerPause());
                 }
-                if (getData().getTimerPause() == 155) {
-                    DialogFragment newFragment = new TimeOver();
-                    newFragment.show(getSupportFragmentManager(), "TIME");
-                }
             } else {
                 getGame().setMainStart(false);
                 ((Button) findViewById(R.id.start3)).setText(R.string.start);
@@ -434,16 +434,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void endGameHang(View view) {
-        if (getGame() != null){
-        if (getData().getTimerPause() > 120) {
-            Intent egPage = new Intent(getApplicationContext(), EndGame.class);
-            egPage.putExtra("gamefromMAtoEG", getGame());
-            egPage.putExtra("datafromMAtoEG", getData());
-            startActivity(egPage);
-        }
-        }
-        else {
-            makeADialog("Endgame has yet to begin", "END");
+        if (getGame() != null) {
+            if (getData().getTimerPause() > 120) {
+                Intent egPage = new Intent(getApplicationContext(), EndGame.class);
+                egPage.putExtra("gamefromMAtoEG", getGame());
+                egPage.putExtra("datafromMAtoEG", getData());
+                startActivity(egPage);
+            }
+            else {
+                makeADialog("Endgame has yet to begin", "END");
+            }
         }
     }
 
