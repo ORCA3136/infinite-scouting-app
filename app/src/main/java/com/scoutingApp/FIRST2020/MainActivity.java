@@ -288,13 +288,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             if (getData().perSubData != null && getData().getSheet().getSheetPage() != null) {
-                int x = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(2).toString()); //current match number
+                int x = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(1).toString()); //current match number
                 int y;
-                try {y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(2).toString());}
-                catch (Exception e) {y = 0;}
-                //last match number
-                if (y != 0) {if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0).equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0))) && (x - 1 == y)) {
-                    makeADialog("Please go find the next scouter, " + getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0), "handoff"); }
+                try {y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(1).toString());}
+                catch (Exception e) {y = 0;} //last match number
+                if (y != 0) {if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0).equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0))) && (x - 1 != y)) {
+                    makeADialog("Please go find Jackie or Kendall", "handoff"); }
                 }
             }
         }
