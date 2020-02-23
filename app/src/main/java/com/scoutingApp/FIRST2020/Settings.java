@@ -140,7 +140,7 @@ public class Settings extends AppCompatActivity {
             builder.setView(inflater.inflate(R.layout.password_dialog3, null))
                     .setPositiveButton("yup!", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            matchNum =  Integer.parseInt(((TextView) Objects.requireNonNull(getDialog()).findViewById(R.id.matchNumber)).getText().toString());
+                            matchNum =  (Integer.parseInt(((TextView) Objects.requireNonNull(getDialog()).findViewById(R.id.matchNumber)).getText().toString())) - 1;
 
                             Objects.requireNonNull(MatchNumber.this.getDialog()).cancel();
                         }

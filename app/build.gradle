@@ -7,8 +7,8 @@ android {
         applicationId "com.scoutingApp.FIRST2020"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 6
-        versionName "3.2.3"
+        versionCode 7
+        versionName "3.6.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

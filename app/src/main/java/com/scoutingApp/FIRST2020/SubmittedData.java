@@ -3,6 +3,7 @@ package com.scoutingApp.FIRST2020;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class SubmittedData implements Serializable {
@@ -12,6 +13,19 @@ public class SubmittedData implements Serializable {
     private boolean park;
 
     private int extrasFinalScore;
+
+    private HashMap cycleTime;
+
+    private int cycleAverage() {
+        int avg = 0;
+        int divisor = 0;
+        for (int x = 2; x < apg1 + apg2 + apg3 + pg1 + pg2 + pg3; x ++) {
+            avg += Integer.parseInt(cycleTime.get(x).toString());
+            divisor = x - 1;
+        }
+        if (divisor != 0) {return avg / divisor;}
+        else return 0;
+    }
 
     private int team;
     private String match = "";
@@ -72,16 +86,20 @@ public class SubmittedData implements Serializable {
                 trench,
                 revolutionfail,
                 selectionfail,
-                climbFail
+                climbFail,
+                cycleAverage()
         );
     }
 
-    public void setclimbFail(int climbFail) {
+    void setCycleTime(HashMap cycleTime) {
+        this.cycleTime = cycleTime;
+    }
+    void setclimbFail(int climbFail) {
         this.climbFail = climbFail;}
-    public void setSelectionfail(int selectionfail) {
+    void setSelectionfail(int selectionfail) {
         this.selectionfail = selectionfail;
     }
-    public void setRevolutionfail(int revolutionfail) {
+    void setRevolutionfail(int revolutionfail) {
         this.revolutionfail = revolutionfail;
     }
     void setTrench(boolean trench) {

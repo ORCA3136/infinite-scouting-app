@@ -102,7 +102,7 @@ public class PostSubmit extends AppCompatActivity {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-            name.setMessage("Please add the final alliance score or a \"0\" placeholder!")
+            name.setMessage("Please add the final alliance score, name, team, match, and/or a \"0\" placeholder!")
                     .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Objects.requireNonNull(PostSubmit.Dialogs4.this.getDialog()).dismiss();
@@ -127,6 +127,7 @@ public class PostSubmit extends AppCompatActivity {
         getSub().setMainDefense(getGame().isMainDefense());
         getSub().setMainClimb(getGame().isEndGameHang());
         getSub().setNoshow(getGame().isNoShow());
+        getSub().setCycleTime(getData().map);
         getSub().setNomovement(getGame().isMovement());
         if ((getGame().getInfo().getTeam()) != 0) {
             getSub().setTeam(getGame().getInfo().getTeam());
@@ -262,7 +263,7 @@ public class PostSubmit extends AppCompatActivity {
 
 
     public void submitButtonPageTwo(View view) {
-        if (!newString(R.id.typescorehere).equals("")) {
+        if (!newString(R.id.typescorehere).equals("") && !newString(R.id.name).equals("") && !newString(R.id.match).equals("") && !newString(R.id.team).equals("")) {
             getGame().getInfo().setName(newString(R.id.name));
             getGame().getInfo().setTeam(Integer.valueOf(newString(R.id.team)));
             getGame().getInfo().setMatch(newString(R.id.match));

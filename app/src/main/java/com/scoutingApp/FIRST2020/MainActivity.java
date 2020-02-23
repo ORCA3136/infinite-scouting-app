@@ -137,13 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public void stormDelay(int seconds) {
         Timer timer = new Timer();
         timer.schedule(new RemindTask(), seconds * 1000);
-        if (getData().getTimerPause() == 0) {
-            Timer pauser = new Timer();
-            pauser.scheduleAtFixedRate(new RemindTask2(), 1000, 1000);
-        }
     }
-
-    static Runnable ST;
 
     class RemindTask extends TimerTask {
         public void run() {
@@ -177,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     RemindTask2.this.cancel();
                 }
             }
+            else RemindTask2.this.cancel();
         }
     }
 
@@ -276,8 +271,15 @@ public class MainActivity extends AppCompatActivity {
                 int y;
                 try {y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(1).toString());}
                 catch (Exception e) {y = 0;} //last match number
-                if (y != 0) {if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0).equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0))) && (x - 1 != y)) {
-                    makeADialog("Please go find Jackie or Kendall", "handoff"); }
+                if (y != 0) {
+                    if (!(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0) // current name
+                            .equals(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(0)))) // last name
+                    {
+                        if (x - 1 != y) {
+                            makeADialog("Please go find Jackie or Kendall", "handoff");
+                        }
+                        else {makeADialog("Please give tablet to " + (getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(0)), "handoff");}
+                    }
                 }
             }
         }
@@ -334,6 +336,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    Integer timeValue;
+    
+    public Integer getTotalScore() {
+        return getGame().getLowerCell() + getGame().getAutoLowerCell() + getGame().getOuterCell() + getGame().getAutoOuterCell() + getGame().getInnerCell() + getGame().getAutoInnerCell();
+    }
+
+    public void setTimeValue() {
+        if (getTotalScore() == 1) {
+            this.timeValue = getData().getTimerPause();
+        }
+        else {
+            int totalPrev = 0;
+            for (int x = 1; x < getTotalScore(); x ++) {
+                totalPrev += getData().map.get(x);
+            }
+            this.timeValue = getData().getTimerPause() - totalPrev;
+        }
+    }
+
     public void pg1(View view) {
         if (getGame() != null) {
             if (getGame().isMainStart()) {
@@ -342,6 +363,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     getGame().autoCellScore(1);
                 }
+                setTimeValue();
+                getData().map.put(getTotalScore(), timeValue);
                 updateScoreText(R.id.pg1, (getGame().getLowerCell() + getGame().getAutoLowerCell()), "Lower");
                 colorSet(R.id.pg1, R.color.darkOrange);
             } else makeADialog("Please start the game!", "gameStart");
@@ -356,6 +379,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     getGame().cellScore(2);
                 }
+                setTimeValue();
+                getData().map.put(getTotalScore(), timeValue);
                 updateScoreText(R.id.pg2, (getGame().getOuterCell() + getGame().getAutoOuterCell()), "Outer");
                 colorSet(R.id.pg2, R.color.darkOrange);
             }
@@ -371,6 +396,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     getGame().cellScore(3);
                 }
+                setTimeValue();
+                getData().map.put(getTotalScore(), timeValue);
                 updateScoreText(R.id.pg3, (getGame().getInnerCell() + getGame().getAutoInnerCell()), "Inner");
                 colorSet(R.id.pg3, R.color.darkOrange);
             } else
@@ -399,6 +426,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (getData().getTimerPause() <= 19) {
                     getGame().setAutonomous(true);
                     stormDelay(20 - getData().getTimerPause());
+                }
+                {
+                    Timer pauser = new Timer();
+                    pauser.scheduleAtFixedRate(new RemindTask2(), 1000, 1000);
                 }
             } else {
                 getGame().setMainStart(false);
@@ -459,7 +490,6 @@ public class MainActivity extends AppCompatActivity {
         mn = MainActivity.this;
         SC = new SelColor();
         RC = new RevColor();
-        ST = new SubmitButtonThread();
     }
 
     @Override
