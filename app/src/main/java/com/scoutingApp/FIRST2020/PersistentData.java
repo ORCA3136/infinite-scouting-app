@@ -16,6 +16,15 @@ class PersistentData implements Serializable {
     private int rowNumber = 0;
     private SheetsAccess sheet = new SheetsAccess();
     private static int tabNum;
+    private boolean timeSend;
+
+    boolean isTimeSend() {
+        return timeSend;
+    }
+
+    void setTimeSend(boolean timeSend) {
+        this.timeSend = timeSend;
+    }
 
     static int getTabNum() {
         return tabNum;

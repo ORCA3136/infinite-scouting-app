@@ -260,6 +260,7 @@ public class PostSubmit extends AppCompatActivity {
         setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
     }
 
+
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("")) {
             getGame().getInfo().setName(newString(R.id.name));
@@ -284,6 +285,21 @@ public class PostSubmit extends AppCompatActivity {
         }
     }
 
+    public static class TimeOver extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+            name.setMessage("Match time is over! You have been sent to the post-submit page to submit your data.")
+                    .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
+                        }
+                    });
+            return name.create();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -298,6 +314,11 @@ public class PostSubmit extends AppCompatActivity {
             isItBlue = true;
         }
         FirebaseAnalytics.getInstance(this).logEvent("PSCreate", savedInstanceState);
+        if (getData().isTimeSend()) {
+            DialogFragment newFragment = new TimeOver();
+            newFragment.show(getSupportFragmentManager(), "TIMER");
+            getData().setTimeSend(false);
+        }
     }
 
     @Override

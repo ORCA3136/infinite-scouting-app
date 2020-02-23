@@ -143,23 +143,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class TimeOver extends DialogFragment {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder name = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-            name.setMessage("Match time is over! You are being sent to the post-submit page to submit your data.")
-                    .setNegativeButton(R.string.okiedokes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Objects.requireNonNull(TimeOver.this.getDialog()).dismiss();
-                            Thread threadStart = new Thread(ST);
-                            threadStart.start();
-                        }
-                    });
-            return name.create();
-        }
-    }
-
     static Runnable ST;
 
     class RemindTask extends TimerTask {
@@ -187,10 +170,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (getData().getTimerPause() >= 155) {
                     getGame().setMainStart(false);
-                }
-                if (getData().getTimerPause() >= 155) {
-                    DialogFragment newFragment = new TimeOver();
-                    newFragment.show(getSupportFragmentManager(), "TIME");
+                    getData().setTimeSend(true);
+                    SubmitButtonThread thread2 = new SubmitButtonThread();
+                    Thread threadStart2 = new Thread(thread2);
+                    threadStart2.start();
+                    RemindTask2.this.cancel();
                 }
             }
         }
