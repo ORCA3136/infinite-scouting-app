@@ -304,6 +304,10 @@ public class MainActivity extends AppCompatActivity {
     class SubmitButtonThread implements Runnable {
         @Override
         public void run() {
+            getGame().setRevolved(revolutionStatic);
+            getGame().setSelected(selectionStatic);
+            getGame().selectionfail = selectionFailStatic;
+            getGame().revolutionfail = revolutionFailStatic;
             Intent psPage = new Intent(getApplicationContext(), PostSubmit.class);
             psPage.putExtra("gamefromMAtoPS", getGame());
             psPage.putExtra("datafromMAtoPS", getData());

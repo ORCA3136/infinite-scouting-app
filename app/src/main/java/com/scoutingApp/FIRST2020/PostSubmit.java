@@ -64,8 +64,6 @@ public class PostSubmit extends AppCompatActivity {
         return this.sub;
     }
 
-    // methods to update the content of the UI
-
     private void updateTextView(String content, int id) {
         TextView nametext = findViewById(id);
         nametext.setText(content);
@@ -81,21 +79,55 @@ public class PostSubmit extends AppCompatActivity {
 
     }
 
-    // various methods called on submit
-
     boolean trench;
-
     boolean climblevel;
-
     boolean ground_pickup;
-
     boolean yellowcard;
-
     boolean redcard;
-
     boolean nomovement;
-
     boolean noshow;
+    public boolean isTrench() {
+        return trench;
+    }
+    public void setTrench(boolean trench) {
+        this.trench = trench;
+    }
+    public boolean isYellowcard() {
+        return yellowcard;
+    }
+    public void setYellowcard(boolean yellowcard) {
+        this.yellowcard = yellowcard;
+    }
+    public boolean isClimblevel() {
+        return climblevel;
+    }
+    public void setClimblevel(boolean climblevel) {
+        this.climblevel = climblevel;
+    }
+    public boolean isGround_pickup() {
+        return ground_pickup;
+    }
+    public void setGround_pickup(boolean ground_pickup) {
+        this.ground_pickup = ground_pickup;
+    }
+    public boolean isRedcard() {
+        return redcard;
+    }
+    public void setRedcard(boolean redcard) {
+        this.redcard = redcard;
+    }
+    public boolean isNomovement() {
+        return nomovement;
+    }
+    public void setNomovement(boolean nomovement) {
+        this.nomovement = nomovement;
+    }
+    public boolean isNoshow() {
+        return noshow;
+    }
+    public void setNoshow(boolean noshow) {
+        this.noshow = noshow;
+    }
 
     public static class Dialogs4 extends DialogFragment {
         @NonNull
@@ -123,12 +155,39 @@ public class PostSubmit extends AppCompatActivity {
         startActivity(main);
     }
 
-    public void toSubmission() {
-        getSub().setMainDefense(getGame().isMainDefense());
-        getSub().setMainClimb(getGame().isEndGameHang());
-        getSub().setNoshow(getGame().isNoShow());
-        getSub().setCycleTime(getData().map);
-        getSub().setNomovement(getGame().isMovement());
+    public void climbEtcSet() {
+        if (!getGame().getHangHeight().equals("No Hang") || !getGame().getHangLoc().equals("No Hang")) {
+            getSub().setMainClimb(true);
+        }
+        //sets boolean climb value ^^
+        getSub().setHeight(getGame().getHangHeight());
+        //sets climb height ^^
+        getSub().setLoc(getGame().getHangLoc());
+        //sets climb location
+        getSub().setclimbFail(getGame().getClimbFail());
+        //sets # of fails
+        getSub().setPark(getGame().isEndGamePark());
+        //sets park boolean
+    }
+
+    public void panelSet() {
+        getSub().setSelectionfail(getGame().selectionfail);
+        getSub().setRevolutionfail(getGame().revolutionfail);
+        getSub().setRevolve(getGame().isRevolved());
+        getSub().setSelect(getGame().isSelected());
+    }
+
+    public void switchesSet() {
+        getSub().setClimblevel((isClimblevel()));
+        getSub().setGround_pickup((isGround_pickup()));
+        getSub().setYellowcard((isYellowcard()));
+        getSub().setNoshow((isNoshow()));
+        getSub().setTrench((isTrench()));
+        getSub().setRedcard((isRedcard()));
+        getSub().setNomovement((isNomovement()));
+    }
+
+    public void infoForSub() {
         if ((getGame().getInfo().getTeam()) != 0) {
             getSub().setTeam(getGame().getInfo().getTeam());
         }
@@ -153,97 +212,41 @@ public class PostSubmit extends AppCompatActivity {
         else {
             getSub().setNotes("No Notes");
         }
-        getSub().setRevolve(getGame().isRevolved());
-        getSub().setSelect(getGame().isSelected());
         if (getGame().getInfo().getAlliance() != null) {
             getSub().setAlliance(getGame().getInfo().getAlliance());
         }
         else {
             getSub().setAlliance("GREEN");
         }
-        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+    }
+
+    public void scoresForSub() {
         getSub().setPg1(getGame().getLowerCell());
         getSub().setPg2(getGame().getOuterCell());
         getSub().setPg3(getGame().getInnerCell());
         getSub().setApg1(getGame().getAutoLowerCell());
         getSub().setApg2(getGame().getAutoOuterCell());
         getSub().setApg3(getGame().getAutoInnerCell());
-        getSub().setPark(getGame().isEndGamePark());
-        getSub().setClimblevel((isClimblevel()));
-        getSub().setGround_pickup((isGround_pickup()));
-        getSub().setYellowcard((isYellowcard()));
-        getSub().setNoshow((isNoshow()));
-        getSub().setTrench((isTrench()));
-        getSub().setRedcard((isRedcard()));
-        getSub().setNomovement((isNomovement()));
-        getSub().setSelectionfail(getGame().selectionfail);
-        getSub().setRevolutionfail(getGame().revolutionfail);
-        getSub().setclimbFail(getGame().getClimbFail());
+        //cell scores
+        getSub().setExtrasFinalScore(getGame().getExtrasFinalScore());
+        //final score
+        getSub().setCycleTime(getData().map);
+        //cycle time
+    }
+
+    public void toSubmission() {
+        getSub().setMainDefense(getGame().isMainDefense());
+        climbEtcSet();
+        scoresForSub();
+        infoForSub();
+        switchesSet();
+        climbEtcSet();
+        panelSet();
     }
 
     private void getConnected() {
         getData().getSheet().sender(getData().getSheet().mapTheSubmission(getData().perSubData.get(getData().getSheet().getSubNum()).setValues()), getData().perSubData.get(getData().getSheet().getSubNum()).getMatchNumber(), "tab" + PersistentData.getTabNum());
     }
-    //Threads
-
-
-    public boolean isTrench() {
-        return trench;
-    }
-
-    public void setTrench(boolean trench) {
-        this.trench = trench;
-    }
-
-    public boolean isYellowcard() {
-        return yellowcard;
-    }
-
-    public void setYellowcard(boolean yellowcard) {
-        this.yellowcard = yellowcard;
-    }
-
-    public boolean isClimblevel() {
-        return climblevel;
-    }
-
-    public void setClimblevel(boolean climblevel) {
-        this.climblevel = climblevel;
-    }
-
-    public boolean isGround_pickup() {
-        return ground_pickup;
-    }
-
-    public void setGround_pickup(boolean ground_pickup) {
-        this.ground_pickup = ground_pickup;
-    }
-
-    public boolean isRedcard() {
-        return redcard;
-    }
-
-    public void setRedcard(boolean redcard) {
-        this.redcard = redcard;
-    }
-
-    public boolean isNomovement() {
-        return nomovement;
-    }
-
-    public void setNomovement(boolean nomovement) {
-        this.nomovement = nomovement;
-    }
-
-    public boolean isNoshow() {
-        return noshow;
-    }
-
-    public void setNoshow(boolean noshow) {
-        this.noshow = noshow;
-    }
-
-//    button method
 
     public void areTheyChecked() {
         setTrench(((Switch) findViewById(R.id.under_trench)).isChecked());
@@ -260,7 +263,6 @@ public class PostSubmit extends AppCompatActivity {
 
         setNomovement( ((Switch)findViewById(R.id.no_movement)).isChecked());
     }
-
 
     public void submitButtonPageTwo(View view) {
         if (!newString(R.id.typescorehere).equals("") && !newString(R.id.name).equals("") && !newString(R.id.match).equals("") && !newString(R.id.team).equals("")) {

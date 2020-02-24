@@ -9,7 +9,9 @@ import java.util.List;
 public class SubmittedData implements Serializable {
     //each instance of this class is a final submission object
     private boolean mainDefense;
-    private boolean mainClimb;
+    private boolean mainClimb = false;
+    private String height;
+    private String loc;
     private boolean park;
 
     private int extrasFinalScore;
@@ -87,7 +89,9 @@ public class SubmittedData implements Serializable {
                 revolutionfail,
                 selectionfail,
                 climbFail,
-                cycleAverage()
+                cycleAverage(),
+                height,
+                loc
         );
     }
 
@@ -142,6 +146,15 @@ public class SubmittedData implements Serializable {
     void setPg3(int pg3) {
         this.pg3 = pg3;
     }
+
+    void setHeight(String height) {
+        this.height = height;
+    }
+
+    void setLoc(String loc) {
+        this.loc = loc;
+    }
+
     void setNotes(String notes) {this.notes = notes;}
     void setMainDefense(boolean mainDefense) {this.mainDefense = mainDefense;}
     void setMainClimb(boolean mainClimb) {this.mainClimb = mainClimb;}
