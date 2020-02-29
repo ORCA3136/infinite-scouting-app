@@ -74,7 +74,13 @@ class SheetsAccess implements Serializable {
     }
 
     String nameValue(int row) { return getSheetPage().get(row).get(0).toString();}
-    String teamValue(int row) { return getSheetPage().get(row).get(1).toString();}
+    String teamValue(int row)  {
+        try {
+            Integer.parseInt(getSheetPage().get(row).get(1).toString());
+            return getSheetPage().get(row).get(1).toString();
+        }
+        catch(Exception e) {return "9999";}
+    }
     String matchValue(int row) { return getSheetPage().get(row).get(2).toString();}
 
     protected static class fetchSheet extends AsyncTask<String, Void, List<List<Object>>> {

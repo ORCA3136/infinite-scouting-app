@@ -190,7 +190,7 @@ class InfiniteRecharge implements Serializable {
         }
         else if (level == 3) {
            if (getInnerCell() <= 60) {setInnerCell(getInnerCell() + 1);}
-        }
+}
     }
 
     void autoCellScore(int level) {
