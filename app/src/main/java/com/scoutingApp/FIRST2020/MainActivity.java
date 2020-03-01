@@ -267,7 +267,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             if (getData().perSubData != null && getData().getSheet().getSheetPage() != null) {
-                int x = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(1).toString()); //current match number
+                int x;
+                try {x = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber()).get(1).toString());}
+                catch (Exception e) {x = 0;} //current match number
                 int y;
                 try {y = Integer.parseInt(getData().getSheet().getSheetPage().get(getData().getRowNumber() - 1).get(1).toString());}
                 catch (Exception e) {y = 0;} //last match number
