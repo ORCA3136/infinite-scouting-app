@@ -215,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
             setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromS"));
         } else if (getIntent().hasExtra("gamefromEG")) {
             setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromEG"));
+        }else if (getIntent().hasExtra("gamefromPS")) {
+            setGame((InfiniteRecharge) getIntent().getSerializableExtra("gamefromPS"));
         } else {
             setGame(new InfiniteRecharge());
         }

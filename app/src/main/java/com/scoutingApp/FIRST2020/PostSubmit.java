@@ -23,6 +23,13 @@ import java.util.Objects;
 public class PostSubmit extends AppCompatActivity {
     // inherited class objects
 
+    public void backButton(View view) {
+        Intent goBack = new Intent(getApplicationContext(), MainActivity.class);
+        goBack.putExtra("gamefromPS", getGame());
+        goBack.putExtra("datafromPS", getData());
+        startActivity(goBack);
+    }
+
     InfiniteRecharge game;
 
     PersistentData data;

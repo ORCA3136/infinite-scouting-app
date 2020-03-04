@@ -26,10 +26,10 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="259dp"
-        android:layout_height="80dp"
+        android:layout_height="78dp"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="28dp"
         android:layout_weight="1"
         android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
         android:backgroundTint="#d3802f"
@@ -43,8 +43,8 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="266dp"
+        android:layout_height="71dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="22dp"
@@ -58,8 +58,10 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="Autofill" />
 
     <EditText
@@ -315,5 +317,18 @@
             android:text="@string/red_card2"
             android:textSize="24sp" />
     </TableLayout>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="573dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/darkOrange"
+        android:onClick="backButton"
+        android:text="Back?"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

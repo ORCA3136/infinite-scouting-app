@@ -141,9 +141,13 @@ public class Settings extends AppCompatActivity {
                     .setPositiveButton("yup!", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try {
-                                matchNum = (Integer.parseInt(((TextView) Objects.requireNonNull(getDialog()).findViewById(R.id.matchNumber)).getText().toString())) - 1;
+                                matchNum = (Integer.parseInt((
+                                        (TextView) Objects.requireNonNull(getDialog())
+                                                .findViewById(R.id.matchNumber))
+                                        .getText().toString())) - 1;
                             }
-                            catch (Exception e) {matchNum = 0;}
+                            catch (NumberFormatException e) {matchNum = 0;}
+
                             Objects.requireNonNull(MatchNumber.this.getDialog()).cancel();
                         }
                     })
