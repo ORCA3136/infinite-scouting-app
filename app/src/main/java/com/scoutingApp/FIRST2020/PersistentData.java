@@ -2,6 +2,12 @@ package com.scoutingApp.FIRST2020;
 
 import android.annotation.SuppressLint;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseAppLifecycleListener;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,4 +62,6 @@ class PersistentData implements Serializable {
     void setRowNumber(int rowNumber) {
         this.rowNumber = rowNumber;
     }
+
+
 }

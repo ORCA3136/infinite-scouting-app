@@ -513,5 +513,18 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         setData((PersistentData) savedInstanceState.getSerializable("DATA"));
         setGame((InfiniteRecharge) savedInstanceState.getSerializable("GAME"));
+        checkDataGame();
+        if (!getData().getSheet().getSheetID().equals("default")) {
+            int rowNum = getData().getRowNumber();
+            getGame().infoSet(
+                    getData().getSheet().matchValue(rowNum),
+                    Integer.parseInt(getData().getSheet().teamValue(rowNum)),
+                    getData().getSheet().nameValue(rowNum),
+                    getData().getPerAlliance()
+            );
+        } else {
+            getGame().infoSet("0", 0, "0", "0");
+        }
+        updateDisplayInfo();
     }
 }

@@ -77,13 +77,20 @@ public class Settings extends AppCompatActivity {
                                                             )
                                                 )
                                     ) + 1;
+                            if (Settings.tabletNumber == 0) throw new Exception();
                         }
                         catch (Exception e) {
-                            try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup2)).indexOfChild(
-                                        Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById((
-                                                (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog()).findViewById(R.id.RadioGroup2)).getCheckedRadioButtonId()
+                            try {Settings.tabletNumber = (((RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                    .findViewById(R.id.RadioGroup2))
+                                        .indexOfChild(
+                                            Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                    .findViewById((
+                                                        (RadioGroup) Objects.requireNonNull(Dialogs2.this.getDialog())
+                                                                .findViewById(R.id.RadioGroup2))
+                                                                        .getCheckedRadioButtonId()
+                                                    )
                                         )
-                                ));
+                                ) + 7;
                             }
                             catch (Exception e2) {Settings.tabletNumber = 0;}
                         }
@@ -189,7 +196,7 @@ public class Settings extends AppCompatActivity {
             back2.putExtra("gamefromS", getGame());
             back2.putExtra("datafromS", getData());
             getData().setRowNumber(matchNum);
-            if ((tabletNumber != 0) && (getData().getSheet().getSheetPage() == null)){
+            if ((tabletNumber != 0)){
                 getData().setPerAlliance(allianceColor);
                 getData().getSheet().setSheetID("tab" + tabletNumber);
                 try {

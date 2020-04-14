@@ -2,6 +2,7 @@ package com.scoutingApp.FIRST2020;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.PersistableBundle;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.http.HttpTransport;
@@ -116,18 +117,16 @@ class SheetsAccess implements Serializable {
         long x = now.getTime();
         FirebaseAnalytics ana = FirebaseAnalytics.getInstance(Objects.requireNonNull(contextual));
         try {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-//            ana.setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
-            ana.setUserProperty("name", "fakename");
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);ana.setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
             ana.setUserProperty("tablet", getSheetID());
         }
         catch (DatabaseException e) {
-//            ana.setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
-            ana.setUserProperty("name", "fakename");
+            ana.setUserProperty("name", Objects.requireNonNull(map.get("9")).toString());
             ana.setUserProperty("tablet", getSheetID());
         }
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("all-data").child("time"+x+"match"+strings[0]+strings[1]).setValue(map);
         contextual = null;
     }
+
 }

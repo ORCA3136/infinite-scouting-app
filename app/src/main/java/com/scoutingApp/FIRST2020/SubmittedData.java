@@ -62,36 +62,36 @@ public class SubmittedData implements Serializable {
 
     List<Object> setValues() {
         return Arrays.asList(
-            ((Object)mainDefense),
-            mainClimb,
-            redcard,
-            yellowcard,
-            noshow,
-            nomovement,
-            extrasFinalScore,
-            team,
-            match,
-            name,
-            alliance,
-            notes,
+            ((Object)mainDefense), //1
+            mainClimb, //2
+            redcard, //3
+            yellowcard, //4
+            noshow, //5
+            nomovement, //6
+            extrasFinalScore, //7
+            team, //8
+            match, //9
+            name, //10
+            alliance, //11
+            notes, //12
             revolve,
-            select,
+            select, //14
             pg1,
-            pg2,
+            pg2, //16
             pg3,
-            apg1,
+            apg1, //17
             apg2,
-            apg3,
+            apg3, //18
             park,
-                climblevel,
+                climblevel, //20
                 ground_pickup,
-                trench,
+                trench, //22
                 revolutionfail,
-                selectionfail,
+                selectionfail, //24
                 climbFail,
-                cycleAverage(),
+                cycleAverage(), //26
                 height,
-                loc
+                loc //28
         );
     }
 
